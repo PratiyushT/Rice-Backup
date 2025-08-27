@@ -1,0 +1,31 @@
+<menu id="hyde-menu">
+  <item id="animations-select" label="Select Animation" />
+  <separator />
+  <submenu label="Wallpaper">
+    <item id="wallpaper-select" label="Select Wallpaper" />
+    <item id="wallpaper-next" label="Next Wallpaper" />
+    <item id="wallpaper-previous" label="Previous Wallpaper" />
+    <item id="wallpaper-random" label="Random Wallpaper" />
+  </submenu>
+  <submenu label="Theme">
+    <item id="theme-select" label="Select Theme" />
+    <item id="theme-next" label="Next Theme" />
+    <item id="theme-previous" label="Previous Theme" />
+    <item id="theme-import" label="Import Theme" />
+  </submenu>
+  <submenu label="Waybar">
+    <item id="waybar-layout-select" label="Select Layout" />
+    <item id="waybar-layout-next" label="Next Layout" />
+    <item id="waybar-layout-previous" label="Previous Layout" />
+    <item id="waybar-reload-css" label="Reload CSS" />
+    <separator />
+    <item id="waybar-restart" label="Restart Waybar" />
+  </submenu>
+  <submenu label="Extras">
+    <item id="workflows-select" label="Select Workflows" />
+    <item id="shaders-select" label="Select Shaders" />
+    <item id="keybinds-hint" label="Keybinds Help" />
+  </submenu>
+  <separator />
+  <item id="about-hyde" label="About HyDE" />
+</menu>

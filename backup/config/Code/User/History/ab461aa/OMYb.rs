@@ -1,0 +1,23 @@
+use std::{io, cmp::Ordering};
+use rand::Rng;
+
+fn main(){
+    /* Getting user's input */
+    let mut input = String::new();
+    io::stdin()
+    .read_line(&mut input)
+    .expect("Please enter a proper value");
+
+    /* Prasing the input */
+    let input:u64 = input.trim().parse().expect("Error parsing the input. Please enter a valid number");
+
+    /* Generating a random number between 0 and 100 */
+    let rand_num = rand::thread_rng().gen_range(0..100);
+
+    match input.cmp(&rand_num){
+        Ordering::Less => println!("Enter a ")
+    }
+
+    println!("You have guessed {}", input);
+
+}

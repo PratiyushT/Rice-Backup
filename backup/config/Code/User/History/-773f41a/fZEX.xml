@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+
+    <!-- Display-only line; edit text manually whenever you want -->
+    <child>
+      <object class="GtkMenuItem" id="always-state">
+        <property name="label">Always-On: (manually set label)</property>
+        <property name="sensitive">false</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkSeparatorMenuItem" id="sep-1"/>
+    </child>
+
+    <!-- Your two actions -->
+    <child>
+      <object class="GtkMenuItem" id="enable-tablet-only">
+        <property name="label">Enable rotation on tablet mode only</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkMenuItem" id="disable-tablet-only">
+        <property name="label">Disable rotation on tablet mode only</property>
+      </object>
+    </child>
+
+  </object>
+</interface>

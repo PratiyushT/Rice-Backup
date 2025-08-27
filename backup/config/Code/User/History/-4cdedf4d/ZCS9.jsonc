@@ -1,0 +1,12 @@
+{
+  "custom/autorotate-menu": {
+    "format": " ",
+    "tooltip": "Autorotate controls",
+    "menu": "on-click",
+    "menu-file": "/home/PrT15/.local/share/waybar/menus/autorotate.xml",
+    "menu-actions": {
+      "toggle-tablet": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh toggle-tablet",
+      "toggle-laptop": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh toggle-laptop"
+    }
+  }
+}

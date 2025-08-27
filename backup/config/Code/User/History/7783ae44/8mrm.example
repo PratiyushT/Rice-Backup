@@ -1,0 +1,18 @@
+# Zapier Integration
+NEXT_PUBLIC_ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/YOUR_WEBHOOK_ID/
+ZAPIER_SECRET_KEY=your-secret-key-here
+#Pexels Integration for random image generation.
+PEXELS_KEY=Pexels Key
+# Instructions:
+# 1. Copy this file to .env.local
+# 2. Replace YOUR_WEBHOOK_ID with your actual Zapier webhook ID
+# 3. Generate a strong secret key and replace "your-secret-key-here" (SERVER-SIDE ONLY)
+# 4. Use this secret key in Zapier to verify webhook authenticity
+# 5. Get your webhook URL from Zapier by creating a new Zap with "Webhooks by Zapier" trigger
+
+# Security Notes:
+# - ZAPIER_SECRET_KEY is server-side only and never exposed to browsers
+# - NEXT_PUBLIC_ZAPIER_WEBHOOK_URL can be public (it's just the endpoint)
+# - Keep your secret key private and never share it publicly
+# - Use a strong, random secret key (minimum 32 characters)
+# - In Zapier, check the "X-Zapier-Secret" header matches your secret key

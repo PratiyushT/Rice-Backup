@@ -1,0 +1,10 @@
+/* User custom styles */
+/* Reduce horizontal padding for portrait bar */
+#portrait .module {
+  padding: 0 6px;
+}
+
+/* Optional: also tighten workspace buttons */
+#portrait #workspaces button {
+  padding: 0 6px;
+}

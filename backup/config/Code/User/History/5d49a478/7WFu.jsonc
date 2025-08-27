@@ -1,0 +1,8 @@
+{
+  "custom/osk": {
+    "format": " {}",
+    "exec": "pgrep wvkbd-mobintl > /dev/null && echo ON || echo OFF",
+    "interval": 2,
+    "on-click": "pkill -SIGRTMIN wvkbd-mobintl || wvkbd-mobintl &"
+  }
+}

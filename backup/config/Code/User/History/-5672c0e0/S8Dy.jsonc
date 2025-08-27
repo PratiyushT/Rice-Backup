@@ -1,0 +1,14 @@
+{
+  "custom/kbd-backlight": {
+    "format": "{icon} {percent}%",
+    "return-type": "json",
+    "exec": "/home/PrT15/.local/lib/hyde/kbd-backlight-status.sh",
+    "on-scroll-up": "brightnessctl -d platform::kbd_backlight set 1+",
+    "on-scroll-down": "brightnessctl -d platform::kbd_backlight set 1-",
+    "interval": 5,
+    "min-length": 6,
+    "tooltip": true,
+    "tooltip-format": "Backlight level: {icon} {percent}%\nUsing: platform::kbd_backlight",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  }
+}

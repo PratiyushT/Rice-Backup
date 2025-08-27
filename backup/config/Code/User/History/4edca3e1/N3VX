@@ -1,0 +1,47 @@
+# ----------------------------------------
+# PATH (unique entries, no duplicates)
+# ----------------------------------------
+typeset -U path
+path=(
+  "$HOME/.cache/.bun/bin/bin:$PATH"
+  "$HOME/.local/bin"
+  "$HOME/.local/lib/hyde"
+  /usr/local/bin
+  /usr/bin
+  "$HOME/.cargo/bin"
+  $path
+)
+
+# ----------------------------------------
+# Oh My Zsh
+# ----------------------------------------
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# ----------------------------------------
+# Locale / Editor
+# ----------------------------------------
+export LANG=en_US.UTF-8
+export EDITOR="code"
+
+# ----------------------------------------
+# Zsh options
+# ----------------------------------------
+ENABLE_CORRECTION="true"        # auto-correct minor typos
+COMPLETION_WAITING_DOTS="true"  # show dots while completing
+HIST_STAMPS="mm/dd/yyyy"        # date format for history
+
+# ----------------------------------------
+# Custom variables
+# ----------------------------------------
+export CONFIG="$HOME/.config"   # quick access to config dir
+
+# ----------------------------------------
+# Extra config files
+# ----------------------------------------
+# Load custom aliases
+if [[ -f "$ZSH_CUSTOM/aliases.zsh" ]]; then
+  source "$ZSH_CUSTOM/aliases.zsh"
+fi

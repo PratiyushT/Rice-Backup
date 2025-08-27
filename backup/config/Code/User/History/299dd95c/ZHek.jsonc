@@ -1,0 +1,38 @@
+{
+  "backlight": {
+    "rotate": 0,
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "on-scroll-up": "hyde-shell brightnesscontrol i 1",
+    "on-scroll-down": "hyde-shell brightnesscontrol d 1",
+    "min-length": 6,
+    "tooltip": true,
+    "tooltip-format": "Backlight level: {icon} {percent}%"
+  },
+  "backlight#intel_backlight": {
+    "device": "intel_backlight",
+    "rotate": 0,
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "on-scroll-up": "hyde-shell brightnesscontrol i 1",
+    "on-scroll-down": "hyde-shell brightnesscontrol d 1",
+    "min-length": 6,
+    "tooltip": true,
+    "tooltip-format": "Backlight level: {icon} {percent}%\nUsing: intel_backlight"
+  },
+   "backlight#kbd": {
+    "rotate": 0,
+    "format": "{icon} {percent}%",
+ "exec": "/home/PrT15/.local/lib/hyde/kbd-backlight-status.sh",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "min-length": 6,
+    "tooltip": true,
+    "tooltip-format": "KBD Backlight level: {icon} {percent}%"
+  }
+}
+    "return-type": "json",
+    "format": "{icon} {percent}%",
+    "tooltip": true,
+    "tooltip-format": "Keyboard Backlight level: {icon} {percent}%",
+    "min-length": 6,
+    "rotate": 0

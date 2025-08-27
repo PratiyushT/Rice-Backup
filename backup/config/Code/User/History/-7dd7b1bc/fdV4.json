@@ -1,0 +1,83 @@
+{
+    "include": [
+        "/image#wallpaper.json",
+        "/privacy.json",
+        "/tray.json",
+        "/wlr-taskbar#windows.json",
+        "/wlr-taskbar.json",
+        "/backlight.jsonc",
+        "/battery.jsonc",
+        "/bluetooth.jsonc",
+        "/cava.jsonc",
+        "/clock.jsonc",
+        "/cpu.jsonc",
+        "/custom-cava.jsonc",
+        "/custom-clipboard.jsonc",
+        "/custom-cliphist.jsonc",
+        "/custom-cpuinfo.jsonc",
+        "/custom-display.jsonc",
+        "/custom-dunst.jsonc",
+        "/custom-gamemode.jsonc",
+        "/custom-github_hyde.jsonc",
+        "/custom-gpuinfo#amd.jsonc",
+        "/custom-gpuinfo#intel.jsonc",
+        "/custom-gpuinfo#nvidia.jsonc",
+        "/custom-gpuinfo.jsonc",
+        "/custom-hyde-menu.jsonc",
+        "/custom-hyprsunset.jsonc",
+        "/custom-keybindhint.jsonc",
+        "/custom-power.jsonc",
+        "/custom-powermenu.jsonc",
+        "/custom-sensorsinfo.jsonc",
+        "/custom-spotify.jsonc",
+        "/custom-swaync.jsonc",
+        "/custom-theme.jsonc",
+        "/custom-updates.jsonc",
+        "/custom-wallchange.jsonc",
+        "/custom-wbar.jsonc",
+        "/custom-weather.jsonc",
+        "/custom-workflows.jsonc",
+        "/hyprland-language.jsonc",
+        "/hyprland-window.jsonc",
+        "/hyprland-workspaces#kanji.jsonc",
+        "/hyprland-workspaces#roman.jsonc",
+        "/hyprland-workspaces.jsonc",
+        "/idle_inhibitor.jsonc",
+        "/image#profile.jsonc",
+        "/image#wallpaper.jsonc",
+        "/memory.jsonc",
+        "/mpris.jsonc",
+        "/network#bandwidth.jsonc",
+        "/network.jsonc",
+        "/power-profiles-daemon.jsonc",
+        "/privacy.jsonc",
+        "/pulseaudio#microphone.jsonc",
+        "/pulseaudio.jsonc",
+        "/tray.jsonc",
+        "/wlr-taskbar#windows.jsonc",
+        "/wlr-taskbar.jsonc",
+        "/custom-battery-conservation.jsonc",
+        "/custom-autorotate-menu.jsonc",
+        "/custom-osk.jsonc"
+    ],
+    "image#wallpaper": {
+        "size": 30,
+        "icon-size-multiplier": 3
+    },
+    "privacy": {
+        "icon-size": 10,
+        "icon-size-multiplier": 1
+    },
+    "tray": {
+        "icon-size": 16,
+        "icon-size-multiplier": 1.6
+    },
+    "wlr/taskbar#windows": {
+        "icon-size": 16,
+        "icon-size-multiplier": 1.6
+    },
+    "wlr/taskbar": {
+        "icon-size": 16,
+        "icon-size-multiplier": 1.6
+    }
+}

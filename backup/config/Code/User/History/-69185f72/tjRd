@@ -1,0 +1,31 @@
+# Stripe Configuration
+STRIPE_PUBLISHABLE_KEY=pk_test_51RExzHQsET8MHmTQ9ks1in01XiQqZwugGscAATHACLiFYtwam07m99i5fg5U1hdGeRo4fDuwwnDBjW2zfry4fJBs00mNpG959o
+STRIPE_SECRET_KEY=sk_test_51RExzHQsET8MHmTQIhzFfC2JlHVtjY4LMnQsdvKLRfg9wCW5JOD1MUiK7eSMBWvpNKM8GzRrK4tpQv5OFer8QMsE007Eys6PHr
+STRIPE_WEBHOOK_SECRET=whsec_vx4LK5XPl0GUfOWd1mZHMuazDkK8zUh3
+NEXT_PUBLIC_STRIPE_API_VERSION=2024-06-20
+
+# Pexels API
+PEXELS_KEY=KpKePtXTGeRCyktbXkWWQP0AumRsDgPptTBvWV6Jd6lnYVeoO2Jt9cdC
+
+# Zapier Webhook
+ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/23997573/uu7c1sx/
+ZAPIER_SECRET_KEY=mystery-artwork-secure-2024-abc123xyz789
+
+# App Configuration
+PUBLIC_SITE_URL=http://localhost:5173
+
+
+
+
+# Zapier Integration
+NEXT_PUBLIC_ZAPIER_WEBHOOK_URL=
+
+#Pexels Integration for random image generation.
+
+
+#Stripe Integration
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+NEXT_PUBLIC_STRIPE_KEY=
+
+NEXT_PUBLIC_BASE_URL=http://localhost:3000

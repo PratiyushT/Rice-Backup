@@ -1,0 +1,10 @@
+# Zapier Integration
+NEXT_PUBLIC_ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/YOUR_WEBHOOK_ID/
+ZAPIER_SECRET_KEY=your-secret-key-here
+
+#Pexels Integration for random image generation.
+PEXELS_KEY=Pexels Key
+
+#Stripe Keys
+STRIPE_SECRET_KEY
+NEXT_PUBLIC_STRIPE_KEY

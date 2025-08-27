@@ -1,0 +1,16 @@
+{
+  "custom/autorotate-menu": {
+    "format": " ",
+    "tooltip": "Autorotate controls",
+    "menu": "on-click",
+    "menu-file": "/home/PrT15/.local/share/waybar/menus/autorotate.xml",
+    "menu-actions": {
+      "toggle-enable": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh toggle-enable",
+      "toggle-always": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh toggle-always",
+      "force-tablet": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh tablet",
+      "force-laptop": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh laptop",
+      "start-watcher": "sh -c 'nohup /home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh run >/dev/null 2>&1 &'",
+      "stop-watcher": "sh -c 'pid=$(cat /tmp/iio-hyprland.${USER}.pid 2>/dev/null || true); [ -n \"$pid\" ] && kill $pid 2>/dev/null || true; rm -f /tmp/iio-hyprland.${USER}.pid'"
+    }
+  }
+}

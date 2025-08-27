@@ -1,0 +1,136 @@
+/* ===== Bullets by indent: 1 ●, 2 ○, 3 ■, 4 —, then repeat ===== */
+:root{
+  /* left padding for lists; reduce/increase if alignment is off */
+  --indent-pad: 1.25rem;
+  /* micro alignment */
+  --mark-left: 0.10rem;
+  --mark-top: 0.62em;
+  /* exact sizes so levels feel balanced */
+  --dot-size: 6px;      /* ● and ○ */
+  --square-size: 6px;   /* ■ */
+  --dash-w: 9px;        /* — width */
+  --dash-h: 2px;        /* — height */
+  --mark-color: currentColor;
+}
+
+/* ========== Reading view ========== */
+.markdown-rendered ul{ list-style: none; padding-left: var(--indent-pad); }
+.markdown-rendered ul li{ position: relative; }
+
+/* do not touch checklists */
+.markdown-rendered li.task-list-item::before{ content: none !important; }
+
+/* Level 1: ● */
+.markdown-rendered ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--dot-size); height: var(--dot-size);
+  background: var(--mark-color);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+/* Level 2: ○ */
+.markdown-rendered ul ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--dot-size); height: var(--dot-size);
+  border: 2px solid var(--mark-color);
+  background: transparent;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+/* Level 3: ■ */
+.markdown-rendered ul ul ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--square-size); height: var(--square-size);
+  background: var(--mark-color);
+  border-radius: 2px;
+  transform: translateY(-50%);
+}
+/* Level 4: — */
+.markdown-rendered ul ul ul ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--dash-w); height: var(--dash-h);
+  background: var(--mark-color);
+  border-radius: 1px;
+  transform: translateY(-50%);
+}
+
+/* Repeat 1–4 for deeper levels */
+.markdown-rendered ul ul ul ul ul > li::before{            /* 5 */
+  width: var(--dot-size); height: var(--dot-size);
+  background: var(--mark-color); border-radius: 50%; border: none;
+}
+.markdown-rendered ul ul ul ul ul ul > li::before{         /* 6 */
+  width: var(--dot-size); height: var(--dot-size);
+  background: transparent; border-radius: 50%;
+  border: 2px solid var(--mark-color);
+}
+.markdown-rendered ul ul ul ul ul ul ul > li::before{      /* 7 */
+  width: var(--square-size); height: var(--square-size);
+  background: var(--mark-color); border-radius: 2px; border: none;
+}
+.markdown-rendered ul ul ul ul ul ul ul ul > li::before{   /* 8 */
+  width: var(--dash-w); height: var(--dash-h);
+  background: var(--mark-color); border-radius: 1px; border: none;
+}
+
+/* Checkbox alignment in reading view */
+.markdown-rendered .task-list-item-checkbox{
+  transform: translateX(calc(-1 * var(--indent-pad) + var(--mark-left)));
+}
+
+/* ========== Live Preview (editor) ========== */
+.cm-editor .cm-formatting-list-ul{ color: transparent; }
+
+/* Level 1: ● */
+.cm-editor .HyperMD-list-line-1 .list-bullet::after{
+  content: ""; display: inline-block;
+  width: var(--dot-size); height: var(--dot-size);
+  margin-left: calc(-1 * var(--indent-pad)); margin-right: 0.45rem;
+  vertical-align: middle; border-radius: 50%;
+  background: var(--mark-color);
+}
+/* Level 2: ○ */
+.cm-editor .HyperMD-list-line-2 .list-bullet::after{
+  content: ""; display: inline-block;
+  width: var(--dot-size); height: var(--dot-size);
+  margin-left: calc(-1 * var(--indent-pad)); margin-right: 0.45rem;
+  vertical-align: middle; border-radius: 50%;
+  background: transparent; border: 2px solid var(--mark-color);
+}
+/* Level 3: ■ */
+.cm-editor .HyperMD-list-line-3 .list-bullet::after{
+  content: ""; display: inline-block;
+  width: var(--square-size); height: var(--square-size);
+  margin-left: calc(-1 * var(--indent-pad)); margin-right: 0.45rem;
+  vertical-align: middle; border-radius: 2px;
+  background: var(--mark-color);
+}
+/* Level 4: — */
+.cm-editor .HyperMD-list-line-4 .list-bullet::after{
+  content: ""; display: inline-block;
+  width: var(--dash-w); height: var(--dash-h);
+  margin-left: calc(-1 * var(--indent-pad)); margin-right: 0.45rem;
+  vertical-align: middle; border-radius: 1px;
+  background: var(--mark-color);
+}
+
+/* Repeat for levels 5–12 */
+.cm-editor .HyperMD-list-line-5 .list-bullet::after{  width: var(--dot-size);   height: var(--dot-size);   border-radius: 50%; background: var(--mark-color); border: none; }
+.cm-editor .HyperMD-list-line-6 .list-bullet::after{  width: var(--dot-size);   height: var(--dot-size);   border-radius: 50%; background: transparent; border: 2px solid var(--mark-color); }
+.cm-editor .HyperMD-list-line-7 .list-bullet::after{  width: var(--square-size);height: var(--square-size); border-radius: 2px; background: var(--mark-color); border: none; }
+.cm-editor .HyperMD-list-line-8 .list-bullet::after{  width: var(--dash-w);     height: var(--dash-h);     border-radius: 1px; background: var(--mark-color); border: none; }
+.cm-editor .HyperMD-list-line-9 .list-bullet::after{  width: var(--dot-size);   height: var(--dot-size);   border-radius: 50%; background: var(--mark-color); }
+.cm-editor .HyperMD-list-line-10 .list-bullet::after{ width: var(--dot-size);   height: var(--dot-size);   border-radius: 50%; background: transparent; border: 2px solid var(--mark-color); }
+.cm-editor .HyperMD-list-line-11 .list-bullet::after{ width: var(--square-size);height: va

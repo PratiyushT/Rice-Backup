@@ -1,0 +1,1697 @@
+{% doc %}
+  @prompt
+    Make a dynamic product hotspot image block with the following features:
+    
+    Allow up to 3 image uploads, each supporting 5 customizable hotspots.
+    
+    Include previous and next navigation hotspots per image, with individual icon and color settings.
+    
+    Style all hotspots as translucent circles with a smooth outward pulsating border.
+    
+    Use a shared global color setting for hotspots including the navigation, However, have a separate icon color controls for navigation.
+    
+    Replace popups with elegant sliding tooltips, and allow tooltip direction (Top, Bottom, Left, Right) to be set per hotspot. Do not show price information in the pop up. 
+    
+    Enable variable hotspot sizes, and automatically hide hotspots that aren’t linked to a product.
+    
+    Eliminate default padding, margins, and navigation indicators for a clean, full-width layout.
+    
+    Organize settings with global options at the top, followed by grouped settings for each image (Image 1, Image 2, Image 3)., Show the hotspot tooltip on hover and first click in desktop. In mobile and touch interactions, the first click = destop hover and second click = destop click. 
+    
+    Add animation to image transition. Make it elegant., Remove normal borders from all hotspots. Just keep pulsating ones. Remove icons from all hotspots aside from navigation., Add individual hotspot size control., Automatically hide hotspot if no product is linked to it., Allow for smaller hotspot sizes. Remove borders from navigation hotspot just keep the pulsating ones. Allow positioning of previous and next hotspots individually for each image., Also, add an option to disable previous or next button for each image. ALso allow size to be controlled for those buttons individually., Remove pulsating border from previous and next hotspots. 
+    
+    Allow for smaller hotpsot sizes including the navigation hotspots., Make the hotspots more circular even for smaller sizes. Make it better., Add pulsating borders to product hotspots., Add pulsating borders to hotspots., Make image transition to a slide rather than fade. Make it elegant and allow me to control., Make the slide animation more elegant. It is buggy. The image goes below than comes up while slidiing. I want a pure horizontal scroll.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-dynamic-hotspot-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .ai-dynamic-hotspot-slider-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform {{ block.settings.transition_duration }}s {{ block.settings.transition_easing }};z-index: 1;
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }}.active {
+    z-index: 2;
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }}.slide-out-left {
+    transform: translateX(-100%);
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }}.slide-out-right {
+    transform: translateX(100%);
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }}.slide-in-left {
+    transform: translateX(-100%);
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }}.slide-in-right {
+    transform: translateX(100%);
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }}.slide-in-left.active {
+    transform: translateX(0);
+  }
+
+  .ai-dynamic-hotspot-slide-{{ ai_gen_id }}.slide-in-right.active {
+    transform: translateX(0);
+  }
+
+  .ai-dynamic-hotspot-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-dynamic-hotspot-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 400px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-dynamic-hotspot-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .ai-dynamic-hotspot-{{ ai_gen_id }} {
+    position: absolute;
+    top: var(--hotspot-y);
+    left: var(--hotspot-x);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .ai-dynamic-hotspot-button-{{ ai_gen_id }} {
+    width: var(--hotspot-size);
+    height: var(--hotspot-size);
+    min-width: var(--hotspot-size);
+    min-height: var(--hotspot-size);
+    border-radius: 50%;
+    background-color: {{ block.settings.hotspot_color | color_modify: 'alpha', 0.7 }};
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0;
+    box-sizing: border-box;overflow: visible;
+  }
+
+  .ai-dynamic-hotspot-button-{{ ai_gen_id }}::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid {{ block.settings.hotspot_color | color_modify: 'alpha', 0.5 }};
+    animation: ai-hotspot-pulse-{{ ai_gen_id }} 2s infinite;
+    box-sizing: border-box;
+  }
+
+  .ai-dynamic-hotspot-button-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border-radius: 50%;
+    border: 1px solid {{ block.settings.hotspot_color | color_modify: 'alpha', 0.3 }};
+    animation: ai-hotspot-pulse-outer-{{ ai_gen_id }} 2s infinite 0.5s;
+    box-sizing: border-box;
+  }
+
+  @keyframes ai-hotspot-pulse-{{ ai_gen_id }} {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  @keyframes ai-hotspot-pulse-outer-{{ ai_gen_id }} {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .ai-dynamic-hotspot-button-{{ ai_gen_id }}:hover {
+    transform: scale(1.1);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }} {
+    position: absolute;
+    background-color: {{ block.settings.tooltip_bg_color }};
+    color: {{ block.settings.tooltip_text_color }};
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 20;
+    min-width: 200px;
+    max-width: 280px;
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--top {
+    bottom: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--top.active {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--bottom {
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--bottom.active {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--left {
+    right: calc(100% + 15px);
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--left.active {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--right {
+    left: calc(100% + 15px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+  }
+
+  .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--right.active {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .ai-dynamic-hotspot-product-info-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ai-dynamic-hotspot-product-image-{{ ai_gen_id }} {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .ai-dynamic-hotspot-product-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-dynamic-hotspot-product-details-{{ ai_gen_id }} {
+    flex-grow: 1;
+  }
+
+  .ai-dynamic-hotspot-product-title-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    line-height: 1.3;
+  }
+
+  .ai-dynamic-hotspot-product-link-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.tooltip_text_color }};
+    text-decoration: underline;
+    opacity: 0.8;
+  }
+
+  .ai-dynamic-hotspot-nav-{{ ai_gen_id }} {
+    position: absolute;
+    border-radius: 50%;
+    background-color: {{ block.settings.hotspot_color | color_modify: 'alpha', 0.7 }};
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+    transition: all 0.3s ease;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .ai-dynamic-hotspot-nav-{{ ai_gen_id }}:hover {
+    transform: scale(1.1);
+  }
+
+  .ai-dynamic-hotspot-nav-{{ ai_gen_id }} svg {
+    fill: {{ block.settings.nav_icon_color }};
+    flex-shrink: 0;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .ai-dynamic-hotspot-{{ ai_gen_id }}:hover .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }} {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .ai-dynamic-hotspot-{{ ai_gen_id }}:hover .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--top {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .ai-dynamic-hotspot-{{ ai_gen_id }}:hover .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--bottom {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .ai-dynamic-hotspot-{{ ai_gen_id }}:hover .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--left {
+      transform: translateY(-50%) translateX(0);
+    }
+
+    .ai-dynamic-hotspot-{{ ai_gen_id }}:hover .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--right {
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-dynamic-hotspot-button-{{ ai_gen_id }} {
+      width: calc(var(--hotspot-size) * 0.85);
+      height: calc(var(--hotspot-size) * 0.85);
+      min-width: calc(var(--hotspot-size) * 0.85);
+      min-height: calc(var(--hotspot-size) * 0.85);
+    }
+
+    .ai-dynamic-hotspot-tooltip-{{ ai_gen_id }} {
+      min-width: 180px;
+      max-width: 240px;
+    }
+  }
+{% endstyle %}<dynamic-hotspot-slider-{{ ai_gen_id }}
+  class="ai-dynamic-hotspot-container-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-dynamic-hotspot-slider-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign image_key = 'image_' | append: i
+        assign image = block.settings[image_key]
+        assign show_prev_key = 'image_' | append: i | append: '_show_prev'
+        assign show_next_key = 'image_' | append: i | append: '_show_next'
+        assign prev_x_key = 'image_' | append: i | append: '_prev_x'
+        assign prev_y_key = 'image_' | append: i | append: '_prev_y'
+        assign prev_size_key = 'image_' | append: i | append: '_prev_size'
+        assign next_x_key = 'image_' | append: i | append: '_next_x'
+        assign next_y_key = 'image_' | append: i | append: '_next_y'
+        assign next_size_key = 'image_' | append: i | append: '_next_size'
+        assign show_prev = block.settings[show_prev_key]
+        assign show_next = block.settings[show_next_key]
+        assign prev_x = block.settings[prev_x_key]
+        assign prev_y = block.settings[prev_y_key]
+        assign prev_size = block.settings[prev_size_key]
+        assign next_x = block.settings[next_x_key]
+        assign next_y = block.settings[next_y_key]
+        assign next_size = block.settings[next_size_key]
+      %}
+
+      {% if image %}
+        <div class="ai-dynamic-hotspot-slide-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}" data-slide="{{ i }}">
+          <img
+            src="{{ image | image_url: width: 2000 }}"
+            alt="{{ image.alt | escape }}"
+            loading="lazy"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            class="ai-dynamic-hotspot-image-{{ ai_gen_id }}"
+          >
+
+          {% for j in (1..5) %}
+            {% liquid
+              assign hotspot_product_key = 'image_' | append: i | append: '_hotspot_' | append: j | append: '_product'
+              assign hotspot_x_key = 'image_' | append: i | append: '_hotspot_' | append: j | append: '_x'
+              assign hotspot_y_key = 'image_' | append: i | append: '_hotspot_' | append: j | append: '_y'
+              assign hotspot_direction_key = 'image_' | append: i | append: '_hotspot_' | append: j | append: '_direction'
+              assign hotspot_size_key = 'image_' | append: i | append: '_hotspot_' | append: j | append: '_size'
+
+              assign product = block.settings[hotspot_product_key]
+              assign hotspot_x = block.settings[hotspot_x_key]
+              assign hotspot_y = block.settings[hotspot_y_key]
+              assign hotspot_direction = block.settings[hotspot_direction_key]
+              assign hotspot_size = block.settings[hotspot_size_key]
+            %}
+
+            {% if product != blank %}
+              <div
+                class="ai-dynamic-hotspot-{{ ai_gen_id }}"
+                style="--hotspot-x: {{ hotspot_x }}%; --hotspot-y: {{ hotspot_y }}%; --hotspot-size: {{ hotspot_size }}px;"
+                data-hotspot="{{ j }}"
+              >
+                <button
+                  class="ai-dynamic-hotspot-button-{{ ai_gen_id }}"
+                  aria-label="View {{ product.title }}"
+                  aria-expanded="false"
+                  data-product-url="{{ product.url }}"
+                ></button>
+
+                <div class="ai-dynamic-hotspot-tooltip-{{ ai_gen_id }} ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}--{{ hotspot_direction }}">
+                  <div class="ai-dynamic-hotspot-product-info-{{ ai_gen_id }}">
+                    {% if product.featured_image %}
+                      <div class="ai-dynamic-hotspot-product-image-{{ ai_gen_id }}">
+                        <img
+                          src="{{ product.featured_image | image_url: width: 100 }}"
+                          alt="{{ product.featured_image.alt | escape }}"
+                          width="100"
+                          height="100"
+                          loading="lazy"
+                        >
+                      </div>
+                    {% endif %}
+                    <div class="ai-dynamic-hotspot-product-details-{{ ai_gen_id }}">
+                      <h3 class="ai-dynamic-hotspot-product-title-{{ ai_gen_id }}">{{ product.title }}</h3>
+                      <a
+                        href="{{ product.url }}"
+                        class="ai-dynamic-hotspot-product-link-{{ ai_gen_id }}"
+                      >View Product</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          {% assign total_images = 0 %}
+          {% for k in (1..3) %}
+            {% liquid
+              assign check_image_key = 'image_' | append: k
+              assign check_image = block.settings[check_image_key]
+            %}
+            {% if check_image %}
+              {% assign total_images = total_images | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% if total_images > 1 %}
+            {% if show_prev %}
+              <button
+                class="ai-dynamic-hotspot-nav-{{ ai_gen_id }} ai-dynamic-hotspot-nav-prev-{{ ai_gen_id }}"
+                style="left: {{ prev_x }}%; top: {{ prev_y }}%; transform: translate(-50%, -50%); width: {{ prev_size }}px; height: {{ prev_size }}px; min-width: {{ prev_size }}px; min-height: {{ prev_size }}px;"
+                aria-label="Previous image"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: {{ prev_size | times: 0.4 }}px; height: {{ prev_size | times: 0.4 }}px;">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+              </button>
+            {% endif %}
+
+            {% if show_next %}
+              <button
+                class="ai-dynamic-hotspot-nav-{{ ai_gen_id }} ai-dynamic-hotspot-nav-next-{{ ai_gen_id }}"
+                style="left: {{ next_x }}%; top: {{ next_y }}%; transform: translate(-50%, -50%); width: {{ next_size }}px; height: {{ next_size }}px; min-width: {{ next_size }}px; min-height: {{ next_size }}px;"
+                aria-label="Next image"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: {{ next_size | times: 0.4 }}px; height: {{ next_size | times: 0.4 }}px;">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </button>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% assign total_images = 0 %}
+  {% for i in (1..3) %}
+    {% liquid
+      assign image_key = 'image_' | append: i
+      assign image = block.settings[image_key]%}
+    {% if image %}
+      {% assign total_images = total_images | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if total_images == 0 %}
+    <div class="ai-dynamic-hotspot-placeholder-{{ ai_gen_id }}">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+  {% endif %}
+</dynamic-hotspot-slider-{{ ai_gen_id }}>
+
+<script>
+(function() {
+  class DynamicHotspotSlider{{ai_gen_id}} extends HTMLElement {
+    constructor() {
+      super();
+      this.currentSlide = 0;
+      this.slides = [];
+      this.totalSlides = 0;
+      this.isTransitioning = false;
+      this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      this.hotspotStates = new Map();
+    }
+
+    connectedCallback() {
+      this.slides = this.querySelectorAll('.ai-dynamic-hotspot-slide-{{ ai_gen_id }}');
+      this.totalSlides = this.slides.length;
+      this.setupEventListeners();
+      this.initializeHotspotStates();
+      this.initializeSlider();
+    }
+
+    initializeSlider() {
+      this.slides.forEach((slide, index) => {
+        if (index === 0) {
+          slide.style.transform = 'translateX(0)';
+          slide.style.zIndex = '2';
+        } else {
+          slide.style.transform = 'translateX(100%)';
+          slide.style.zIndex = '1';
+        }
+      });
+    }
+
+    initializeHotspotStates() {
+      const hotspots = this.querySelectorAll('.ai-dynamic-hotspot-{{ ai_gen_id }}');
+      hotspots.forEach((hotspot, index) => {
+        this.hotspotStates.set(index, {
+          clicked: false,
+          tooltipVisible: false
+        });
+      });
+    }
+
+    setupEventListeners() {
+      const hotspots = this.querySelectorAll('.ai-dynamic-hotspot-{{ ai_gen_id }}');
+      const prevButtons = this.querySelectorAll('.ai-dynamic-hotspot-nav-prev-{{ ai_gen_id }}');
+      const nextButtons = this.querySelectorAll('.ai-dynamic-hotspot-nav-next-{{ ai_gen_id }}');
+
+      hotspots.forEach((hotspot, index) => {
+        const button = hotspot.querySelector('.ai-dynamic-hotspot-button-{{ ai_gen_id }}');
+        const tooltip = hotspot.querySelector('.ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}');
+        const productUrl = button.getAttribute('data-product-url');
+
+        if (this.isTouchDevice) {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.handleTouchClick(hotspot, button, tooltip, productUrl, index);
+          });
+        } else {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.handleDesktopClick(hotspot, button, tooltip, productUrl, index);
+          });
+
+          hotspot.addEventListener('mouseleave', () => {
+            if (!this.hotspotStates.get(index).clicked) {
+              tooltip.classList.remove('active');
+              button.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+      });
+
+      prevButtons.forEach(button => {
+        button.addEventListener('click', () => this.previousSlide());
+      });
+
+      nextButtons.forEach(button => {
+        button.addEventListener('click', () => this.nextSlide());
+      });document.addEventListener('click', (event) => {
+        if (!event.target.closest('.ai-dynamic-hotspot-{{ ai_gen_id }}')) {
+          this.closeAllTooltips();
+        }
+      });
+    }
+
+    handleTouchClick(hotspot, button, tooltip, productUrl, index) {
+      const state = this.hotspotStates.get(index);
+      
+      if (!state.clicked) {
+        this.closeAllTooltips();
+        tooltip.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        state.clicked = true;
+        state.tooltipVisible = true;
+      } else {
+        if (productUrl) {
+          window.location.href = productUrl;
+        }
+      }
+    }
+
+    handleDesktopClick(hotspot, button, tooltip, productUrl, index) {
+      const state = this.hotspotStates.get(index);
+      
+      if (!state.clicked) {
+        this.closeAllTooltips();
+        tooltip.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        state.clicked = true;
+        state.tooltipVisible = true;
+      } else {
+        if (productUrl) {
+          window.location.href = productUrl;
+        }
+      }
+    }
+
+    closeAllTooltips() {
+      const tooltips = this.querySelectorAll('.ai-dynamic-hotspot-tooltip-{{ ai_gen_id }}');
+      const buttons = this.querySelectorAll('.ai-dynamic-hotspot-button-{{ ai_gen_id }}');
+      
+      tooltips.forEach(tooltip => tooltip.classList.remove('active'));
+      buttons.forEach(button => button.setAttribute('aria-expanded', 'false'));
+      
+      this.hotspotStates.forEach((state, index) => {
+        state.clicked = false;
+        state.tooltipVisible = false;
+      });
+    }
+
+    previousSlide() {
+      if (this.isTransitioning || this.totalSlides <= 1) return;
+      this.closeAllTooltips();
+      const newSlideIndex = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+      this.changeSlide(newSlideIndex,'left');
+    }
+
+    nextSlide() {
+      if (this.isTransitioning || this.totalSlides <= 1) return;
+      this.closeAllTooltips();
+      const newSlideIndex = this.currentSlide === this.totalSlides - 1 ? 0 : this.currentSlide + 1;
+      this.changeSlide(newSlideIndex, 'right');
+    }
+
+    changeSlide(newSlideIndex, direction) {
+      if (this.isTransitioning || newSlideIndex === this.currentSlide) return;
+      
+      this.isTransitioning = true;
+      const currentSlideElement = this.slides[this.currentSlide];
+      const newSlideElement = this.slides[newSlideIndex];
+
+      currentSlideElement.style.zIndex = '1';
+      newSlideElement.style.zIndex = '2';
+
+      if (direction === 'right') {
+        newSlideElement.style.transform = 'translateX(100%)';
+        
+        requestAnimationFrame(() => {
+          currentSlideElement.style.transform = 'translateX(-100%)';
+          newSlideElement.style.transform = 'translateX(0)';
+        });
+        } else {
+        newSlideElement.style.transform = 'translateX(-100%)';
+        
+        requestAnimationFrame(() => {
+          currentSlideElement.style.transform = 'translateX(100%)';
+          newSlideElement.style.transform = 'translateX(0)';
+        });
+      }
+
+      setTimeout(() => {
+        currentSlideElement.classList.remove('active');
+        newSlideElement.classList.add('active');
+        this.currentSlide = newSlideIndex;
+        this.isTransitioning = false;
+      }, {{ block.settings.transition_duration | times: 1000 }});
+    }
+  }
+
+  customElements.define('dynamic-hotspot-slider-{{ ai_gen_id }}', DynamicHotspotSlider{{ai_gen_id}});
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Dynamic Product Hotspots",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Global Settings"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_color",
+      "label": "Hotspot & navigation color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "nav_icon_color",
+      "label": "Navigation icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tooltip_bg_color",
+      "label": "Tooltip background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tooltip_text_color",
+      "label": "Tooltip text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Slide Transition Settings"
+    },
+    {
+      "type": "range",
+      "id": "transition_duration",
+      "min": 0.3,
+      "max": 2.0,
+      "step": 0.1,
+      "unit": "s",
+      "label": "Transition duration",
+      "default": 0.8
+    },
+    {
+      "type": "select",
+      "id": "transition_easing",
+      "label": "Transition easing",
+      "options": [
+        {"value": "ease", "label": "Ease"},
+        {"value": "ease-in", "label": "Ease In"},
+        {"value": "ease-out", "label": "Ease Out"},
+        {"value": "ease-in-out", "label": "Ease In Out"},
+        {"value": "cubic-bezier(0.4, 0, 0.2, 1)", "label": "Smooth"},
+        {"value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)", "label": "Elegant"},
+        {"value": "cubic-bezier(0.68, -0.55, 0.265, 1.55)", "label": "Bouncy"}
+      ],
+      "default": "cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "type": "header",
+      "content": "Image1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_1_show_prev",
+      "label": "Show previous button",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "image_1_prev_size",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Previous button size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_1_prev_x",
+      "min":0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Previous button horizontal position",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "image_1_prev_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Previous button vertical position",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "image_1_show_next",
+      "label": "Show next button",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "image_1_next_size",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Next button size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_1_next_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Next button horizontal position",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "image_1_next_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Next button vertical position",
+      "default": 50
+    },
+    {
+      "type": "product",
+      "id": "image_1_hotspot_1_product",
+      "label": "Hotspot 1 product"
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_1_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 1 horizontal position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_1_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 1 vertical position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_1_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 1 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_1_hotspot_1_direction",
+      "label": "Hotspot 1 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "top"
+    },
+    {
+      "type": "product",
+      "id": "image_1_hotspot_2_product",
+      "label": "Hotspot 2 product"
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_2_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 2 horizontal position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_2_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 2 vertical position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_2_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 2 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_1_hotspot_2_direction",
+      "label": "Hotspot 2 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "product",
+      "id": "image_1_hotspot_3_product",
+      "label": "Hotspot 3 product"
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_3_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 3 horizontal position",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_3_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 3 vertical position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_3_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 3 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_1_hotspot_3_direction",
+      "label": "Hotspot 3 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "left"
+    },
+    {
+      "type": "product",
+      "id": "image_1_hotspot_4_product",
+      "label": "Hotspot 4 product"
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_4_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 4 horizontal position",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_4_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 4 vertical position",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_4_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 4 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_1_hotspot_4_direction",
+      "label": "Hotspot 4 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "right"
+    },
+    {
+      "type": "product",
+      "id": "image_1_hotspot_5_product",
+      "label": "Hotspot 5 product"
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_5_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 5 horizontal position",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_5_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 5 vertical position",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "image_1_hotspot_5_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 5 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_1_hotspot_5_direction",
+      "label": "Hotspot 5 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "top"
+    },
+    {
+      "type": "header",
+      "content": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_2_show_prev",
+      "label": "Show previous button",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "image_2_prev_size",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Previous button size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_2_prev_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Previous button horizontal position",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "image_2_prev_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Previous button vertical position",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "image_2_show_next",
+      "label": "Show next button",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "image_2_next_size",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Next button size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_2_next_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Next button horizontal position",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "image_2_next_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Next button vertical position",
+      "default": 50
+    },
+    {
+      "type": "product",
+      "id": "image_2_hotspot_1_product",
+      "label": "Hotspot 1 product"
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_1_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 1 horizontal position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_1_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 1 vertical position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_1_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 1 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_2_hotspot_1_direction",
+      "label": "Hotspot 1 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "top"
+    },
+    {
+      "type": "product",
+      "id": "image_2_hotspot_2_product",
+      "label": "Hotspot 2 product"
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_2_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 2 horizontal position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_2_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 2 vertical position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_2_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 2 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_2_hotspot_2_direction",
+      "label": "Hotspot 2 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "product",
+      "id": "image_2_hotspot_3_product",
+      "label": "Hotspot 3 product"
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_3_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 3 horizontal position",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_3_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 3 vertical position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_3_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 3 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_2_hotspot_3_direction",
+      "label": "Hotspot 3 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "left"
+    },
+    {
+      "type": "product",
+      "id": "image_2_hotspot_4_product",
+      "label": "Hotspot 4 product"
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_4_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 4 horizontal position",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_4_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 4 vertical position",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_4_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 4 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_2_hotspot_4_direction",
+      "label": "Hotspot 4 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "right"
+    },
+    {
+      "type": "product",
+      "id": "image_2_hotspot_5_product",
+      "label": "Hotspot 5 product"
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_5_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 5 horizontal position",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_5_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 5 vertical position",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "image_2_hotspot_5_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 5 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_2_hotspot_5_direction",
+      "label": "Hotspot 5 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "top"
+    },
+    {
+      "type": "header",
+      "content": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_3_show_prev",
+      "label": "Show previous button",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "image_3_prev_size",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Previous button size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_3_prev_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Previous button horizontal position",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "image_3_prev_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Previous button vertical position",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "image_3_show_next",
+      "label": "Show next button",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "image_3_next_size",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Next button size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_3_next_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Next button horizontal position",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "image_3_next_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Next button vertical position",
+      "default": 50
+    },
+    {
+      "type": "product",
+      "id": "image_3_hotspot_1_product",
+      "label": "Hotspot 1 product"
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_1_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 1 horizontal position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_1_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 1 vertical position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_1_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 1 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_3_hotspot_1_direction",
+      "label": "Hotspot 1 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "top"
+    },
+    {
+      "type": "product",
+      "id": "image_3_hotspot_2_product",
+      "label": "Hotspot 2 product"
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_2_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 2 horizontal position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_2_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 2 vertical position",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_2_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 2 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_3_hotspot_2_direction",
+      "label": "Hotspot 2 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "product",
+      "id": "image_3_hotspot_3_product",
+      "label": "Hotspot 3 product"
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_3_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 3 horizontal position",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_3_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 3 vertical position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_3_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 3 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_3_hotspot_3_direction",
+      "label": "Hotspot 3 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "left"
+    },
+    {
+      "type": "product",
+      "id": "image_3_hotspot_4_product",
+      "label": "Hotspot 4 product"
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_4_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 4 horizontal position",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_4_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 4 vertical position",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_4_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 4 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_3_hotspot_4_direction",
+      "label": "Hotspot 4 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "right"
+    },
+    {
+      "type": "product",
+      "id": "image_3_hotspot_5_product",
+      "label": "Hotspot 5 product"
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_5_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 5 horizontal position",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_5_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Hotspot 5 vertical position",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "image_3_hotspot_5_size",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Hotspot 5 size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "image_3_hotspot_5_direction",
+      "label": "Hotspot 5 tooltip direction",
+      "options": [
+        {"value": "top", "label": "Top"},
+        {"value": "bottom", "label": "Bottom"},
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "top"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dynamic Product Hotspots"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,4 @@
+VITE_ONCHAINKIT_API_KEY=your_onchainkit_api_key
+VITE_CDP_PROJECT_ID=your_project_id
+VITE_RECEIVING_WALLET=your_usdc_wallet_address
+VITE_IRON_SESSION_PASSWORD=your_secure_32_char_password

@@ -1,0 +1,108 @@
+:root {
+    --bullet-new-color: currentColor; 
+}
+
+/* level 1 - filled circle */
+ul:not(li > *) > li > .list-bullet::after,
+.HyperMD-list-line-1 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 2 - hollow circle */
+ul:not(li > *) > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-2 .list-bullet:after {
+    height: 4px;
+    width: 4px;
+    background-color: transparent;
+    border-color: var(--bullet-new-color);
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1px;
+} 
+
+/* level 3 - square */
+ul:not(li > *) > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-3 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 0%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 4 - hyphen */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-4 .list-bullet:after {
+    height: 1px;
+    width: 7px;
+    border-radius: 0%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 5 - filled circle (repeat) */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-5 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 6 - hollow circle (repeat) */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-6 .list-bullet:after {
+    height: 4px;
+    width: 4px;
+    background-color: transparent;
+    border-color: var(--bullet-new-color);
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1px;
+} 
+
+/* level 7 - square (repeat) */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-7 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 0%;
+    background-color: var(--bullet-new-color);
+}
+
+/* Single HR (default) */
+.markdown-rendered hr {
+  border: none;
+  border-top: 1px solid var(--hr-color, currentColor);
+  margin: 2em 0;
+  position: relative;
+}
+
+.markdown-rendered hr::after {
+  content: url('your-icon.svg'); /* or your existing icon setup */
+  display: inline-block;
+  position: absolute;
+  top: -0.9em;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-primary);
+  padding: 0 0.5em;
+}
+
+/* Two HR in succession → double line */
+.markdown-rendered hr + hr {
+  border: none;
+  border-top: 3px double var(--hr-color, currentColor);
+  margin: 2em 0;
+}
+
+.markdown-rendered hr + hr::after {
+  content: url('your-icon.svg'); /* keep the icon */
+  position: absolute;
+  top: -1.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-primary);
+  padding: 0 0.5em;
+}

@@ -1,0 +1,13 @@
+{
+  "kbd_backlight": {
+    "rotate": 0,
+    "exec":"hyde-shell /home/PrT15/.local/lib/hyde/kbd-backlight-status.sh --status",
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "on-scroll-up": "hyde-shell brightnesscontrol i 1",
+    "on-scroll-down": "hyde-shell brightnesscontrol d 1",
+    "min-length": 6,
+    "tooltip": true,
+    "tooltip-format": "Keyboard Backlight level: {icon} {percent}%"
+  }
+}

@@ -1,0 +1,3 @@
+# Zapier Integration
+NEXT_PUBLIC_ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/23997573/uu7c1sx/
+ZAPIER_SECRET_KEY=mystery-artwork-secure-2024-abc123xyz789

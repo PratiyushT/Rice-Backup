@@ -1,0 +1,918 @@
+{
+  "version": 3,
+  "requesterUsername": "PratiyushT",
+  "requesterAvatarIconUri": {
+    "$mid": 1,
+    "path": "/u/107304018",
+    "scheme": "https",
+    "authority": "avatars.githubusercontent.com",
+    "query": "v=4"
+  },
+  "responderUsername": "GitHub Copilot",
+  "responderAvatarIconUri": {
+    "id": "copilot"
+  },
+  "initialLocation": "panel",
+  "requests": [
+    {
+      "requestId": "request_c0c70ce1-c538-4198-a62b-6311cfa41d14",
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 41
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 42
+            },
+            "text": "What is wrong with my stripe integration?",
+            "kind": "text"
+          }
+        ],
+        "text": "What is wrong with my stripe integration?"
+      },
+      "variableData": {
+        "variables": [
+          {
+            "kind": "file",
+            "id": "vscode.implicit.viewport",
+            "name": "file:create-checkout-session.ts",
+            "value": {
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              },
+              "range": {
+                "startLineNumber": 18,
+                "startColumn": 1,
+                "endLineNumber": 46,
+                "endColumn": 64
+              }
+            },
+            "modelDescription": "User's current visible code"
+          }
+        ]
+      },
+      "response": [
+        {
+          "value": "Here are some common issues with Stripe integration based on your code:\n\n1. **API Version from Environment Variable**  \n   You use ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "process.env.STRIPE_API_VERSION",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 84,
+                "startColumn": 9,
+                "endLineNumber": 84,
+                "endColumn": 9
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/node_modules/.pnpm/%40types%2Bnode%4020.19.9/node_modules/%40types/node/globals.d.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "06a6ee0c-14c8-4020-8187-35b9a11d3395"
+        },
+        {
+          "value": " for ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "apiVersion",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 47,
+                "startColumn": 7,
+                "endLineNumber": 47,
+                "endColumn": 7
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/stripe@18.3.0_@types+node@20.19.9/node_modules/stripe/types/lib.d.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/node_modules/.pnpm/stripe%4018.3.0_%40types%2Bnode%4020.19.9/node_modules/stripe/types/lib.d.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/stripe@18.3.0_@types+node@20.19.9/node_modules/stripe/types/lib.d.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "fb3d433e-86bc-4423-9728-ec497fb5a08d"
+        },
+        {
+          "value": ". If this variable is missing or incorrect, Stripe may throw an error.  \n   Make sure ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "STRIPE_API_VERSION",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 220,
+                "startColumn": 13,
+                "endLineNumber": 220,
+                "endColumn": 13
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/node_modules/.pnpm/%40types%2Bnode%4020.19.9/node_modules/%40types/node/globals.d.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "9346db87-4daf-43c9-8132-b6bcb3865d05"
+        },
+        {
+          "value": " is set and matches a valid Stripe API version (e.g., `\"2024-04-10\"`).\n\n2. **Secret Key Not Set**  \n   If ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "process.env.STRIPE_SECRET_KEY",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 84,
+                "startColumn": 9,
+                "endLineNumber": 84,
+                "endColumn": 9
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/node_modules/.pnpm/%40types%2Bnode%4020.19.9/node_modules/%40types/node/globals.d.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "5308ec64-85b0-4d20-bc57-b7167eb78987"
+        },
+        {
+          "value": " is missing or invalid, Stripe will fail to authenticate.  \n   Ensure your secret key is present and correct.\n\n3. **Base URL Environment Variable**  \n   You use ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "process.env.NEXT_PUBLIC_BASE_URL",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 84,
+                "startColumn": 9,
+                "endLineNumber": 84,
+                "endColumn": 9
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/node_modules/.pnpm/%40types%2Bnode%4020.19.9/node_modules/%40types/node/globals.d.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/node_modules/.pnpm/@types+node@20.19.9/node_modules/@types/node/globals.d.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "9f921802-abc2-43ae-ade3-3fb406b91257"
+        },
+        {
+          "value": " for redirect URLs. If this is not set, your success/cancel URLs will be invalid.\n\n4. **Unit Amount Must Be Integer**  \n   Stripe expects ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "unit_amount",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 20,
+                "startColumn": 11,
+                "endLineNumber": 20,
+                "endColumn": 11
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "232512f9-a2b5-4558-9815-a90c646af90e"
+        },
+        {
+          "value": " in cents as an integer. If ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "tier.price",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 10,
+                "startColumn": 13,
+                "endLineNumber": 10,
+                "endColumn": 13
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "5c74d872-bbf0-4471-9e16-1cb9f3a910f1"
+        },
+        {
+          "value": " or ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "tipAmount",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 10,
+                "startColumn": 26,
+                "endLineNumber": 10,
+                "endColumn": 26
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "835e1573-271e-44cd-98ce-af4887990857"
+        },
+        {
+          "value": " is a float, multiplying by 100 may result in a float (e.g., `19.99 * 100 = 1998.9999999999998`).  \n   **Fix:** Use `Math.round()`:\n   ````typescript\n   // filepath: /home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts\n   unit_amount: Math.round(tier.price * 100),\n   // ...\n   unit_amount: Math.round(tipAmount * 100),\n   ````\n\n5. **Missing Required Fields**  \n   Stripe requires certain fields. For example, ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "product_data.name",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 16,
+                "startColumn": 11,
+                "endLineNumber": 16,
+                "endColumn": 11
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "683f543d-42cf-419f-be81-ebd8f31637b0"
+        },
+        {
+          "value": " must be a non-empty string.\n\n6. **Error Handling**  \n   Your error handling is generic. Check the actual error message from Stripe for more details.\n\n**How to Debug:**  \n- Check your environment variables.\n- Log the values of ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "tier",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 10,
+                "startColumn": 13,
+                "endLineNumber": 10,
+                "endColumn": 13
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "34b989e2-a8d5-4daa-96aa-79bba20d932b"
+        },
+        {
+          "value": ", ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "email",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 10,
+                "startColumn": 19,
+                "endLineNumber": 10,
+                "endColumn": 19
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "cf306621-7939-4e15-869e-e5fa46bb44c6"
+        },
+        {
+          "value": ", ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "tipAmount",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 10,
+                "startColumn": 26,
+                "endLineNumber": 10,
+                "endColumn": 26
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "6943af61-825a-4a87-9b66-b5315f42135b"
+        },
+        {
+          "value": ", and all env vars before calling Stripe.\n- Use `Math.round()` for ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "unit_amount",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 20,
+                "startColumn": 11,
+                "endLineNumber": 20,
+                "endColumn": 11
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "47daf316-45d4-4d38-b604-32c97d265d04"
+        },
+        {
+          "value": ".\n- Check the error message in your logs for specifics.\n\nIf you share the exact error message, I can give more targeted advice.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        }
+      ],
+      "responseId": "response_28a2221d-b457-4a85-8ac3-de499741a4c6",
+      "result": {
+        "timings": {
+          "firstProgress": 557,
+          "totalElapsed": 6629
+        },
+        "metadata": {
+          "codeBlocks": [],
+          "toolCallRounds": [
+            {
+              "response": "Here are some common issues with Stripe integration based on your code:\n\n1. **API Version from Environment Variable**  \n   You use `process.env.STRIPE_API_VERSION` for `apiVersion`. If this variable is missing or incorrect, Stripe may throw an error.  \n   Make sure `STRIPE_API_VERSION` is set and matches a valid Stripe API version (e.g., `\"2024-04-10\"`).\n\n2. **Secret Key Not Set**  \n   If `process.env.STRIPE_SECRET_KEY` is missing or invalid, Stripe will fail to authenticate.  \n   Ensure your secret key is present and correct.\n\n3. **Base URL Environment Variable**  \n   You use `process.env.NEXT_PUBLIC_BASE_URL` for redirect URLs. If this is not set, your success/cancel URLs will be invalid.\n\n4. **Unit Amount Must Be Integer**  \n   Stripe expects `unit_amount` in cents as an integer. If `tier.price` or `tipAmount` is a float, multiplying by 100 may result in a float (e.g., `19.99 * 100 = 1998.9999999999998`).  \n   **Fix:** Use `Math.round()`:\n   ````typescript\n   // filepath: /home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts\n   unit_amount: Math.round(tier.price * 100),\n   // ...\n   unit_amount: Math.round(tipAmount * 100),\n   ````\n\n5. **Missing Required Fields**  \n   Stripe requires certain fields. For example, `product_data.name` must be a non-empty string.\n\n6. **Error Handling**  \n   Your error handling is generic. Check the actual error message from Stripe for more details.\n\n**How to Debug:**  \n- Check your environment variables.\n- Log the values of `tier`, `email`, `tipAmount`, and all env vars before calling Stripe.\n- Use `Math.round()` for `unit_amount`.\n- Check the error message in your logs for specifics.\n\nIf you share the exact error message, I can give more targeted advice.",
+              "toolCalls": [],
+              "toolInputRetry": 0,
+              "id": "3cb81fb2-892a-493a-b44d-b5e7733474e8"
+            }
+          ],
+          "modelMessageId": "e1f523cb-08a3-4c0e-af59-26ddee9caee1",
+          "responseId": "03c97df2-48ba-4d84-af63-a195239fd294",
+          "sessionId": "9e2bb9f0-379b-48dc-8f53-c65c9f25cb91",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.default",
+        "description": "Ask Copilot",
+        "metadata": {
+          "themeIcon": {
+            "id": "copilot"
+          },
+          "hasFollowups": false,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following participants which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted) in [Visual Studio Code](https://code.visualstudio.com/docs/copilot/overview). Or explore the [Copilot walkthrough](command:github.copilot.open.walkthrough).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start",
+                "github.copilot.open.walkthrough"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted": {
+                "$mid": 1,
+                "path": "/copilot/using-github-copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted"
+              },
+              "https://code.visualstudio.com/docs/copilot/overview": {
+                "$mid": 1,
+                "path": "/docs/copilot/overview",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              },
+              "command:github.copilot.open.walkthrough": {
+                "$mid": 1,
+                "path": "github.copilot.open.walkthrough",
+                "scheme": "command"
+              }
+            }
+          },
+          "supportIssueReporting": false,
+          "requester": {
+            "name": "PratiyushT",
+            "icon": {
+              "$mid": 1,
+              "path": "/u/107304018",
+              "scheme": "https",
+              "authority": "avatars.githubusercontent.com",
+              "query": "v=4"
+            }
+          }
+        },
+        "name": "GitHubCopilot",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "ask"
+        ],
+        "slashCommands": [],
+        "disambiguation": [
+          {
+            "category": "generate_code_sample",
+            "description": "The user wants to generate code snippets without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Write an example of computing a SHA256 hash."
+            ]
+          },
+          {
+            "category": "add_feature_to_file",
+            "description": "The user wants to change code in a file that is provided in their request, without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Add a refresh button to the table widget."
+            ]
+          },
+          {
+            "category": "question_about_specific_files",
+            "description": "The user has a question about a specific file or code snippet that they have provided as part of their query, and the question does not require additional workspace context to answer.",
+            "examples": [
+              "What does this file do?"
+            ]
+          }
+        ]
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "$mid": 1,
+            "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "scheme": "file"
+          }
+        }
+      ],
+      "codeCitations": [],
+      "timestamp": 1753892772361
+    },
+    {
+      "requestId": "request_83421dc2-f2b2-479e-8f2f-f707b7237f2f",
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 99
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 2,
+              "endColumn": 8
+            },
+            "text": "I get page.tsx:139   POST http://localhost:3000/api/create-checkout-session 404 (Not Found)\nError. ",
+            "kind": "text"
+          }
+        ],
+        "text": "I get page.tsx:139   POST http://localhost:3000/api/create-checkout-session 404 (Not Found)\nError. "
+      },
+      "variableData": {
+        "variables": [
+          {
+            "kind": "file",
+            "id": "vscode.implicit.viewport",
+            "name": "file:create-checkout-session.ts",
+            "value": {
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              },
+              "range": {
+                "startLineNumber": 18,
+                "startColumn": 1,
+                "endLineNumber": 46,
+                "endColumn": 64
+              }
+            },
+            "modelDescription": "User's current visible code"
+          }
+        ]
+      },
+      "response": [
+        {
+          "value": "The error `404 (Not Found)` means your API route `/api/create-checkout-session` is not being found by Next.js.\n\n**Possible causes:**\n\n1. **File Location:**  \n   For Next.js 13+ (app router), API routes must be inside `/app/api/[route]/route.ts`.  \n   Your file is at ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "$mid": 1,
+            "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "scheme": "file"
+          }
+        },
+        {
+          "value": ".  \n   It should be:  \n   ```\n   /src/app/api/create-checkout-session/route.ts\n   ```\n\n2. **Exported Handler:**  \n   You are exporting ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "POST",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 8,
+                "startColumn": 23,
+                "endLineNumber": 8,
+                "endColumn": 23
+              },
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "27f75b2d-7255-407c-a19a-2a3da4808fc3"
+        },
+        {
+          "value": ". This is correct for app router API routes.\n\n**How to fix:**\n\nRename and move your file to:\n```\n/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session/route.ts\n```\n\n**No code changes needed—just move and rename the file.**\n\n**Summary:**  \nNext.js expects API route handlers in `/app/api/[route]/route.ts`. Your current file path does not match this convention, so the route is not registered.\n\nLet me know if you need help moving the file!",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/PrT15/Code/surprise-art-store/",
+            "scheme": "file"
+          }
+        }
+      ],
+      "responseId": "response_371c8b77-9eab-48cb-964c-a22c4d042ceb",
+      "result": {
+        "timings": {
+          "firstProgress": 438,
+          "totalElapsed": 4427
+        },
+        "metadata": {
+          "codeBlocks": [
+            {
+              "code": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session/route.ts\n",
+              "language": "",
+              "markdownBeforeBlock": "The error `404 (Not Found)` means your API route `/api/create-checkout-session` is not being found by Next.js.\n\n**Possible causes:**\n\n1. **File Location:**  \n   For Next.js 13+ (app router), API routes must be inside `/app/api/[route]/route.ts`.  \n   Your file is at .  \n   It should be:  \n   ```\n   /src/app/api/create-checkout-session/route.ts\n   ```\n\n2. **Exported Handler:**  \n   You are exporting . This is correct for app router API routes.\n\n**How to fix:**\n\nRename and move your file to:\n"
+            }
+          ],
+          "toolCallRounds": [
+            {
+              "response": "The error `404 (Not Found)` means your API route `/api/create-checkout-session` is not being found by Next.js.\n\n**Possible causes:**\n\n1. **File Location:**  \n   For Next.js 13+ (app router), API routes must be inside `/app/api/[route]/route.ts`.  \n   Your file is at `/src/app/api/create-checkout-session.ts`.  \n   It should be:  \n   ```\n   /src/app/api/create-checkout-session/route.ts\n   ```\n\n2. **Exported Handler:**  \n   You are exporting `POST`. This is correct for app router API routes.\n\n**How to fix:**\n\nRename and move your file to:\n```\n/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session/route.ts\n```\n\n**No code changes needed—just move and rename the file.**\n\n**Summary:**  \nNext.js expects API route handlers in `/app/api/[route]/route.ts`. Your current file path does not match this convention, so the route is not registered.\n\nLet me know if you need help moving the file!",
+              "toolCalls": [],
+              "toolInputRetry": 0,
+              "id": "c39c5668-7531-42b0-bc71-9517f2fff7a4"
+            }
+          ],
+          "modelMessageId": "769962bd-fb66-48f6-85a1-292de38192cb",
+          "responseId": "cd6b7944-78bd-4558-83b2-ac9f869bcea0",
+          "sessionId": "9e2bb9f0-379b-48dc-8f53-c65c9f25cb91",
+          "agentId": "github.copilot.default"
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.default",
+        "description": "Ask Copilot",
+        "metadata": {
+          "themeIcon": {
+            "id": "copilot"
+          },
+          "hasFollowups": false,
+          "helpTextPrefix": "You can ask me general programming questions, or chat with the following participants which have specialized expertise and can perform actions:",
+          "helpTextVariablesPrefix": "You can also help me understand your question by using the following variables to give me extra context:",
+          "helpTextPostfix": {
+            "value": "To have a great conversation, ask me questions as if I was a real programmer:\n\n* **Show me the code** you want to talk about by having the files open and selecting the most important lines.\n* **Make refinements** by asking me follow-up questions, adding clarifications, providing errors, etc.\n* **Review my suggested code** and tell me about issues or improvements, so I can iterate on it.\n\nYou can also ask me questions about your editor selection by [starting an inline chat session](command:inlineChat.start).\n\nLearn more about [GitHub Copilot](https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted) in [Visual Studio Code](https://code.visualstudio.com/docs/copilot/overview). Or explore the [Copilot walkthrough](command:github.copilot.open.walkthrough).",
+            "isTrusted": {
+              "enabledCommands": [
+                "inlineChat.start",
+                "github.copilot.open.walkthrough"
+              ]
+            },
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "command:inlineChat.start": {
+                "$mid": 1,
+                "path": "inlineChat.start",
+                "scheme": "command"
+              },
+              "https://docs.github.com/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted": {
+                "$mid": 1,
+                "path": "/copilot/using-github-copilot/getting-started-with-github-copilot",
+                "scheme": "https",
+                "authority": "docs.github.com",
+                "query": "tool=vscode&utm_source=editor&utm_medium=chat-panel&utm_campaign=2024q3-em-MSFT-getstarted"
+              },
+              "https://code.visualstudio.com/docs/copilot/overview": {
+                "$mid": 1,
+                "path": "/docs/copilot/overview",
+                "scheme": "https",
+                "authority": "code.visualstudio.com"
+              },
+              "command:github.copilot.open.walkthrough": {
+                "$mid": 1,
+                "path": "github.copilot.open.walkthrough",
+                "scheme": "command"
+              }
+            }
+          },
+          "supportIssueReporting": false,
+          "requester": {
+            "name": "PratiyushT",
+            "icon": {
+              "$mid": 1,
+              "path": "/u/107304018",
+              "scheme": "https",
+              "authority": "avatars.githubusercontent.com",
+              "query": "v=4"
+            }
+          }
+        },
+        "name": "GitHubCopilot",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "ask"
+        ],
+        "slashCommands": [],
+        "disambiguation": [
+          {
+            "category": "generate_code_sample",
+            "description": "The user wants to generate code snippets without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Write an example of computing a SHA256 hash."
+            ]
+          },
+          {
+            "category": "add_feature_to_file",
+            "description": "The user wants to change code in a file that is provided in their request, without referencing the contents of the current workspace. This category does not include generating entire projects.",
+            "examples": [
+              "Add a refresh button to the table widget."
+            ]
+          },
+          {
+            "category": "question_about_specific_files",
+            "description": "The user has a question about a specific file or code snippet that they have provided as part of their query, and the question does not require additional workspace context to answer.",
+            "examples": [
+              "What does this file do?"
+            ]
+          }
+        ]
+      },
+      "contentReferences": [
+        {
+          "kind": "reference",
+          "reference": {
+            "$mid": 1,
+            "fsPath": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "external": "file:///home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "path": "/home/PrT15/Code/surprise-art-store/src/app/api/create-checkout-session.ts",
+            "scheme": "file"
+          }
+        }
+      ],
+      "codeCitations": [],
+      "timestamp": 1753892793491,
+      "modelId": "github.copilot-chat/gpt-4.1"
+    }
+  ],
+  "sessionId": "be45edd5-0b69-4073-b3a4-0bda51a8a15e",
+  "creationDate": 1753825163458,
+  "isImported": false,
+  "lastMessageDate": 1753892793491,
+  "customTitle": "Issues with Stripe integration in checkout session code"
+}

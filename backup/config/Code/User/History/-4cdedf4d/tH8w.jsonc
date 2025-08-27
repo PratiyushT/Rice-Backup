@@ -1,0 +1,12 @@
+{
+  "custom/autorotate-menu": {
+    "format": " ",
+    "tooltip": "Autorotate controls",
+    "menu": "on-click",
+    "menu-file": "/home/PrT15/.local/share/waybar/menus/autorotate.xml",
+    "menu-actions": {
+      "enable-tablet-only": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh set-tablet-only",
+      "disable-tablet-only": "/home/PrT15/.local/lib/hyde/linuxflip_ctrl.sh disable-all"
+    }
+  }
+}

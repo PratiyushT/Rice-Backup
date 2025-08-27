@@ -1,0 +1,81 @@
+:root {
+    --bullet-new-color: currentColor; 
+}
+
+/* level 1 - filled circle */
+ul:not(li > *) > li > .list-bullet::after,
+.HyperMD-list-line-1 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 2 - hollow circle */
+ul:not(li > *) > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-2 .list-bullet:after {
+    height: 4px;
+    width: 4px;
+    background-color: transparent;
+    border-color: var(--bullet-new-color);
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1px;
+} 
+
+/* level 3 - square */
+ul:not(li > *) > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-3 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 0%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 4 - hyphen */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-4 .list-bullet:after {
+    height: 1px;
+    width: 7px;
+    border-radius: 0%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 5 - filled circle (repeat) */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-5 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--bullet-new-color);
+} 
+
+/* level 6 - hollow circle (repeat) */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-6 .list-bullet:after {
+    height: 4px;
+    width: 4px;
+    background-color: transparent;
+    border-color: var(--bullet-new-color);
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1px;
+} 
+
+/* level 7 - square (repeat) */
+ul:not(li > *) > li > ul > li > ul > li > ul > li > ul > li > ul > li > .list-bullet::after,
+.HyperMD-list-line-7 .list-bullet:after {
+    height: 5px;
+    width: 5px;
+    border-radius: 0%;
+    background-color: var(--bullet-new-color);
+}
+
+/* 
+   Cribbed from the excellent ITS Theme
+   https://github.com/SlRvb/Obsidian--ITS-Theme 
+*/
+.cm-s-obsidian .HyperMD-table-row.HyperMD-table-row.HyperMD-table-row {
+	white-space: pre-wrap;
+	min-width: min-content;
+}

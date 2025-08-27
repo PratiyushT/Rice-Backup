@@ -1,0 +1,132 @@
+Add files and Folders
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+#
+# Initial commit
+#
+# Changes to be committed:
+#	new file:   aliases.zsh
+#	new file:   hypr/animations.conf
+#	new file:   hypr/animations/LimeFrenzy.conf
+#	new file:   hypr/animations/classic.conf
+#	new file:   hypr/animations/diablo-1.conf
+#	new file:   hypr/animations/diablo-2.conf
+#	new file:   hypr/animations/disable.conf
+#	new file:   hypr/animations/dynamic.conf
+#	new file:   hypr/animations/end4.conf
+#	new file:   hypr/animations/fast.conf
+#	new file:   hypr/animations/high.conf
+#	new file:   hypr/animations/ja.conf
+#	new file:   hypr/animations/me-1.conf
+#	new file:   hypr/animations/me-2.conf
+#	new file:   hypr/animations/minimal-1.conf
+#	new file:   hypr/animations/minimal-2.conf
+#	new file:   hypr/animations/moving.conf
+#	new file:   hypr/animations/optimized.conf
+#	new file:   hypr/animations/standard.conf
+#	new file:   hypr/animations/theme.conf
+#	new file:   hypr/animations/vertical.conf
+#	new file:   hypr/hyde.conf
+#	new file:   hypr/hypridle.conf
+#	new file:   hypr/hyprland.conf
+#	new file:   hypr/hyprlock.conf
+#	new file:   hypr/hyprlock/Anurati.conf
+#	new file:   hypr/hyprlock/Arfan on Clouds.conf
+#	new file:   hypr/hyprlock/IBM Plex.conf
+#	new file:   hypr/hyprlock/IMB Xtented.conf
+#	new file:   hypr/hyprlock/SF Pro.conf
+#	new file:   hypr/hyprlock/theme.conf
+#	new file:   hypr/keybindings.conf
+#	new file:   hypr/monitors.conf
+#	new file:   hypr/scripts/suspend-if-on-battery.sh
+#	new file:   hypr/shaders.conf
+#	new file:   hypr/shaders/.compiled.cache.glsl
+#	new file:   hypr/shaders/.gitignore
+#	new file:   hypr/shaders/blue-light-filter.frag
+#	new file:   hypr/shaders/color-vision.frag
+#	new file:   hypr/shaders/custom.frag
+#	new file:   hypr/shaders/disable.frag
+#	new file:   hypr/shaders/grayscale.frag
+#	new file:   hypr/shaders/invert-colors.frag
+#	new file:   hypr/shaders/oled-saver.frag
+#	new file:   hypr/shaders/paper.frag
+#	new file:   hypr/shaders/vibrance.frag
+#	new file:   hypr/shaders/wallbash.frag
+#	new file:   hypr/shaders/wallbash.inc
+#	new file:   hypr/themes/colors.conf
+#	new file:   hypr/themes/theme.conf
+#	new file:   hypr/themes/wallbash.conf
+#	new file:   hypr/userprefs.conf
+#	new file:   hypr/windowrules.conf
+#	new file:   hypr/workflows.conf
+#	new file:   hypr/workflows/default.conf
+#	new file:   hypr/workflows/editing.conf
+#	new file:   hypr/workflows/gaming.conf
+#	new file:   hypr/workflows/powersaver.conf
+#	new file:   hypr/workflows/snappy.conf
+#	new file:   hypr/workspaces.conf
+#	new file:   kitty.conf
+#	new file:   waybar/config.jsonc
+#	new file:   waybar/includes/border-radius.css
+#	new file:   waybar/includes/global.css
+#	new file:   waybar/includes/includes.json
+#	new file:   waybar/layouts/backup/04_20250701_221641.jsonc
+#	new file:   waybar/layouts/backup/unknown_20250630_220407.jsonc
+#	new file:   waybar/style.css
+#	new file:   waybar/theme.css
+#	new file:   waybar/user-style.css
+#
+# Untracked files:
+#	Code - OSS/
+#	Code/
+#	Exodus/
+#	GIMP/
+#	Kvantum/
+#	NuGet/
+#	arkrc
+#	baloofileinformationrc
+#	baloofilerc
+#	cfg_backups/
+#	code-flags.conf
+#	dconf/
+#	dunst/
+#	fastfetch/
+#	fontconfig/
+#	go/
+#	gtk-3.0/
+#	gtk-4.0
+#	hyde/
+#	kde.org/
+#	kdeglobals
+#	kitty/
+#	libreoffice/
+#	libreofficedev/
+#	menus/
+#	microsoft-edge/
+#	mimeapps.list
+#	nwg-displays/
+#	nwg-look/
+#	obsidian/
+#	parallel/
+#	pavucontrol.ini
+#	pulse/
+#	qt5ct/
+#	qt6ct/
+#	rofi/
+#	session/
+#	simple-scan/
+#	smplayer/
+#	starship/
+#	systemd/
+#	trashrc
+#	unity3d/
+#	user-dirs.dirs
+#	vim/
+#	vlc/
+#	wlogout/
+#	xsettingsd/
+#	zsh/
+#

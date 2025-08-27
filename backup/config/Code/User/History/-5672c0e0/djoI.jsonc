@@ -1,0 +1,15 @@
+{
+  "custom/kbd-backlight": {
+    "rotate": 0,
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "on-scroll-up": "hyde-shell kbd-backlight-status.sh i",
+    "on-scroll-down": "hyde-shell kbd-backlight-status.sh d",
+    "min-length": 6,
+    "tooltip": true,
+    "tooltip-format": "Backlight level: {icon} {percent}%\nUsing: kbd_backlight",
+    "return-type": "json",
+    "exec": "hyde-shell kbd-backlight-status.sh --status",
+    "interval": 2
+  }
+}

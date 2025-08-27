@@ -1,0 +1,196 @@
+/* ===== Arrow at top-level, then ● ○ ■ — cycle ===== */
+:root{
+  /* alignment */
+  --indent-pad: 1.25rem;
+  --mark-left: 0.10rem;
+  --mark-top: 0.62em;
+
+  /* sizes */
+  --arrow-size: 0.9em;     /* Level 1 arrow font-size */
+  --dot1: 5px;             /* solid dot */
+  --dot2: 6px;             /* hollow dot (slightly bigger) */
+  --sq: 5px;               /* solid square */
+  --dash-w: 9px;           /* dash width */
+  --dash-h: 2px;           /* dash height */
+
+  --mark-color: currentColor;
+  --arrow-char: "→";       /* change to "->" if you prefer ASCII */
+}
+
+/* ========== Reading view ========== */
+.markdown-rendered ul { list-style: none; padding-left: var(--indent-pad); }
+.markdown-rendered ul li { position: relative; }
+
+/* keep task boxes native */
+.markdown-rendered li.task-list-item::before { content: none !important; }
+
+/* Level 1: ARROW */
+.markdown-rendered ul > li::before{
+  content: var(--arrow-char);
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  transform: translateY(-50%);
+  font-size: var(--arrow-size);
+  line-height: 1;
+  color: var(--mark-color);
+}
+
+/* Level 2: ● */
+.markdown-rendered ul ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--dot1); height: var(--dot1);
+  background: var(--mark-color);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* Level 3: ○ */
+.markdown-rendered ul ul ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--dot2); height: var(--dot2);
+  background: transparent;
+  border: 2px solid var(--mark-color);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* Level 4: ■ */
+.markdown-rendered ul ul ul ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--sq); height: var(--sq);
+  background: var(--mark-color);
+  border-radius: 2px;
+  transform: translateY(-50%);
+}
+
+/* Level 5: — */
+.markdown-rendered ul ul ul ul ul > li::before{
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top);
+  width: var(--dash-w); height: var(--dash-h);
+  background: var(--mark-color);
+  border-radius: 1px;
+  transform: translateY(-50%);
+}
+
+/* Repeat 2–5 for deeper levels (6–9, 10–13, ...) */
+.markdown-rendered ul ul ul ul ul ul > li::before{        /* 6: ● */
+  content: ""; width: var(--dot1); height: var(--dot1);
+  background: var(--mark-color); border-radius: 50%;
+  position: absolute; left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top); transform: translateY(-50%);
+}
+.markdown-rendered ul ul ul ul ul ul ul > li::before{     /* 7: ○ */
+  content: ""; width: var(--dot2); height: var(--dot2);
+  background: transparent; border: 2px solid var(--mark-color);
+  border-radius: 50%;
+  position: absolute; left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top); transform: translateY(-50%);
+}
+.markdown-rendered ul ul ul ul ul ul ul ul > li::before{  /* 8: ■ */
+  content: ""; width: var(--sq); height: var(--sq);
+  background: var(--mark-color); border-radius: 2px;
+  position: absolute; left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top); transform: translateY(-50%);
+}
+.markdown-rendered ul ul ul ul ul ul ul ul ul > li::before{ /* 9: — */
+  content: ""; width: var(--dash-w); height: var(--dash-h);
+  background: var(--mark-color); border-radius: 1px;
+  position: absolute; left: calc(-1 * var(--indent-pad) + var(--mark-left));
+  top: var(--mark-top); transform: translateY(-50%);
+}
+
+/* Checkbox alignment in Reading view */
+.markdown-rendered .task-list-item-checkbox{
+  transform: translateX(calc(-1 * var(--indent-pad) + var(--mark-left)));
+}
+
+/* ========== Live Preview (editor) ========== */
+
+/* hide native bullet glyphs */
+.cm-editor .cm-formatting-list-ul { color: transparent; }
+
+/* Level 1: ARROW */
+.cm-editor .HyperMD-list-line-1 .list-bullet::after{
+  content: var(--arrow-char);
+  display: inline-block;
+  margin-left: calc(-1 * var(--indent-pad));
+  margin-right: 0.45rem;
+  font-size: var(--arrow-size);
+  line-height: 1;
+  vertical-align: middle;
+  color: var(--mark-color);
+}
+
+/* Level 2: ● */
+.cm-editor .HyperMD-list-line-2 .list-bullet::after{
+  content: "";
+  display: inline-block;
+  width: var(--dot1); height: var(--dot1);
+  margin-left: calc(-1 * var(--indent-pad));
+  margin-right: 0.45rem;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: var(--mark-color);
+}
+
+/* Level 3: ○ */
+.cm-editor .HyperMD-list-line-3 .list-bullet::after{
+  content: "";
+  display: inline-block;
+  width: var(--dot2); height: var(--dot2);
+  margin-left: calc(-1 * var(--indent-pad));
+  margin-right: 0.45rem;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--mark-color);
+}
+
+/* Level 4: ■ */
+.cm-editor .HyperMD-list-line-4 .list-bullet::after{
+  content: "";
+  display: inline-block;
+  width: var(--sq); height: var(--sq);
+  margin-left: calc(-1 * var(--indent-pad));
+  margin-right: 0.45rem;
+  vertical-align: middle;
+  border-radius: 2px;
+  background: var(--mark-color);
+}
+
+/* Level 5: — */
+.cm-editor .HyperMD-list-line-5 .list-bullet::after{
+  content: "";
+  display: inline-block;
+  width: var(--dash-w); height: var(--dash-h);
+  margin-left: calc(-1 * var(--indent-pad));
+  margin-right: 0.45rem;
+  vertical-align: middle;
+  border-radius: 1px;
+  background: var(--mark-color);
+}
+
+/* Repeat for 6–9 */
+.cm-editor .HyperMD-list-line-6 .list-bullet::after{  width: var(--dot1); height: var(--dot1); border-radius: 50%; background: var(--mark-color); border: none; }
+.cm-editor .HyperMD-list-line-7 .list-bullet::after{  width: var(--dot2); height: var(--dot2); border-radius: 50%; background: transparent; border: 2px solid var(--mark-color); }
+.cm-editor .HyperMD-list-line-8 .list-bullet::after{  width: var(--sq);  height: var(--sq);  border-radius: 2px; background: var(--mark-color); border: none; }
+.cm-editor .HyperMD-list-line-9 .list-bullet::after{  width: var(--dash-w); height: var(--dash-h); border-radius: 1px; background: var(--mark-color); border: none; }
+
+/* Checkbox spacing in editor */
+.cm-editor input[type="checkbox"].task-list-item-checkbox{
+  margin-left: calc(-1 * var(--indent-pad));
+  margin-right: 0.45rem;
+}

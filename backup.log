@@ -82,3 +82,371 @@
 >>> Removing any git-related files from /home/PrT15/Rice/backup/config and /home/PrT15/Rice/backup/script
 >>> Git files stripped
 >>> Backup finished at Tue Aug 26 18:07:52 CDT 2025
+>>> Backup started at Tue Aug 26 23:04:35 CDT 2025
+>>> Syncing folder: /home/PrT15/.config/Code - OSS/User -> /home/PrT15/Rice/backup/config/Code - OSS/User
+>>> Syncing folder: /home/PrT15/.config/Code/User -> /home/PrT15/Rice/backup/config/Code/User
+>>> Syncing folder: /home/PrT15/.config/Kvantum -> /home/PrT15/Rice/backup/config/Kvantum
+!!! Skipped folder: /home/PrT15/.config/MangoHud (not found)
+!!! Skipped folder: /home/PrT15/.config/VSCodium/User (not found)
+>>> Syncing folder: /home/PrT15/.config/dunst -> /home/PrT15/Rice/backup/config/dunst
+>>> Syncing folder: /home/PrT15/.config/fastfetch -> /home/PrT15/Rice/backup/config/fastfetch
+!!! Skipped folder: /home/PrT15/.config/fish (not found)
+>>> Syncing folder: /home/PrT15/.config/gtk-3.0 -> /home/PrT15/Rice/backup/config/gtk-3.0
+>>> Syncing folder: /home/PrT15/.config/hyde -> /home/PrT15/Rice/backup/config/hyde
+>>> Syncing folder: /home/PrT15/.config/hypr -> /home/PrT15/Rice/backup/config/hypr
+>>> Syncing folder: /home/PrT15/.config/kitty -> /home/PrT15/Rice/backup/config/kitty
+!!! Skipped folder: /home/PrT15/.config/lsd (not found)
+>>> Syncing folder: /home/PrT15/.config/menus -> /home/PrT15/Rice/backup/config/menus
+>>> Syncing folder: /home/PrT15/.config/nwg-look -> /home/PrT15/Rice/backup/config/nwg-look
+>>> Syncing folder: /home/PrT15/.config/qt5ct -> /home/PrT15/Rice/backup/config/qt5ct
+>>> Syncing folder: /home/PrT15/.config/qt6ct -> /home/PrT15/Rice/backup/config/qt6ct
+>>> Syncing folder: /home/PrT15/.config/rofi -> /home/PrT15/Rice/backup/config/rofi
+!!! Skipped folder: /home/PrT15/.config/satty (not found)
+>>> Syncing folder: /home/PrT15/.config/starship -> /home/PrT15/Rice/backup/config/starship
+!!! Skipped folder: /home/PrT15/.config/swaylock (not found)
+>>> Syncing folder: /home/PrT15/.config/systemd/user -> /home/PrT15/Rice/backup/config/systemd/user
+>>> Syncing folder: /home/PrT15/.config/uwsm -> /home/PrT15/Rice/backup/config/uwsm
+>>> Syncing folder: /home/PrT15/.config/vim -> /home/PrT15/Rice/backup/config/vim
+>>> Syncing folder: /home/PrT15/.config/waybar -> /home/PrT15/Rice/backup/config/waybar
+>>> Syncing folder: /home/PrT15/.config/wlogout -> /home/PrT15/Rice/backup/config/wlogout
+>>> Syncing folder: /home/PrT15/.config/xsettingsd -> /home/PrT15/Rice/backup/config/xsettingsd
+>>> Syncing folder: /home/PrT15/.config/zsh -> /home/PrT15/Rice/backup/config/zsh
+!!! Skipped file: /home/PrT15/.config/baloorc (not found)
+>>> Copying file: /home/PrT15/.config/code-flags.conf -> /home/PrT15/Rice/backup/config/code-flags.conf
+!!! Skipped file: /home/PrT15/.config/codium-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/dolphinrc -> /home/PrT15/Rice/backup/config/dolphinrc
+!!! Skipped file: /home/PrT15/.config/electron-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/kdeglobals -> /home/PrT15/Rice/backup/config/kdeglobals
+!!! Skipped file: /home/PrT15/.config/libinput-gestures.conf (not found)
+!!! Skipped file: /home/PrT15/.config/spotify-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/xdg-terminals.list -> /home/PrT15/Rice/backup/config/xdg-terminals.list
+>>> Syncing scripts: /home/PrT15/.local/lib/hyde -> /home/PrT15/Rice/backup/script
+>>> Removing any git-related files from /home/PrT15/Rice/backup/config and /home/PrT15/Rice/backup/script
+>>> Git files stripped
+>>> Backup finished at Tue Aug 26 23:04:37 CDT 2025
+>>> Backup started at Tue Aug 26 23:08:53 CDT 2025
+>>> Syncing folder: /home/PrT15/.config/Code - OSS/User -> /home/PrT15/Rice/backup/config/Code - OSS/User
+>>> Syncing folder: /home/PrT15/.config/Code/User -> /home/PrT15/Rice/backup/config/Code/User
+>>> Syncing folder: /home/PrT15/.config/Kvantum -> /home/PrT15/Rice/backup/config/Kvantum
+!!! Skipped folder: /home/PrT15/.config/MangoHud (not found)
+!!! Skipped folder: /home/PrT15/.config/VSCodium/User (not found)
+>>> Syncing folder: /home/PrT15/.config/dunst -> /home/PrT15/Rice/backup/config/dunst
+>>> Syncing folder: /home/PrT15/.config/fastfetch -> /home/PrT15/Rice/backup/config/fastfetch
+!!! Skipped folder: /home/PrT15/.config/fish (not found)
+>>> Syncing folder: /home/PrT15/.config/gtk-3.0 -> /home/PrT15/Rice/backup/config/gtk-3.0
+>>> Syncing folder: /home/PrT15/.config/hyde -> /home/PrT15/Rice/backup/config/hyde
+>>> Syncing folder: /home/PrT15/.config/hypr -> /home/PrT15/Rice/backup/config/hypr
+>>> Syncing folder: /home/PrT15/.config/kitty -> /home/PrT15/Rice/backup/config/kitty
+!!! Skipped folder: /home/PrT15/.config/lsd (not found)
+>>> Syncing folder: /home/PrT15/.config/menus -> /home/PrT15/Rice/backup/config/menus
+>>> Syncing folder: /home/PrT15/.config/nwg-look -> /home/PrT15/Rice/backup/config/nwg-look
+>>> Syncing folder: /home/PrT15/.config/qt5ct -> /home/PrT15/Rice/backup/config/qt5ct
+>>> Syncing folder: /home/PrT15/.config/qt6ct -> /home/PrT15/Rice/backup/config/qt6ct
+>>> Syncing folder: /home/PrT15/.config/rofi -> /home/PrT15/Rice/backup/config/rofi
+!!! Skipped folder: /home/PrT15/.config/satty (not found)
+>>> Syncing folder: /home/PrT15/.config/starship -> /home/PrT15/Rice/backup/config/starship
+!!! Skipped folder: /home/PrT15/.config/swaylock (not found)
+>>> Syncing folder: /home/PrT15/.config/systemd/user -> /home/PrT15/Rice/backup/config/systemd/user
+>>> Syncing folder: /home/PrT15/.config/uwsm -> /home/PrT15/Rice/backup/config/uwsm
+>>> Syncing folder: /home/PrT15/.config/vim -> /home/PrT15/Rice/backup/config/vim
+>>> Syncing folder: /home/PrT15/.config/waybar -> /home/PrT15/Rice/backup/config/waybar
+>>> Syncing folder: /home/PrT15/.config/wlogout -> /home/PrT15/Rice/backup/config/wlogout
+>>> Syncing folder: /home/PrT15/.config/xsettingsd -> /home/PrT15/Rice/backup/config/xsettingsd
+>>> Syncing folder: /home/PrT15/.config/zsh -> /home/PrT15/Rice/backup/config/zsh
+!!! Skipped file: /home/PrT15/.config/baloorc (not found)
+>>> Copying file: /home/PrT15/.config/code-flags.conf -> /home/PrT15/Rice/backup/config/code-flags.conf
+!!! Skipped file: /home/PrT15/.config/codium-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/dolphinrc -> /home/PrT15/Rice/backup/config/dolphinrc
+!!! Skipped file: /home/PrT15/.config/electron-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/kdeglobals -> /home/PrT15/Rice/backup/config/kdeglobals
+!!! Skipped file: /home/PrT15/.config/libinput-gestures.conf (not found)
+!!! Skipped file: /home/PrT15/.config/spotify-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/xdg-terminals.list -> /home/PrT15/Rice/backup/config/xdg-terminals.list
+>>> Syncing scripts (dereferencing symlinks): /home/PrT15/.local/lib/hyde -> /home/PrT15/Rice/backup/script
+.d..t...... ./
+.d..t...... user/
+>f+++++++++ user/battery-conservation-toggle.sh
+>f+++++++++ user/battery-idle-toggle.sh
+>f+++++++++ user/fix-hid-dongles.sh
+>f+++++++++ user/kbd-backlight-status.sh
+>f+++++++++ user/linuxflip_ctrl.sh
+>f+++++++++ user/monitors-orientation-watch.sh
+>f+++++++++ user/power-action.sh
+cd+++++++++ user/.git/
+>f+++++++++ user/.git/COMMIT_EDITMSG
+>f+++++++++ user/.git/HEAD
+>f+++++++++ user/.git/config
+>f+++++++++ user/.git/description
+>f+++++++++ user/.git/index
+cd+++++++++ user/.git/hooks/
+>f+++++++++ user/.git/hooks/applypatch-msg.sample
+>f+++++++++ user/.git/hooks/commit-msg.sample
+>f+++++++++ user/.git/hooks/fsmonitor-watchman.sample
+>f+++++++++ user/.git/hooks/post-update.sample
+>f+++++++++ user/.git/hooks/pre-applypatch.sample
+>f+++++++++ user/.git/hooks/pre-commit.sample
+>f+++++++++ user/.git/hooks/pre-merge-commit.sample
+>f+++++++++ user/.git/hooks/pre-push.sample
+>f+++++++++ user/.git/hooks/pre-rebase.sample
+>f+++++++++ user/.git/hooks/pre-receive.sample
+>f+++++++++ user/.git/hooks/prepare-commit-msg.sample
+>f+++++++++ user/.git/hooks/push-to-checkout.sample
+>f+++++++++ user/.git/hooks/sendemail-validate.sample
+>f+++++++++ user/.git/hooks/update.sample
+cd+++++++++ user/.git/info/
+>f+++++++++ user/.git/info/exclude
+cd+++++++++ user/.git/logs/
+>f+++++++++ user/.git/logs/HEAD
+cd+++++++++ user/.git/logs/refs/
+cd+++++++++ user/.git/logs/refs/heads/
+>f+++++++++ user/.git/logs/refs/heads/main
+cd+++++++++ user/.git/logs/refs/remotes/
+cd+++++++++ user/.git/logs/refs/remotes/origin/
+>f+++++++++ user/.git/logs/refs/remotes/origin/main
+cd+++++++++ user/.git/objects/
+cd+++++++++ user/.git/objects/20/
+>f+++++++++ user/.git/objects/20/992ed08947ff5899f8413e86bff7ca77ac92d5
+cd+++++++++ user/.git/objects/26/
+>f+++++++++ user/.git/objects/26/d9741618448db1c14fdb87e6aafb3c31603c5c
+cd+++++++++ user/.git/objects/6f/
+>f+++++++++ user/.git/objects/6f/554e045ef99ad1cb1bf24c7353bf0c1c490604
+cd+++++++++ user/.git/objects/76/
+>f+++++++++ user/.git/objects/76/065e46311fe2ce031b3cc2aeca76ea7f5fe406
+cd+++++++++ user/.git/objects/a3/
+>f+++++++++ user/.git/objects/a3/dcb922c73ae33f11c5598b09ef3a8defd909df
+cd+++++++++ user/.git/objects/a7/
+>f+++++++++ user/.git/objects/a7/a92fd976d72e0958ddfb38d47a3ab27c1208d0
+cd+++++++++ user/.git/objects/b0/
+>f+++++++++ user/.git/objects/b0/3b15a9e3468fa8bc72bdc67476c3c4ff7ff585
+cd+++++++++ user/.git/objects/e6/
+>f+++++++++ user/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+cd+++++++++ user/.git/objects/f7/
+>f+++++++++ user/.git/objects/f7/37dc5828735cd1fa8ce4eb9762f46d250a57ce
+cd+++++++++ user/.git/objects/info/
+cd+++++++++ user/.git/objects/pack/
+cd+++++++++ user/.git/refs/
+cd+++++++++ user/.git/refs/heads/
+>f+++++++++ user/.git/refs/heads/main
+cd+++++++++ user/.git/refs/remotes/
+cd+++++++++ user/.git/refs/remotes/origin/
+>f+++++++++ user/.git/refs/remotes/origin/main
+cd+++++++++ user/.git/refs/tags/
+>>> Removing any git-related files from /home/PrT15/Rice/backup/config and /home/PrT15/Rice/backup/script
+>>> Git files stripped
+>>> Backup finished at Tue Aug 26 23:08:55 CDT 2025
+>>> Backup started at Tue Aug 26 23:09:37 CDT 2025
+>>> Syncing folder: /home/PrT15/.config/Code - OSS/User -> /home/PrT15/Rice/backup/config/Code - OSS/User
+>>> Syncing folder: /home/PrT15/.config/Code/User -> /home/PrT15/Rice/backup/config/Code/User
+>>> Syncing folder: /home/PrT15/.config/Kvantum -> /home/PrT15/Rice/backup/config/Kvantum
+!!! Skipped folder: /home/PrT15/.config/MangoHud (not found)
+!!! Skipped folder: /home/PrT15/.config/VSCodium/User (not found)
+>>> Syncing folder: /home/PrT15/.config/dunst -> /home/PrT15/Rice/backup/config/dunst
+>>> Syncing folder: /home/PrT15/.config/fastfetch -> /home/PrT15/Rice/backup/config/fastfetch
+!!! Skipped folder: /home/PrT15/.config/fish (not found)
+>>> Syncing folder: /home/PrT15/.config/gtk-3.0 -> /home/PrT15/Rice/backup/config/gtk-3.0
+>>> Syncing folder: /home/PrT15/.config/hyde -> /home/PrT15/Rice/backup/config/hyde
+>>> Syncing folder: /home/PrT15/.config/hypr -> /home/PrT15/Rice/backup/config/hypr
+>>> Syncing folder: /home/PrT15/.config/kitty -> /home/PrT15/Rice/backup/config/kitty
+!!! Skipped folder: /home/PrT15/.config/lsd (not found)
+>>> Syncing folder: /home/PrT15/.config/menus -> /home/PrT15/Rice/backup/config/menus
+>>> Syncing folder: /home/PrT15/.config/nwg-look -> /home/PrT15/Rice/backup/config/nwg-look
+>>> Syncing folder: /home/PrT15/.config/qt5ct -> /home/PrT15/Rice/backup/config/qt5ct
+>>> Syncing folder: /home/PrT15/.config/qt6ct -> /home/PrT15/Rice/backup/config/qt6ct
+>>> Syncing folder: /home/PrT15/.config/rofi -> /home/PrT15/Rice/backup/config/rofi
+!!! Skipped folder: /home/PrT15/.config/satty (not found)
+>>> Syncing folder: /home/PrT15/.config/starship -> /home/PrT15/Rice/backup/config/starship
+!!! Skipped folder: /home/PrT15/.config/swaylock (not found)
+>>> Syncing folder: /home/PrT15/.config/systemd/user -> /home/PrT15/Rice/backup/config/systemd/user
+>>> Syncing folder: /home/PrT15/.config/uwsm -> /home/PrT15/Rice/backup/config/uwsm
+>>> Syncing folder: /home/PrT15/.config/vim -> /home/PrT15/Rice/backup/config/vim
+>>> Syncing folder: /home/PrT15/.config/waybar -> /home/PrT15/Rice/backup/config/waybar
+>>> Syncing folder: /home/PrT15/.config/wlogout -> /home/PrT15/Rice/backup/config/wlogout
+>>> Syncing folder: /home/PrT15/.config/xsettingsd -> /home/PrT15/Rice/backup/config/xsettingsd
+>>> Syncing folder: /home/PrT15/.config/zsh -> /home/PrT15/Rice/backup/config/zsh
+!!! Skipped file: /home/PrT15/.config/baloorc (not found)
+>>> Copying file: /home/PrT15/.config/code-flags.conf -> /home/PrT15/Rice/backup/config/code-flags.conf
+!!! Skipped file: /home/PrT15/.config/codium-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/dolphinrc -> /home/PrT15/Rice/backup/config/dolphinrc
+!!! Skipped file: /home/PrT15/.config/electron-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/kdeglobals -> /home/PrT15/Rice/backup/config/kdeglobals
+!!! Skipped file: /home/PrT15/.config/libinput-gestures.conf (not found)
+!!! Skipped file: /home/PrT15/.config/spotify-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/xdg-terminals.list -> /home/PrT15/Rice/backup/config/xdg-terminals.list
+>>> Syncing scripts (dereferencing symlinks): /home/PrT15/.local/lib/hyde -> /home/PrT15/Rice/backup/script
+.d..t...... ./
+>f+++++++++ amdgpu.py
+>f+++++++++ animations.sh
+>f+++++++++ app2unit.sh
+>f+++++++++ battery.sh
+>f+++++++++ batterynotify.sh
+>f+++++++++ bookmarks.py
+>f+++++++++ brightnesscontrol.sh
+>f+++++++++ calculator.sh
+>f+++++++++ cava.py
+>f+++++++++ cliphist.sh
+>f+++++++++ color.set.sh
+>f+++++++++ configuration.py
+>f+++++++++ cpuinfo.sh
+>f+++++++++ dconf.set.sh
+>f+++++++++ dontkillsteam.sh
+>f+++++++++ emoji-picker.sh
+>f+++++++++ fastfetch.sh
+>f+++++++++ font.sh
+>f+++++++++ fzf_preview.sh
+>f+++++++++ fzf_wrapper.py
+>f+++++++++ gamelauncher.sh
+>f+++++++++ gamemode.sh
+>f+++++++++ globalcontrol.sh
+>f+++++++++ glyph-picker.sh
+>f+++++++++ gpuinfo.sh
+>f+++++++++ grimblast
+>f+++++++++ hyde-config
+>f+++++++++ hyde-launch.sh
+>f+++++++++ hypr.unbind.sh
+>f+++++++++ hyprlock.sh
+>f+++++++++ hyprsunset.sh
+>f+++++++++ hyq
+>f+++++++++ idle-inhibitor.py
+>f+++++++++ keybinds.hint.py
+>f+++++++++ keybinds_hint.sh
+>f+++++++++ keyboardswitch.sh
+>f+++++++++ lockscreen.sh
+>f+++++++++ logoutlaunch.sh
+>f+++++++++ mediaplayer.py
+>f+++++++++ notifications.py
+>f+++++++++ parse.config.py
+>f+++++++++ parse.json.py
+>f+++++++++ pm.sh
+>f+++++++++ polkitkdeauth.sh
+>f+++++++++ quickapps.sh
+>f+++++++++ resetxdgportal.sh
+>f+++++++++ restore.config.sh
+>f+++++++++ rofi.bookmarks.sh
+>f+++++++++ rofi.websearch.sh
+>f+++++++++ rofilaunch.sh
+>f+++++++++ rofiselect.sh
+>f+++++++++ screenrecord.sh
+>f+++++++++ screenshot.sh
+>f+++++++++ sensorsinfo.py
+>f+++++++++ shaders.sh
+>f+++++++++ swwwallbash.sh
+>f+++++++++ swwwallcache.sh
+>f+++++++++ swwwallkon.sh
+>f+++++++++ swwwallpaper.sh
+>f+++++++++ swwwallselect.sh
+>f+++++++++ sysmonlaunch.sh
+>f+++++++++ systemupdate.sh
+>f+++++++++ testrunner.sh
+>f+++++++++ theme.import.py
+>f+++++++++ theme.patch.sh
+>f+++++++++ theme.select.sh
+>f+++++++++ theme.switch.sh
+>f+++++++++ themeselect.sh
+>f+++++++++ themeswitch.sh
+>f+++++++++ volumecontrol.sh
+>f+++++++++ wallbash.hypr.sh
+>f+++++++++ wallbash.print.colors.sh
+>f+++++++++ wallbash.qt.sh
+>f+++++++++ wallbash.sh
+>f+++++++++ wallbashtoggle.sh
+>f+++++++++ wallpaper.hyprpaper.sh
+>f+++++++++ wallpaper.mpvpaper.sh
+>f+++++++++ wallpaper.sh
+>f+++++++++ wallpaper.swww.sh
+>f+++++++++ wbarconfgen.sh
+>f+++++++++ wbarstylegen.sh
+>f+++++++++ weather.py
+>f+++++++++ windowpin.sh
+>f+++++++++ workflows.sh
+>f+++++++++ xdg-terminal-exec
+cd+++++++++ pygui/
+>f+++++++++ pygui/color.shuffle.py
+cd+++++++++ pyutils/
+>f+++++++++ pyutils/compositor.py
+>f+++++++++ pyutils/configuration.py
+>f+++++++++ pyutils/logger.py
+>f+++++++++ pyutils/pip_env.py
+>f+++++++++ pyutils/requirements.txt
+>f+++++++++ pyutils/xdg_base_dirs.py
+cd+++++++++ pyutils/__pycache__/
+>f+++++++++ pyutils/__pycache__/compositor.cpython-313.pyc
+>f+++++++++ pyutils/__pycache__/logger.cpython-313.pyc
+>f+++++++++ pyutils/__pycache__/pip_env.cpython-313.pyc
+>f+++++++++ pyutils/__pycache__/xdg_base_dirs.cpython-313.pyc
+cd+++++++++ pyutils/wrapper/
+>f+++++++++ pyutils/wrapper/fzf.py
+>f+++++++++ pyutils/wrapper/libnotify.py
+>f+++++++++ pyutils/wrapper/rofi.py
+cd+++++++++ pyutils/wrapper/__pycache__/
+>f+++++++++ pyutils/wrapper/__pycache__/libnotify.cpython-313.pyc
+>f+++++++++ pyutils/wrapper/__pycache__/rofi.cpython-313.pyc
+cd+++++++++ user/
+>f+++++++++ user/battery-conservation-toggle.sh
+>f+++++++++ user/battery-idle-toggle.sh
+>f+++++++++ user/fix-hid-dongles.sh
+>f+++++++++ user/kbd-backlight-status.sh
+>f+++++++++ user/linuxflip_ctrl.sh
+>f+++++++++ user/monitors-orientation-watch.sh
+>f+++++++++ user/power-action.sh
+cd+++++++++ user/.git/
+>f+++++++++ user/.git/COMMIT_EDITMSG
+>f+++++++++ user/.git/HEAD
+>f+++++++++ user/.git/config
+>f+++++++++ user/.git/description
+>f+++++++++ user/.git/index
+cd+++++++++ user/.git/hooks/
+>f+++++++++ user/.git/hooks/applypatch-msg.sample
+>f+++++++++ user/.git/hooks/commit-msg.sample
+>f+++++++++ user/.git/hooks/fsmonitor-watchman.sample
+>f+++++++++ user/.git/hooks/post-update.sample
+>f+++++++++ user/.git/hooks/pre-applypatch.sample
+>f+++++++++ user/.git/hooks/pre-commit.sample
+>f+++++++++ user/.git/hooks/pre-merge-commit.sample
+>f+++++++++ user/.git/hooks/pre-push.sample
+>f+++++++++ user/.git/hooks/pre-rebase.sample
+>f+++++++++ user/.git/hooks/pre-receive.sample
+>f+++++++++ user/.git/hooks/prepare-commit-msg.sample
+>f+++++++++ user/.git/hooks/push-to-checkout.sample
+>f+++++++++ user/.git/hooks/sendemail-validate.sample
+>f+++++++++ user/.git/hooks/update.sample
+cd+++++++++ user/.git/info/
+>f+++++++++ user/.git/info/exclude
+cd+++++++++ user/.git/logs/
+>f+++++++++ user/.git/logs/HEAD
+cd+++++++++ user/.git/logs/refs/
+cd+++++++++ user/.git/logs/refs/heads/
+>f+++++++++ user/.git/logs/refs/heads/main
+cd+++++++++ user/.git/logs/refs/remotes/
+cd+++++++++ user/.git/logs/refs/remotes/origin/
+>f+++++++++ user/.git/logs/refs/remotes/origin/main
+cd+++++++++ user/.git/objects/
+cd+++++++++ user/.git/objects/20/
+>f+++++++++ user/.git/objects/20/992ed08947ff5899f8413e86bff7ca77ac92d5
+cd+++++++++ user/.git/objects/26/
+>f+++++++++ user/.git/objects/26/d9741618448db1c14fdb87e6aafb3c31603c5c
+cd+++++++++ user/.git/objects/6f/
+>f+++++++++ user/.git/objects/6f/554e045ef99ad1cb1bf24c7353bf0c1c490604
+cd+++++++++ user/.git/objects/76/
+>f+++++++++ user/.git/objects/76/065e46311fe2ce031b3cc2aeca76ea7f5fe406
+cd+++++++++ user/.git/objects/a3/
+>f+++++++++ user/.git/objects/a3/dcb922c73ae33f11c5598b09ef3a8defd909df
+cd+++++++++ user/.git/objects/a7/
+>f+++++++++ user/.git/objects/a7/a92fd976d72e0958ddfb38d47a3ab27c1208d0
+cd+++++++++ user/.git/objects/b0/
+>f+++++++++ user/.git/objects/b0/3b15a9e3468fa8bc72bdc67476c3c4ff7ff585
+cd+++++++++ user/.git/objects/e6/
+>f+++++++++ user/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+cd+++++++++ user/.git/objects/f7/
+>f+++++++++ user/.git/objects/f7/37dc5828735cd1fa8ce4eb9762f46d250a57ce
+cd+++++++++ user/.git/objects/info/
+cd+++++++++ user/.git/objects/pack/
+cd+++++++++ user/.git/refs/
+cd+++++++++ user/.git/refs/heads/
+>f+++++++++ user/.git/refs/heads/main
+cd+++++++++ user/.git/refs/remotes/
+cd+++++++++ user/.git/refs/remotes/origin/
+>f+++++++++ user/.git/refs/remotes/origin/main
+cd+++++++++ user/.git/refs/tags/
+>>> Removing any git-related files from /home/PrT15/Rice/backup/config and /home/PrT15/Rice/backup/script
+>>> Git files stripped
+>>> Backup finished at Tue Aug 26 23:09:39 CDT 2025

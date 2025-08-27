@@ -1,0 +1,11 @@
+# Zapier Integration
+NEXT_PUBLIC_ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/YOUR_WEBHOOK_ID/
+ZAPIER_SECRET_KEY=your-secret-key-here
+#Pexels Integration for random image generation.
+PEXELS_KEY=Pexels Key
+#Transack
+ONRAMP_SECRET_KEY=Secre-Kye-Here
+NEXT_PUBLIC_ONRAMP_API_KEY=your-staging-or-live-api-key
+NEXT_PUBLIC_ONRAMP_ENV=STAGING OR PRODUCTION
+NEXT_PUBLIC_WALLET_ADDRESS=your_wallet_address_here
+

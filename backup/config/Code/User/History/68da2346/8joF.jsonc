@@ -1,0 +1,11 @@
+{
+  "custom/battery-conservation": {
+    "format": "Care Mode: {text}",
+    "return-type": "json",
+    "exec": "/home/PrT15/.local/lib/hyde/battery-conservation-mode.sh --status",
+    "on-click": "/home/PrT15/.local/lib/hyde/battery-conservation-mode.sh",
+    "interval": 30,
+    "tooltip": true,
+    "tooltip-format": "Battery Conservation Mode is currently {text}.\nClick to toggle."
+  }
+}

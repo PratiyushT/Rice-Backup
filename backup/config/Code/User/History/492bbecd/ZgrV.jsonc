@@ -1,0 +1,49 @@
+[
+  {
+    "name": "landscape",
+    "layer": "top",
+    "position": "top",
+    "mode": "dock",
+    "height": 10,
+    "exclusive": true,
+    "passthrough": false,
+    "fixed-center": true,
+    "spacing": 8,
+    "reload_style_on_change": true,
+    "include": [
+      "$XDG_CONFIG_HOME/waybar/modules/*json*",
+      "$XDG_CONFIG_HOME/waybar/includes/includes.json",
+      "$XDG_CONFIG_HOME/waybar/includes/pills.jsonc"
+    ],
+    "modules-left":   ["group/pill#left1", "group/pill#left2", "group/pill#left3"],
+    "modules-center": ["group/pill#center"],
+    "modules-right":  ["group/pill#right1", "group/pill#right2", "group/pill#right3"]
+  },
+  {
+    "name": "portrait",
+    "layer": "top",
+    "position": "top",
+    "mode": "dock",
+    "height": 10,
+    "exclusive": true,
+    "passthrough": false,
+    "fixed-center": false,
+    "spacing": 6,
+    "reload_style_on_change": true,
+    "include": [
+      "$XDG_CONFIG_HOME/waybar/modules/*json*",
+      "$XDG_CONFIG_HOME/waybar/includes/includes.json",
+      "$XDG_CONFIG_HOME/waybar/includes/pills.jsonc"
+    ],
+    "modules-left":   ["group/pill#left2"],
+    "modules-center": [],
+    "modules-right":  ["group/pill#center", "group/pill#right3", "group/pill#right1", "group/pill#right2"],
+    "clock": { "format": "{:%H:%M}", "tooltip": false },
+    "battery": { "format": "{capacity}%", "tooltip": false },
+    "network": { "format-wifi": " {signalStrength}%", "format-ethernet": "", "format-disconnected": "", "tooltip": false },
+    "pulseaudio": { "format": "{volume}%", "format-muted": "", "tooltip": false },
+    "pulseaudio#microphone": { "format": "{volume}%", "format-muted": "", "tooltip": false },
+    "custom/updates": { "max-length": 8, "min-length": 0, "tooltip": false },
+    "custom/keybindhint": { "max-length": 8, "min-length": 0, "tooltip": false }
+  }
+]

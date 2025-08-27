@@ -1,0 +1,12 @@
+{
+  "custom/kbd-backlight": {
+    "rotate": 0,
+    "exec":"/home/PrT15/.local/lib/hyde/kbd-backlight-status.sh --status",
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "return-type": "json",
+    "min-length": 6,
+    "tooltip": true,
+    "tooltip-format": "Keyboard Backlight level: {icon} {percent}%"
+  }
+}

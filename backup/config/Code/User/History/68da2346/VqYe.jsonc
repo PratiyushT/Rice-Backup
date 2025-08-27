@@ -1,0 +1,15 @@
+{
+  "custom/battery-conservation": {
+    "format": "🔋 {icon}",
+    "return-type": "json",
+    "exec": "~/.local/lib/hyde/battery-conservation-toggle.sh --status",
+    "on-click": "~/.local/lib/hyde/battery.conservation-toggle.sh",
+    "interval": 30,
+    "format-icons": {
+      "0": "0",  // Conservation Mode OFF
+      "1": "1",  // Conservation Mode ON
+      "default": ""
+    },
+    "tooltip": false
+  }
+}
