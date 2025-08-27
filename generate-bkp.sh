@@ -107,5 +107,12 @@ find "$DEST" "$SCRIPT_DEST" -maxdepth 3 -type f \( \
 
 echo ">>> Git files stripped" | tee -a "$LOG"
 
+# ========= Prune Code folder =========
+CODE_DEST="$DEST/Code/User"
+if [ -d "$CODE_DEST" ]; then
+  echo ">>> Pruning Code backup, keeping only settings.json and keybindings.json" | tee -a "$LOG"
+  find "$CODE_DEST" -type f ! -name "settings.json" ! -name "keybindings.json" -delete
+  find "$CODE_DEST" -type d -empty -delete
+fi
 
 echo ">>> Backup finished at $(date)" | tee -a "$LOG"

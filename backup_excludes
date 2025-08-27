@@ -1,0 +1,13 @@
+# Default ignores
+**/.git/**
+**/.git
+**/.gitignore
+**/.gitattributes
+**/.gitmodules
+
+# Exclude Code folder except keybindings + settings
++ /Code/
++ /Code/User/
++ /Code/User/keybindings.json
++ /Code/User/settings.json
+- /Code/**
