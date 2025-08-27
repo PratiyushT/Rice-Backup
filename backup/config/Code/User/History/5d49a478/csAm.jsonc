@@ -1,8 +1,0 @@
-"custom/osk": {
-  "format": " {}",
-  "exec": "hyprctl -j clients | jq -r '[.[] | select(.class==\"wvkbd-mobintl\" and .mapped==true)] | if length>0 then \"ON\" else \"OFF\" end'",
-  "interval": 1,
-  "on-click": "pgrep -x wvkbd-mobintl >/dev/null && pkill -RTMIN -x wvkbd-mobintl || (wvkbd-mobintl --hidden -L 260 & disown)",
-  "on-click-right": "pkill -USR2 -x wvkbd-mobintl",   // show
-  "on-click-middle": "pkill -USR1 -x wvkbd-mobintl"   // hide
-}

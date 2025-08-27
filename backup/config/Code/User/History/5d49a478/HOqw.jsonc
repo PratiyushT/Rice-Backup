@@ -1,6 +1,0 @@
-"custom/osk": {
-  "format": " {}",
-  "exec": "hyprctl -j clients | jq -r '[.[] | select(.class==\"wvkbd-mobintl\" and .mapped==true)] | if length>0 then \"ON\" else \"OFF\" end'",
-  "interval": 2,
-  "on-click": "pkill -SIGRTMIN wvkbd-mobintl || wvkbd-mobintl"
-}

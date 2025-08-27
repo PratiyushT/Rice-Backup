@@ -1,1 +1,0 @@
-Have the files in this folder at in $HOME/.local/lib/hyde/
