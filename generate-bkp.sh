@@ -8,6 +8,11 @@ LOG="$HOME/Rice/backup.log"
 SCRIPT_SRC="$HOME/.local/lib/hyde"
 SCRIPT_DEST="$HOME/Rice/backup/script"
 
+# new: local-share backups
+LOCAL_DEST="$HOME/Rice/backup/local"
+HYPR_SHARE_SRC="$HOME/.local/share/hypr"
+HYDE_SHARE_SRC="$HOME/.local/share/hyde"
+
 FOLDERS=(
   "Code - OSS/User"
   "Code/User"
@@ -85,24 +90,34 @@ done
 if [ -d "$SCRIPT_SRC" ]; then
   echo ">>> Syncing scripts (dereferencing symlinks): $SCRIPT_SRC -> $SCRIPT_DEST" | tee -a "$LOG"
   mkdir -p "$SCRIPT_DEST"
-  # Use -L if you want to embed the real files for any symlink (common for hyde/user)
   rsync -aL --delete --itemize-changes "$SCRIPT_SRC/" "$SCRIPT_DEST/" | tee -a "$LOG"
 else
   echo "!!! Skipped scripts: $SCRIPT_SRC (not found)" | tee -a "$LOG"
 fi
 
+# ========= Copy .local/share/hypr and .local/share/hyde =========
+mkdir -p "$LOCAL_DEST"
+
+if [ -d "$HYPR_SHARE_SRC" ]; then
+  echo ">>> Syncing local share: $HYPR_SHARE_SRC -> $LOCAL_DEST/hypr" | tee -a "$LOG"
+  rsync -a --delete "$HYPR_SHARE_SRC/" "$LOCAL_DEST/hypr/"
+else
+  echo "!!! Skipped local share: $HYPR_SHARE_SRC (not found)" | tee -a "$LOG"
+fi
+
+if [ -d "$HYDE_SHARE_SRC" ]; then
+  echo ">>> Syncing local share: $HYDE_SHARE_SRC -> $LOCAL_DEST/hyde" | tee -a "$LOG"
+  rsync -a --delete "$HYDE_SHARE_SRC/" "$LOCAL_DEST/hyde/"
+else
+  echo "!!! Skipped local share: $HYDE_SHARE_SRC (not found)" | tee -a "$LOG"
+fi
 
 # ========= Strip Git Files =========
-echo ">>> Removing any git-related files from $DEST and $SCRIPT_DEST" | tee -a "$LOG"
+echo ">>> Removing any git-related files from $DEST, $SCRIPT_DEST and $LOCAL_DEST" | tee -a "$LOG"
 
-# Remove .git directories recursively
-find "$DEST" "$SCRIPT_DEST" -type d -name ".git" -prune -exec rm -rf {} +
-
-# Remove common git metadata files if present
-find "$DEST" "$SCRIPT_DEST" -maxdepth 3 -type f \( \
-  -name ".gitignore" -o \
-  -name ".gitattributes" -o \
-  -name ".gitmodules" \
+find "$DEST" "$SCRIPT_DEST" "$LOCAL_DEST" -type d -name ".git" -prune -exec rm -rf {} +
+find "$DEST" "$SCRIPT_DEST" "$LOCAL_DEST" -maxdepth 3 -type f \( \
+  -name ".gitignore" -o -name ".gitattributes" -o -name ".gitmodules" \
 \) -exec rm -f {} +
 
 echo ">>> Git files stripped" | tee -a "$LOG"
