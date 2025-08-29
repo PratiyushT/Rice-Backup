@@ -38,3 +38,11 @@
 >>> Restore finished at Thu Aug 28 19:48:50 CDT 2025
 >>> Restoring local share from /home/PrT15/Rice/backup/local/waybar -> /home/PrT15/.local/share/waybar
 >>> Restore finished at Thu Aug 28 19:48:50 CDT 2025
+>>> Restore started at Thu Aug 28 23:44:14 CDT 2025
+>>> Restoring config files from /home/PrT15/Rice/backup/config -> /home/PrT15/.config
+>>> Restoring scripts from /home/PrT15/Rice/backup/script -> /home/PrT15/.local/lib/hyde
+>>> Restoring local share from /home/PrT15/Rice/backup/local/hypr -> /home/PrT15/.local/share/hypr
+>>> Restoring local share from /home/PrT15/Rice/backup/local/hyde -> /home/PrT15/.local/share/hyde
+>>> Restore finished at Thu Aug 28 23:44:14 CDT 2025
+>>> Restoring local share from /home/PrT15/Rice/backup/local/waybar -> /home/PrT15/.local/share/waybar
+>>> Restore finished at Thu Aug 28 23:44:14 CDT 2025

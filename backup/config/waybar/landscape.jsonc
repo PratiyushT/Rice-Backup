@@ -1,0 +1,91 @@
+{
+  "name": "landscape",
+  "layer": "top",
+  "output": [
+    "eDP-1"
+  ],
+  "position": "top",
+  "mode": "dock",
+  "height": 38,
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/modules/*json*",
+    "$XDG_CONFIG_HOME/waybar/includes/includes.json"
+  ],
+  "modules-left": [
+    "group/pill#hyde-menu",
+    "group/pill#system-info",
+    "group/pill#clock",
+    "group/pill#workspaces"
+  ],
+  "group/pill#hyde-menu": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/hyde-menu",
+      "custom/updates"
+    ]
+  },
+  "group/pill#system-info": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu",
+      "memory",
+      "custom/sensorsinfo"
+    ]
+  },
+  "group/pill#clock": {
+    "orientation": "inherit",
+    "modules": [
+      "clock"
+    ]
+  },
+  "group/pill#workspaces": {
+    "orientation": "inherit",
+    "modules": [
+      "hyprland/workspaces"
+    ]
+  },
+  "modules-right": [
+    "group/pill#tray",
+    "group/pill#utils",
+    "group/pill#power"
+  ],
+  "group/pill#tray": {
+    "orientation": "inherit",
+    "modules": [
+      "tray",
+      "battery",
+      "backlight",
+      "pulseaudio",
+      "pulseaudio#microphone"
+    ]
+  },
+  "group/pill#utils": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/cliphist",
+      "idle_inhibitor",
+      "custom/osk",
+      "custom/autorotate-menu",
+      "custom/display",
+      "custom/battery-conservation"
+    ]
+  },
+  "group/pill#power": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/weather"
+    ]
+  },
+  "modules-center": [
+    "group/pill#center"
+  ],
+  "group/pill#center": {
+    "orientation": "inherit",
+    "modules": [
+      "wlr/taskbar"
+    ]
+  }
+}

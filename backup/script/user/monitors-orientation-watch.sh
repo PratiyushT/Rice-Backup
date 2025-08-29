@@ -64,100 +64,103 @@ print_arrays() {
 }
 
 update_waybar_config() {
-  local target="$WAYBAR_CONFIG_OUT"
-  local tmp
-  tmp="$(mktemp)" || { notify_err "mktemp failed"; return 0; }
+  local target_dir="$(dirname "$WAYBAR_CONFIG_OUT")"
+  local portrait_target="$target_dir/portrait.jsonc"
+  local landscape_target="$target_dir/landscape.jsonc"
+  local tmp_portrait tmp_landscape
+  tmp_portrait="$(mktemp)" || { notify_err "mktemp portrait failed"; return 0; }
+  tmp_landscape="$(mktemp)" || { notify_err "mktemp landscape failed"; return 0; }
 
   local p_json l_json
-  p_json="$(arr_to_json "${PORTRAIT[@]}")"  || { notify_err "Failed to build PORTRAIT json"; rm -f "$tmp"; return 0; }
-  l_json="$(arr_to_json "${LANDSCAPE[@]}")" || { notify_err "Failed to build LANDSCAPE json"; rm -f "$tmp"; return 0; }
+  p_json="$(arr_to_json "${PORTRAIT[@]}")"  || { notify_err "Failed to build PORTRAIT json"; rm -f "$tmp_portrait" "$tmp_landscape"; return 0; }
+  l_json="$(arr_to_json "${LANDSCAPE[@]}")" || { notify_err "Failed to build LANDSCAPE json"; rm -f "$tmp_portrait" "$tmp_landscape"; return 0; }
 
-  if ! jq --argjson p "$p_json" --argjson l "$l_json" '
-      .[0].output = $l
-      | .[1].output = $p
-    ' >"$tmp" <<'JSON'
-[
-  {
-    "name": "landscape",
-    "layer": "top",
-    "output": ["*"],
-    "position": "top",
-    "mode": "dock",
-    "height": 38,
-    "exclusive": true,
-    "passthrough": false,
-    "reload_style_on_change": true,
-    "include": [
-      "$XDG_CONFIG_HOME/waybar/modules/*json*",
-      "$XDG_CONFIG_HOME/waybar/includes/includes.json"
-    ],
-    "modules-left": [
-      "group/pill#hyde-menu",
-      "group/pill#system-info",
-      "group/pill#clock",
-      "group/pill#workspaces"
-    ],
-    "group/pill#hyde-menu": { "orientation": "inherit", "modules": ["custom/hyde-menu"] },
-    "group/pill#system-info": { "orientation": "inherit", "modules": ["cpu", "memory", "custom/sensorsinfo"] },
-    "group/pill#clock": { "orientation": "inherit", "modules": ["clock"] },
-    "group/pill#workspaces": { "orientation": "inherit", "modules": ["hyprland/workspaces"] },
-
-    "modules-right": ["group/pill#tray", "group/pill#utils", "group/pill#power"],
-    "group/pill#tray": { "orientation": "inherit", "modules": ["tray", "battery", "backlight", "pulseaudio", "pulseaudio#microphone"] },
-    "group/pill#utils": { "orientation": "inherit", "modules": ["custom/cliphist", "idle_inhibitor", "custom/osk", "custom/autorotate-menu", "custom/display", "custom/battery-conservation"] },
-    "group/pill#power": { "orientation": "inherit", "modules": ["custom/updates", "custom/dunst"] },
-
-    "modules-center": ["group/pill#center"],
-    "group/pill#center": { "orientation": "inherit", "modules": ["wlr/taskbar"] }
-  },
-  {
-    "name": "portrait",
-    "layer": "top",
-    "output": ["*"],
-    "position": "top",
-    "mode": "dock",
-    "height": 38,
-    "exclusive": true,
-    "passthrough": false,
-    "reload_style_on_change": true,
-    "include": [
-      "$XDG_CONFIG_HOME/waybar/modules/*json*",
-      "$XDG_CONFIG_HOME/waybar/includes/includes.json"
-    ],
-    "modules-left": ["group/pill#hyde-menu", "group/pill#system-info", "group/pill#clock"],
-    "group/pill#hyde-menu": { "orientation": "inherit", "modules": ["custom/hyde-menu"] },
-    "group/pill#system-info": { "orientation": "inherit", "modules": ["custom/sensorsinfo"] },
-    "group/pill#clock": { "orientation": "inherit", "modules": ["clock"] },
-
-    "modules-right": ["group/pill#tray", "group/pill#utils", "group/pill#power"],
-    "group/pill#tray": { "orientation": "inherit", "modules": ["tray", "battery", "backlight", "pulseaudio", "pulseaudio#microphone"] },
-    "group/pill#utils": { "orientation": "inherit", "modules": ["custom/cliphist", "idle_inhibitor", "custom/osk", "custom/autorotate-menu", "custom/display", "custom/battery-conservation"] },
-    "group/pill#power": { "orientation": "inherit", "modules": ["custom/updates", "custom/dunst"] },
-
-    "modules-center": ["group/pill#center"],
-    "group/pill#center": { "orientation": "inherit", "modules": ["wlr/taskbar"] }
-  }
-]
+  # Landscape bar
+  if ! jq --argjson l "$l_json" '
+      .output = $l
+    ' >"$tmp_landscape" <<'JSON'
+{
+  "name": "landscape",
+  "layer": "top",
+  "output": ["*"],
+  "position": "top",
+  "mode": "dock",
+  "height": 38,
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/modules/*json*",
+    "$XDG_CONFIG_HOME/waybar/includes/includes.json"
+  ],
+  "modules-left": [
+    "group/pill#hyde-menu",
+    "group/pill#system-info",
+    "group/pill#clock",
+    "group/pill#workspaces"
+  ],
+  "group/pill#hyde-menu": { "orientation": "inherit", "modules": ["custom/hyde-menu", "custom/updates"] },
+  "group/pill#system-info": { "orientation": "inherit", "modules": ["cpu", "memory", "custom/sensorsinfo"] },
+  "group/pill#clock": { "orientation": "inherit", "modules": ["clock"] },
+  "group/pill#workspaces": { "orientation": "inherit", "modules": ["hyprland/workspaces"] },
+  "modules-right": ["group/pill#tray", "group/pill#utils", "group/pill#power"],
+  "group/pill#tray": { "orientation": "inherit", "modules": ["tray", "battery", "backlight", "pulseaudio", "pulseaudio#microphone"] },
+  "group/pill#utils": { "orientation": "inherit", "modules": ["custom/cliphist", "idle_inhibitor", "custom/osk", "custom/autorotate-menu", "custom/display", "custom/battery-conservation"] },
+  "group/pill#power": { "orientation": "inherit", "modules": ["custom/weather"] },
+  "modules-center": ["group/pill#center"],
+  "group/pill#center": { "orientation": "inherit", "modules": ["wlr/taskbar"] }
+}
 JSON
   then
-    notify_err "jq failed to render Waybar config. Original file left intact."
-    rm -f "$tmp"
-    return 0
+    notify_err "jq failed to render landscape config."
+    rm -f "$tmp_landscape"
+  else
+    mv -f "$tmp_landscape" "$landscape_target"
   fi
 
-  if ! jq -e 'type=="array" and length==2 and (.[0]|type=="object") and (.[1]|type=="object")' "$tmp" >/dev/null; then
-    notify_err "Rendered config failed validation. Skipping write."
-    rm -f "$tmp"
-    return 0
+  # Portrait bar
+  if ! jq --argjson p "$p_json" '
+      .output = $p
+    ' >"$tmp_portrait" <<'JSON'
+{
+  "name": "portrait",
+  "layer": "top",
+  "output": ["*"],
+  "position": "top",
+  "mode": "dock",
+  "height": 38,
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/modules/*json*",
+    "$XDG_CONFIG_HOME/waybar/includes/includes.json"
+  ],
+  "modules-left": ["group/pill#hyde-menu", "group/pill#system-info", "group/pill#clock"],
+  "group/pill#hyde-menu": { "orientation": "inherit", "modules": ["custom/hyde-menu","custom/updates"] },
+  "group/pill#system-info": { "orientation": "inherit", "modules": ["custom/sensorsinfo"] },
+  "group/pill#clock": { "orientation": "inherit", "modules": ["clock"] },
+  "modules-right": ["group/pill#tray", "group/pill#utils", "group/pill#power"],
+  "group/pill#tray": { "orientation": "inherit", "modules": ["tray", "battery", "backlight", "pulseaudio", "pulseaudio#microphone"] },
+  "group/pill#utils": { "orientation": "inherit", "modules": ["custom/cliphist", "idle_inhibitor", "custom/osk", "custom/autorotate-menu", "custom/display", "custom/battery-conservation"] },
+  "group/pill#power": { "orientation": "inherit", "modules": ["custom/weather"] },
+  "modules-center": ["group/pill#center"],
+  "group/pill#center": { "orientation": "inherit", "modules": ["wlr/taskbar"] }
+}
+JSON
+  then
+    notify_err "jq failed to render portrait config."
+    rm -f "$tmp_portrait"
+  else
+    mv -f "$tmp_portrait" "$portrait_target"
   fi
 
-  mv -f "$tmp" "$target"
-
+  # Reload Waybar
   if ! pkill -SIGUSR2 waybar 2>/dev/null; then
     nohup waybar >/dev/null 2>&1 &
   fi
 
-  printf '%s waybar config updated -> %s\n' "$LOG_PREFIX" "$target"
+  printf '%s waybar configs updated -> %s, %s\n' "$LOG_PREFIX" "$portrait_target" "$landscape_target"
 }
 
 sleep_ms() {

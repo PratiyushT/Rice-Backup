@@ -1,9 +1,10 @@
 {
   "custom/weather": {
-    "exec": "hyde-shell weather",
+    "exec": "hyde-shell user/weather.rs",
     "tooltip": true,
     "format": "{0}",
-    "interval": 30,
+    "interval": 0,
+    "signal": 8,
     "return-type": "json"
   }
 }

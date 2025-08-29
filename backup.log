@@ -552,3 +552,52 @@
 >>> Git files stripped
 >>> Pruning Code backup, keeping only settings.json and keybindings.json
 >>> Backup finished at Thu Aug 28 23:43:55 CDT 2025
+>>> Backup started at Fri Aug 29 11:24:08 CDT 2025
+>>> Syncing folder: /home/PrT15/.config/Code - OSS/User -> /home/PrT15/Rice/backup/config/Code - OSS/User
+>>> Syncing folder: /home/PrT15/.config/Code/User -> /home/PrT15/Rice/backup/config/Code/User
+>>> Syncing folder: /home/PrT15/.config/Kvantum -> /home/PrT15/Rice/backup/config/Kvantum
+!!! Skipped folder: /home/PrT15/.config/MangoHud (not found)
+!!! Skipped folder: /home/PrT15/.config/VSCodium/User (not found)
+>>> Syncing folder: /home/PrT15/.config/dunst -> /home/PrT15/Rice/backup/config/dunst
+>>> Syncing folder: /home/PrT15/.config/fastfetch -> /home/PrT15/Rice/backup/config/fastfetch
+!!! Skipped folder: /home/PrT15/.config/fish (not found)
+>>> Syncing folder: /home/PrT15/.config/gtk-3.0 -> /home/PrT15/Rice/backup/config/gtk-3.0
+>>> Syncing folder: /home/PrT15/.config/hyde -> /home/PrT15/Rice/backup/config/hyde
+>>> Syncing folder: /home/PrT15/.config/hypr -> /home/PrT15/Rice/backup/config/hypr
+>>> Syncing folder: /home/PrT15/.config/kitty -> /home/PrT15/Rice/backup/config/kitty
+!!! Skipped folder: /home/PrT15/.config/lsd (not found)
+>>> Syncing folder: /home/PrT15/.config/menus -> /home/PrT15/Rice/backup/config/menus
+>>> Syncing folder: /home/PrT15/.config/nwg-look -> /home/PrT15/Rice/backup/config/nwg-look
+>>> Syncing folder: /home/PrT15/.config/qt5ct -> /home/PrT15/Rice/backup/config/qt5ct
+>>> Syncing folder: /home/PrT15/.config/qt6ct -> /home/PrT15/Rice/backup/config/qt6ct
+>>> Syncing folder: /home/PrT15/.config/rofi -> /home/PrT15/Rice/backup/config/rofi
+!!! Skipped folder: /home/PrT15/.config/satty (not found)
+>>> Syncing folder: /home/PrT15/.config/starship -> /home/PrT15/Rice/backup/config/starship
+!!! Skipped folder: /home/PrT15/.config/swaylock (not found)
+>>> Syncing folder: /home/PrT15/.config/systemd/user -> /home/PrT15/Rice/backup/config/systemd/user
+>>> Syncing folder: /home/PrT15/.config/uwsm -> /home/PrT15/Rice/backup/config/uwsm
+>>> Syncing folder: /home/PrT15/.config/vim -> /home/PrT15/Rice/backup/config/vim
+>>> Syncing folder: /home/PrT15/.config/waybar -> /home/PrT15/Rice/backup/config/waybar
+>>> Syncing folder: /home/PrT15/.config/wlogout -> /home/PrT15/Rice/backup/config/wlogout
+>>> Syncing folder: /home/PrT15/.config/xsettingsd -> /home/PrT15/Rice/backup/config/xsettingsd
+>>> Syncing folder: /home/PrT15/.config/zsh -> /home/PrT15/Rice/backup/config/zsh
+!!! Skipped file: /home/PrT15/.config/baloorc (not found)
+>>> Copying file: /home/PrT15/.config/code-flags.conf -> /home/PrT15/Rice/backup/config/code-flags.conf
+!!! Skipped file: /home/PrT15/.config/codium-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/dolphinrc -> /home/PrT15/Rice/backup/config/dolphinrc
+!!! Skipped file: /home/PrT15/.config/electron-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/kdeglobals -> /home/PrT15/Rice/backup/config/kdeglobals
+!!! Skipped file: /home/PrT15/.config/libinput-gestures.conf (not found)
+!!! Skipped file: /home/PrT15/.config/spotify-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/xdg-terminals.list -> /home/PrT15/Rice/backup/config/xdg-terminals.list
+>>> Syncing scripts (dereferencing symlinks): /home/PrT15/.local/lib/hyde -> /home/PrT15/Rice/backup/script
+.d..t...... user/
+>f.st...... user/monitors-orientation-watch.sh
+>f+++++++++ user/weather.rs
+>>> Syncing local share: /home/PrT15/.local/share/hypr -> /home/PrT15/Rice/backup/local/hypr
+>>> Syncing local share: /home/PrT15/.local/share/hyde -> /home/PrT15/Rice/backup/local/hyde
+>>> Syncing local share: /home/PrT15/.local/share/waybar -> /home/PrT15/Rice/backup/local/waybar
+>>> Removing any git-related files from /home/PrT15/Rice/backup/config, /home/PrT15/Rice/backup/script and /home/PrT15/Rice/backup/local
+>>> Git files stripped
+>>> Pruning Code backup, keeping only settings.json and keybindings.json
+>>> Backup finished at Fri Aug 29 11:24:10 CDT 2025

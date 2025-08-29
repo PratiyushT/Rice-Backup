@@ -5,18 +5,27 @@
     "menu": "on-click",
     "menu-file": "/home/PrT15/.local/share/waybar/menus/hyde-menu.xml",
     "menu-actions": {
+      // Wallpaper, Waybar, Workflows (as you had)
       "animations-select": "hyde-shell animations --select",
       "wallpaper-select": "hyde-shell wallpaper --select --global",
       "wallpaper-random": "hyde-shell wallpaper --backend swww --random --global",
       "waybar-restart": "hyde-shell waybar -ubg",
       "waybar-layout-select": "hyde-shell waybar --select",
-      "workflows-select": "hyde-shell workflows --select;pkill -RTMIN+19 waybar",
-      "shutdown-now": "shutdown now",
-      "shutdown-wait": "systemctl poweroff",
-      "reboot-now": "systemctl reboot",
-      "reboot-firmware": "systemctl reboot --firmware-setup",
+      "workflows-select": "hyde-shell workflows --select; pkill -RTMIN+19 waybar",
+
+      // Power submenu — ensure every ID has a handler
+      "lock": "sh -lc 'command -v hyprlock >/dev/null && hyprlock || loginctl lock-session'",
+      "logout": "sh -lc 'hyprctl dispatch exit || loginctl terminate-user \"$USER\"'",
+
+      // Suspend & Hibernate via systemd (works with polkit agent)
       "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate"
+      "hibernate": "systemctl hibernate",
+
+      // Shutdown & Reboot — prefer loginctl for user-invoked actions
+      "shutdown-now": "loginctl poweroff",
+      "shutdown-wait": "systemctl poweroff",
+      "reboot-now": "loginctl reboot",
+      "reboot-firmware": "systemctl reboot --firmware-setup"
     }
   }
 }
