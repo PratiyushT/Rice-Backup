@@ -12,6 +12,7 @@ SCRIPT_DEST="$HOME/Rice/backup/script"
 LOCAL_DEST="$HOME/Rice/backup/local"
 HYPR_SHARE_SRC="$HOME/.local/share/hypr"
 HYDE_SHARE_SRC="$HOME/.local/share/hyde"
+WAYBAR_SHARE_SRC="$HOME/.local/share/waybar"
 
 FOLDERS=(
   "Code - OSS/User"
@@ -110,6 +111,13 @@ if [ -d "$HYDE_SHARE_SRC" ]; then
   rsync -a --delete "$HYDE_SHARE_SRC/" "$LOCAL_DEST/hyde/"
 else
   echo "!!! Skipped local share: $HYDE_SHARE_SRC (not found)" | tee -a "$LOG"
+fi
+
+if [ -d "$WAYBAR_SHARE_SRC" ]; then
+  echo ">>> Syncing local share: $WAYBAR_SHARE_SRC -> $LOCAL_DEST/waybar" | tee -a "$LOG"
+  rsync -a --delete "$WAYBAR_SHARE_SRC/" "$LOCAL_DEST/waybar/"
+else
+  echo "!!! Skipped local share: $WAYBAR_SHARE_SRC (not found)" | tee -a "$LOG"
 fi
 
 # ========= Strip Git Files =========

@@ -26,16 +26,16 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
 
   " Define terminal colors based on the background
   if s:is_dark
-    let g:terminal_ansi_colors = ['483638', 'A37F65', 'C27A82', 'C2B77A',
-                                \ '6565A3', 'E6DA9A', 'E69AA2', '09090A',
-                                \ '7E7E89', 'C2987A', 'E69AA2', 'F0E5AA',
-                                \ '7A7AC2', 'F0E5AA', 'F0AAB2', 'FFFFFF']
+    let g:terminal_ansi_colors = ['1C3A24', '65A38D', '7AC28D', '95C27A',
+                                \ '6588A3', 'B7E69A', '9AE6AE', 'FFFFFF',
+                                \ '53ACF2', '7AC2A8', '9AE6AE', 'C5F0AA',
+                                \ '7AA2C2', 'C5F0AA', 'AAF0BD', 'FFFFFF']
   else
     " Lighter colors for light theme
-    let g:terminal_ansi_colors = ['FFFFFF', 'E6BA9A', 'F0AAB2', 'F0E5AA',
-                                \ '9A9AE6', 'FFF8CC', 'FFCCD2', 'D6D1B4',
-                                \ '09090A', 'F0C7AA', 'FFCCD2', 'FFF8CC',
-                                \ 'AAAAF0', 'FFF8CC', 'FFCCD2', '483638']
+    let g:terminal_ansi_colors = ['FFFFFF', '9AE6CA', 'AAF0BD', 'C5F0AA',
+                                \ '9AC4E6', 'DFFFCC', 'CCFFDA', '6A8957',
+                                \ 'FFFFFF', 'AAF0D6', 'CCFFDA', 'DFFFCC',
+                                \ 'AAD1F0', 'DFFFCC', 'CCFFDA', '1C3A24']
   endif
 
   " Nvim uses g:terminal_color_{0-15} instead
@@ -85,9 +85,9 @@ endfunction
 " Function to be called for selection background
 function! InverseSelectionBg()
   if &background == 'dark'
-    return 'FFCCD2'
+    return 'CCFFDA'
   else
-    return '292952'
+    return '294052'
   endif
 endfunction
 
@@ -123,106 +123,106 @@ call s:update_dynamic_highlights()
 if &background == 'dark'
   " Base UI elements with transparent backgrounds
   hi Normal guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
-  hi Pmenu guibg=#D6D1B4 guifg=#FFFFFF gui=NONE cterm=NONE
-  hi StatusLine guifg=#FFFFFF guibg=#D6D1B4 gui=NONE cterm=NONE
-  hi StatusLineNC guifg=#E8E8E8 guibg=#7E7E89 gui=NONE cterm=NONE
-  hi VertSplit guifg=#A3656C guibg=NONE gui=NONE cterm=NONE
-  hi LineNr guifg=#A3656C guibg=NONE gui=NONE cterm=NONE
+  hi Pmenu guibg=#6A8957 guifg=#FFFFFF gui=NONE cterm=NONE
+  hi StatusLine guifg=#FFFFFF guibg=#6A8957 gui=NONE cterm=NONE
+  hi StatusLineNC guifg=#100F0E guibg=#53ACF2 gui=NONE cterm=NONE
+  hi VertSplit guifg=#65A376 guibg=NONE gui=NONE cterm=NONE
+  hi LineNr guifg=#65A376 guibg=NONE gui=NONE cterm=NONE
   hi SignColumn guifg=NONE guibg=NONE gui=NONE cterm=NONE
-  hi FoldColumn guifg=#E8E8E8 guibg=NONE gui=NONE cterm=NONE
+  hi FoldColumn guifg=#100F0E guibg=NONE gui=NONE cterm=NONE
 
   " NeoTree with transparent background including unfocused state
   hi NeoTreeNormal guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
   hi NeoTreeEndOfBuffer guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
   hi NeoTreeFloatNormal guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
-  hi NeoTreeFloatBorder guifg=#A3656C guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeWinSeparator guifg=#7E7E89 guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeFloatBorder guifg=#65A376 guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeWinSeparator guifg=#53ACF2 guibg=NONE gui=NONE cterm=NONE
 
   " NeoTree with transparent background
   hi NeoTreeNormal guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
   hi NeoTreeEndOfBuffer guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
-  hi NeoTreeRootName guifg=#FFCCD2 guibg=NONE gui=bold cterm=bold
+  hi NeoTreeRootName guifg=#CCFFDA guibg=NONE gui=bold cterm=bold
 
   " TabLine highlighting with complementary accents
-  hi TabLine guifg=#E8E8E8 guibg=#D6D1B4 gui=NONE cterm=NONE
+  hi TabLine guifg=#100F0E guibg=#6A8957 gui=NONE cterm=NONE
   hi TabLineFill guifg=NONE guibg=NONE gui=NONE cterm=NONE
-  hi TabLineSel guifg=#483638 guibg=#FFCCD2 gui=bold cterm=bold
-  hi TabLineSeparator guifg=#A3656C guibg=#D6D1B4 gui=NONE cterm=NONE
+  hi TabLineSel guifg=#1C3A24 guibg=#CCFFDA gui=bold cterm=bold
+  hi TabLineSeparator guifg=#65A376 guibg=#6A8957 gui=NONE cterm=NONE
 
   " Interactive elements with dynamic contrast
-  hi Search guifg=#7E7E89 guibg=#F0AAB2 gui=NONE cterm=NONE
-  hi Visual guifg=#7E7E89 guibg=#E69AA2 gui=NONE cterm=NONE
-  hi MatchParen guifg=#7E7E89 guibg=#FFCCD2 gui=bold cterm=bold
+  hi Search guifg=#53ACF2 guibg=#AAF0BD gui=NONE cterm=NONE
+  hi Visual guifg=#53ACF2 guibg=#9AE6AE gui=NONE cterm=NONE
+  hi MatchParen guifg=#53ACF2 guibg=#CCFFDA gui=bold cterm=bold
 
   " Menu item hover highlight
-  hi CmpItemAbbrMatch guifg=#FFCCD2 guibg=NONE gui=bold cterm=bold
-  hi CmpItemAbbrMatchFuzzy guifg=#F0AAB2 guibg=NONE gui=bold cterm=bold
-  hi CmpItemMenu guifg=#E8E8E8 guibg=NONE gui=italic cterm=italic
+  hi CmpItemAbbrMatch guifg=#CCFFDA guibg=NONE gui=bold cterm=bold
+  hi CmpItemAbbrMatchFuzzy guifg=#AAF0BD guibg=NONE gui=bold cterm=bold
+  hi CmpItemMenu guifg=#100F0E guibg=NONE gui=italic cterm=italic
   hi CmpItemAbbr guifg=#FFFFFF guibg=NONE gui=NONE cterm=NONE
-  hi CmpItemAbbrDeprecated guifg=#09090A guibg=NONE gui=strikethrough cterm=strikethrough
+  hi CmpItemAbbrDeprecated guifg=#FFFFFF guibg=NONE gui=strikethrough cterm=strikethrough
 
   " Specific menu highlight groups
-  hi WhichKey guifg=#FFCCD2 guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeySeparator guifg=#09090A guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeyGroup guifg=#E69AA2 guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeyDesc guifg=#F0AAB2 guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeyFloat guibg=#7E7E89 guifg=NONE gui=NONE cterm=NONE
+  hi WhichKey guifg=#CCFFDA guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeySeparator guifg=#FFFFFF guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeyGroup guifg=#9AE6AE guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeyDesc guifg=#AAF0BD guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeyFloat guibg=#53ACF2 guifg=NONE gui=NONE cterm=NONE
 
   " Selection and hover highlights with inverted colors
-  hi CursorColumn guifg=NONE guibg=#D6D1B4 gui=NONE cterm=NONE
-  hi Cursor guibg=#FFFFFF guifg=#483638 gui=NONE cterm=NONE
-  hi lCursor guibg=#FFFFFF guifg=#483638 gui=NONE cterm=NONE
-  hi CursorIM guibg=#FFFFFF guifg=#483638 gui=NONE cterm=NONE
-  hi TermCursor guibg=#FFFFFF guifg=#483638 gui=NONE cterm=NONE
-  hi TermCursorNC guibg=#E8E8E8 guifg=#483638 gui=NONE cterm=NONE
+  hi CursorColumn guifg=NONE guibg=#6A8957 gui=NONE cterm=NONE
+  hi Cursor guibg=#FFFFFF guifg=#1C3A24 gui=NONE cterm=NONE
+  hi lCursor guibg=#FFFFFF guifg=#1C3A24 gui=NONE cterm=NONE
+  hi CursorIM guibg=#FFFFFF guifg=#1C3A24 gui=NONE cterm=NONE
+  hi TermCursor guibg=#FFFFFF guifg=#1C3A24 gui=NONE cterm=NONE
+  hi TermCursorNC guibg=#100F0E guifg=#1C3A24 gui=NONE cterm=NONE
   hi CursorLine guibg=NONE ctermbg=NONE gui=underline cterm=underline
-  hi CursorLineNr guifg=#FFCCD2 guibg=NONE gui=bold cterm=bold
+  hi CursorLineNr guifg=#CCFFDA guibg=NONE gui=bold cterm=bold
 
-  hi QuickFixLine guifg=#7E7E89 guibg=#E69AA2 gui=NONE cterm=NONE
-  hi IncSearch guifg=#7E7E89 guibg=#FFCCD2 gui=NONE cterm=NONE
-  hi NormalNC guibg=#7E7E89 guifg=#E8E8E8 gui=NONE cterm=NONE
-  hi Directory guifg=#F0AAB2 guibg=NONE gui=NONE cterm=NONE
-  hi WildMenu guifg=#7E7E89 guibg=#FFCCD2 gui=bold cterm=bold
+  hi QuickFixLine guifg=#53ACF2 guibg=#9AE6AE gui=NONE cterm=NONE
+  hi IncSearch guifg=#53ACF2 guibg=#CCFFDA gui=NONE cterm=NONE
+  hi NormalNC guibg=#53ACF2 guifg=#100F0E gui=NONE cterm=NONE
+  hi Directory guifg=#AAF0BD guibg=NONE gui=NONE cterm=NONE
+  hi WildMenu guifg=#53ACF2 guibg=#CCFFDA gui=bold cterm=bold
 
   " Add highlight groups for focused items with inverted colors
-  hi CursorLineFold guifg=#FFCCD2 guibg=#7E7E89 gui=NONE cterm=NONE
-  hi FoldColumn guifg=#E8E8E8 guibg=NONE gui=NONE cterm=NONE
-  hi Folded guifg=#FFFFFF guibg=#D6D1B4 gui=italic cterm=italic
+  hi CursorLineFold guifg=#CCFFDA guibg=#53ACF2 gui=NONE cterm=NONE
+  hi FoldColumn guifg=#100F0E guibg=NONE gui=NONE cterm=NONE
+  hi Folded guifg=#FFFFFF guibg=#6A8957 gui=italic cterm=italic
 
   " File explorer specific highlights
   hi NeoTreeNormal guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
   hi NeoTreeEndOfBuffer guibg=NONE guifg=#FFFFFF gui=NONE cterm=NONE
-  hi NeoTreeRootName guifg=#FFCCD2 guibg=NONE gui=bold cterm=bold
+  hi NeoTreeRootName guifg=#CCFFDA guibg=NONE gui=bold cterm=bold
   hi NeoTreeFileName guifg=#FFFFFF guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeFileIcon guifg=#F0AAB2 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeDirectoryName guifg=#F0AAB2 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeDirectoryIcon guifg=#F0AAB2 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitModified guifg=#E69AA2 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitAdded guifg=#C27A82 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitDeleted guifg=#A37F65 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitUntracked guifg=#C2B77A guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeIndentMarker guifg=#8F575D guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeSymbolicLinkTarget guifg=#E69AA2 guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeFileIcon guifg=#AAF0BD guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeDirectoryName guifg=#AAF0BD guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeDirectoryIcon guifg=#AAF0BD guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitModified guifg=#9AE6AE guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitAdded guifg=#7AC28D guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitDeleted guifg=#65A38D guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitUntracked guifg=#95C27A guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeIndentMarker guifg=#578F66 guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeSymbolicLinkTarget guifg=#9AE6AE guibg=NONE gui=NONE cterm=NONE
 
   " File explorer cursor highlights with strong contrast
-  " hi NeoTreeCursorLine guibg=#E69AA2 guifg=#483638 gui=bold cterm=bold
+  " hi NeoTreeCursorLine guibg=#9AE6AE guifg=#1C3A24 gui=bold cterm=bold
   " hi! link NeoTreeCursor NeoTreeCursorLine
   " hi! link NeoTreeCursorLineSign NeoTreeCursorLine
 
   " Use wallbash colors for explorer snack in dark mode
-  hi WinBar guifg=#FFFFFF guibg=#D6D1B4 gui=bold cterm=bold
-  hi WinBarNC guifg=#E8E8E8 guibg=#7E7E89 gui=NONE cterm=NONE
-  hi ExplorerSnack guibg=#FFCCD2 guifg=#483638 gui=bold cterm=bold
-  hi BufferTabpageFill guibg=#483638 guifg=#09090A gui=NONE cterm=NONE
-  hi BufferCurrent guifg=#FFFFFF guibg=#FFCCD2 gui=bold cterm=bold
-  hi BufferCurrentMod guifg=#FFFFFF guibg=#E69AA2 gui=bold cterm=bold
-  hi BufferCurrentSign guifg=#FFCCD2 guibg=#7E7E89 gui=NONE cterm=NONE
-  hi BufferVisible guifg=#FFFFFF guibg=#D6D1B4 gui=NONE cterm=NONE
-  hi BufferVisibleMod guifg=#E8E8E8 guibg=#D6D1B4 gui=NONE cterm=NONE
-  hi BufferVisibleSign guifg=#E69AA2 guibg=#7E7E89 gui=NONE cterm=NONE
-  hi BufferInactive guifg=#09090A guibg=#7E7E89 gui=NONE cterm=NONE
-  hi BufferInactiveMod guifg=#A3656C guibg=#7E7E89 gui=NONE cterm=NONE
-  hi BufferInactiveSign guifg=#A3656C guibg=#7E7E89 gui=NONE cterm=NONE
+  hi WinBar guifg=#FFFFFF guibg=#6A8957 gui=bold cterm=bold
+  hi WinBarNC guifg=#100F0E guibg=#53ACF2 gui=NONE cterm=NONE
+  hi ExplorerSnack guibg=#CCFFDA guifg=#1C3A24 gui=bold cterm=bold
+  hi BufferTabpageFill guibg=#1C3A24 guifg=#FFFFFF gui=NONE cterm=NONE
+  hi BufferCurrent guifg=#FFFFFF guibg=#CCFFDA gui=bold cterm=bold
+  hi BufferCurrentMod guifg=#FFFFFF guibg=#9AE6AE gui=bold cterm=bold
+  hi BufferCurrentSign guifg=#CCFFDA guibg=#53ACF2 gui=NONE cterm=NONE
+  hi BufferVisible guifg=#FFFFFF guibg=#6A8957 gui=NONE cterm=NONE
+  hi BufferVisibleMod guifg=#100F0E guibg=#6A8957 gui=NONE cterm=NONE
+  hi BufferVisibleSign guifg=#9AE6AE guibg=#53ACF2 gui=NONE cterm=NONE
+  hi BufferInactive guifg=#FFFFFF guibg=#53ACF2 gui=NONE cterm=NONE
+  hi BufferInactiveMod guifg=#65A376 guibg=#53ACF2 gui=NONE cterm=NONE
+  hi BufferInactiveSign guifg=#65A376 guibg=#53ACF2 gui=NONE cterm=NONE
 
   " Fix link colors to make them more visible
   hi link Hyperlink NONE
@@ -240,107 +240,107 @@ if &background == 'dark'
   hi markdownIdDeclaration guifg=#FF00FF guibg=NONE gui=bold cterm=bold
 else
   " Light theme with transparent backgrounds
-  hi Normal guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi Pmenu guibg=#09090A guifg=#483638 gui=NONE cterm=NONE
-  hi StatusLine guifg=#FFFFFF guibg=#7D764B gui=NONE cterm=NONE
-  hi StatusLineNC guifg=#483638 guibg=#E8E8E8 gui=NONE cterm=NONE
-  hi VertSplit guifg=#7D764B guibg=NONE gui=NONE cterm=NONE
-  hi LineNr guifg=#7D764B guibg=NONE gui=NONE cterm=NONE
+  hi Normal guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi Pmenu guibg=#FFFFFF guifg=#1C3A24 gui=NONE cterm=NONE
+  hi StatusLine guifg=#FFFFFF guibg=#5E7D4B gui=NONE cterm=NONE
+  hi StatusLineNC guifg=#1C3A24 guibg=#100F0E gui=NONE cterm=NONE
+  hi VertSplit guifg=#5E7D4B guibg=NONE gui=NONE cterm=NONE
+  hi LineNr guifg=#5E7D4B guibg=NONE gui=NONE cterm=NONE
   hi SignColumn guifg=NONE guibg=NONE gui=NONE cterm=NONE
-  hi FoldColumn guifg=#7E7E89 guibg=NONE gui=NONE cterm=NONE
+  hi FoldColumn guifg=#53ACF2 guibg=NONE gui=NONE cterm=NONE
 
   " NeoTree with transparent background including unfocused state
-  hi NeoTreeNormal guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi NeoTreeEndOfBuffer guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi NeoTreeFloatNormal guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi NeoTreeFloatBorder guifg=#4B4B7D guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeWinSeparator guifg=#E8E8E8 guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeNormal guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi NeoTreeEndOfBuffer guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi NeoTreeFloatNormal guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi NeoTreeFloatBorder guifg=#4B677D guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeWinSeparator guifg=#100F0E guibg=NONE gui=NONE cterm=NONE
 
   " NeoTree with transparent background
-  hi NeoTreeNormal guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi NeoTreeEndOfBuffer guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi NeoTreeRootName guifg=#292952 guibg=NONE gui=bold cterm=bold
+  hi NeoTreeNormal guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi NeoTreeEndOfBuffer guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi NeoTreeRootName guifg=#294052 guibg=NONE gui=bold cterm=bold
 
   " TabLine highlighting with complementary accents
-  hi TabLine guifg=#483638 guibg=#E8E8E8 gui=NONE cterm=NONE
+  hi TabLine guifg=#1C3A24 guibg=#100F0E gui=NONE cterm=NONE
   hi TabLineFill guifg=NONE guibg=NONE gui=NONE cterm=NONE
-  hi TabLineSel guifg=#FFFFFF guibg=#292952 gui=bold cterm=bold
-  hi TabLineSeparator guifg=#7D764B guibg=#E8E8E8 gui=NONE cterm=NONE
+  hi TabLineSel guifg=#FFFFFF guibg=#294052 gui=bold cterm=bold
+  hi TabLineSeparator guifg=#5E7D4B guibg=#100F0E gui=NONE cterm=NONE
 
   " Interactive elements with complementary contrast
-  hi Search guifg=#FFFFFF guibg=#3A3A6B gui=NONE cterm=NONE
-  hi Visual guifg=#FFFFFF guibg=#7D764B gui=NONE cterm=NONE
-  hi MatchParen guifg=#FFFFFF guibg=#292952 gui=bold cterm=bold
+  hi Search guifg=#FFFFFF guibg=#3A556B gui=NONE cterm=NONE
+  hi Visual guifg=#FFFFFF guibg=#5E7D4B gui=NONE cterm=NONE
+  hi MatchParen guifg=#FFFFFF guibg=#294052 gui=bold cterm=bold
 
   " Menu item hover highlight
-  hi CmpItemAbbrMatch guifg=#292952 guibg=NONE gui=bold cterm=bold
-  hi CmpItemAbbrMatchFuzzy guifg=#3A3A6B guibg=NONE gui=bold cterm=bold
-  hi CmpItemMenu guifg=#7E7E89 guibg=NONE gui=italic cterm=italic
-  hi CmpItemAbbr guifg=#483638 guibg=NONE gui=NONE cterm=NONE
-  hi CmpItemAbbrDeprecated guifg=#D6D1B4 guibg=NONE gui=strikethrough cterm=strikethrough
+  hi CmpItemAbbrMatch guifg=#294052 guibg=NONE gui=bold cterm=bold
+  hi CmpItemAbbrMatchFuzzy guifg=#3A556B guibg=NONE gui=bold cterm=bold
+  hi CmpItemMenu guifg=#53ACF2 guibg=NONE gui=italic cterm=italic
+  hi CmpItemAbbr guifg=#1C3A24 guibg=NONE gui=NONE cterm=NONE
+  hi CmpItemAbbrDeprecated guifg=#6A8957 guibg=NONE gui=strikethrough cterm=strikethrough
 
   " Specific menu highlight groups
-  hi WhichKey guifg=#292952 guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeySeparator guifg=#D6D1B4 guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeyGroup guifg=#4B4B7D guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeyDesc guifg=#3A3A6B guibg=NONE gui=NONE cterm=NONE
-  hi WhichKeyFloat guibg=#E8E8E8 guifg=NONE gui=NONE cterm=NONE
+  hi WhichKey guifg=#294052 guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeySeparator guifg=#6A8957 guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeyGroup guifg=#4B677D guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeyDesc guifg=#3A556B guibg=NONE gui=NONE cterm=NONE
+  hi WhichKeyFloat guibg=#100F0E guifg=NONE gui=NONE cterm=NONE
 
   " Selection and hover highlights with inverted colors
-  hi CursorColumn guifg=NONE guibg=#09090A gui=NONE cterm=NONE
-  hi Cursor guibg=#483638 guifg=#FFFFFF gui=NONE cterm=NONE
-  hi lCursor guibg=#FFFFFF guifg=#483638 gui=NONE cterm=NONE
-  hi CursorIM guibg=#FFFFFF guifg=#483638 gui=NONE cterm=NONE
-  hi TermCursor guibg=#483638 guifg=#FFFFFF gui=NONE cterm=NONE
-  hi TermCursorNC guibg=#E8E8E8 guifg=#483638 gui=NONE cterm=NONE
+  hi CursorColumn guifg=NONE guibg=#FFFFFF gui=NONE cterm=NONE
+  hi Cursor guibg=#1C3A24 guifg=#FFFFFF gui=NONE cterm=NONE
+  hi lCursor guibg=#FFFFFF guifg=#1C3A24 gui=NONE cterm=NONE
+  hi CursorIM guibg=#FFFFFF guifg=#1C3A24 gui=NONE cterm=NONE
+  hi TermCursor guibg=#1C3A24 guifg=#FFFFFF gui=NONE cterm=NONE
+  hi TermCursorNC guibg=#100F0E guifg=#1C3A24 gui=NONE cterm=NONE
   hi CursorLine guibg=NONE ctermbg=NONE gui=underline cterm=underline
-  hi CursorLineNr guifg=#292952 guibg=NONE gui=bold cterm=bold
+  hi CursorLineNr guifg=#294052 guibg=NONE gui=bold cterm=bold
 
-  hi QuickFixLine guifg=#FFFFFF guibg=#3A3A6B gui=NONE cterm=NONE
-  hi IncSearch guifg=#FFFFFF guibg=#292952 gui=NONE cterm=NONE
-  hi NormalNC guibg=#FFFFFF guifg=#7E7E89 gui=NONE cterm=NONE
-  hi Directory guifg=#292952 guibg=NONE gui=NONE cterm=NONE
-  hi WildMenu guifg=#FFFFFF guibg=#292952 gui=bold cterm=bold
+  hi QuickFixLine guifg=#FFFFFF guibg=#3A556B gui=NONE cterm=NONE
+  hi IncSearch guifg=#FFFFFF guibg=#294052 gui=NONE cterm=NONE
+  hi NormalNC guibg=#FFFFFF guifg=#53ACF2 gui=NONE cterm=NONE
+  hi Directory guifg=#294052 guibg=NONE gui=NONE cterm=NONE
+  hi WildMenu guifg=#FFFFFF guibg=#294052 gui=bold cterm=bold
 
   " Add highlight groups for focused items with inverted colors
-  hi CursorLineFold guifg=#292952 guibg=#FFFFFF gui=NONE cterm=NONE
-  hi FoldColumn guifg=#7E7E89 guibg=NONE gui=NONE cterm=NONE
-  hi Folded guifg=#483638 guibg=#09090A gui=italic cterm=italic
+  hi CursorLineFold guifg=#294052 guibg=#FFFFFF gui=NONE cterm=NONE
+  hi FoldColumn guifg=#53ACF2 guibg=NONE gui=NONE cterm=NONE
+  hi Folded guifg=#1C3A24 guibg=#FFFFFF gui=italic cterm=italic
 
   " File explorer specific highlights
-  hi NeoTreeNormal guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi NeoTreeEndOfBuffer guibg=NONE guifg=#483638 gui=NONE cterm=NONE
-  hi NeoTreeRootName guifg=#292952 guibg=NONE gui=bold cterm=bold
-  hi NeoTreeFileName guifg=#483638 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeFileIcon guifg=#3A3A6B guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeDirectoryName guifg=#3A3A6B guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeDirectoryIcon guifg=#3A3A6B guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitModified guifg=#4B4B7D guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitAdded guifg=#8F8757 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitDeleted guifg=#A37F65 guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeGitUntracked guifg=#C2B77A guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeIndentMarker guifg=#57578F guibg=NONE gui=NONE cterm=NONE
-  hi NeoTreeSymbolicLinkTarget guifg=#4B4B7D guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeNormal guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi NeoTreeEndOfBuffer guibg=NONE guifg=#1C3A24 gui=NONE cterm=NONE
+  hi NeoTreeRootName guifg=#294052 guibg=NONE gui=bold cterm=bold
+  hi NeoTreeFileName guifg=#1C3A24 guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeFileIcon guifg=#3A556B guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeDirectoryName guifg=#3A556B guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeDirectoryIcon guifg=#3A556B guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitModified guifg=#4B677D guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitAdded guifg=#6C8F57 guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitDeleted guifg=#65A38D guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeGitUntracked guifg=#95C27A guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeIndentMarker guifg=#57768F guibg=NONE gui=NONE cterm=NONE
+  hi NeoTreeSymbolicLinkTarget guifg=#4B677D guibg=NONE gui=NONE cterm=NONE
 
   " File explorer cursor highlights with strong contrast
-  " hi NeoTreeCursorLine guibg=#3A3A6B guifg=#FFFFFF gui=bold cterm=bold
+  " hi NeoTreeCursorLine guibg=#3A556B guifg=#FFFFFF gui=bold cterm=bold
   " hi! link NeoTreeCursor NeoTreeCursorLine
   " hi! link NeoTreeCursorLineSign NeoTreeCursorLine
 
   " Use wallbash colors for explorer snack in light mode
-  hi WinBar guifg=#483638 guibg=#09090A gui=bold cterm=bold
-  hi WinBarNC guifg=#7E7E89 guibg=#E8E8E8 gui=NONE cterm=NONE
-  hi ExplorerSnack guibg=#292952 guifg=#FFFFFF gui=bold cterm=bold
-  hi BufferTabpageFill guibg=#FFFFFF guifg=#D6D1B4 gui=NONE cterm=NONE
-  hi BufferCurrent guifg=#FFFFFF guibg=#292952 gui=bold cterm=bold
-  hi BufferCurrentMod guifg=#FFFFFF guibg=#4B4B7D gui=bold cterm=bold
-  hi BufferCurrentSign guifg=#292952 guibg=#E8E8E8 gui=NONE cterm=NONE
-  hi BufferVisible guifg=#483638 guibg=#09090A gui=NONE cterm=NONE
-  hi BufferVisibleMod guifg=#7E7E89 guibg=#09090A gui=NONE cterm=NONE
-  hi BufferVisibleSign guifg=#4B4B7D guibg=#E8E8E8 gui=NONE cterm=NONE
-  hi BufferInactive guifg=#D6D1B4 guibg=#E8E8E8 gui=NONE cterm=NONE
-  hi BufferInactiveMod guifg=#6565A3 guibg=#E8E8E8 gui=NONE cterm=NONE
-  hi BufferInactiveSign guifg=#6565A3 guibg=#E8E8E8 gui=NONE cterm=NONE
+  hi WinBar guifg=#1C3A24 guibg=#FFFFFF gui=bold cterm=bold
+  hi WinBarNC guifg=#53ACF2 guibg=#100F0E gui=NONE cterm=NONE
+  hi ExplorerSnack guibg=#294052 guifg=#FFFFFF gui=bold cterm=bold
+  hi BufferTabpageFill guibg=#FFFFFF guifg=#6A8957 gui=NONE cterm=NONE
+  hi BufferCurrent guifg=#FFFFFF guibg=#294052 gui=bold cterm=bold
+  hi BufferCurrentMod guifg=#FFFFFF guibg=#4B677D gui=bold cterm=bold
+  hi BufferCurrentSign guifg=#294052 guibg=#100F0E gui=NONE cterm=NONE
+  hi BufferVisible guifg=#1C3A24 guibg=#FFFFFF gui=NONE cterm=NONE
+  hi BufferVisibleMod guifg=#53ACF2 guibg=#FFFFFF gui=NONE cterm=NONE
+  hi BufferVisibleSign guifg=#4B677D guibg=#100F0E gui=NONE cterm=NONE
+  hi BufferInactive guifg=#6A8957 guibg=#100F0E gui=NONE cterm=NONE
+  hi BufferInactiveMod guifg=#6588A3 guibg=#100F0E gui=NONE cterm=NONE
+  hi BufferInactiveSign guifg=#6588A3 guibg=#100F0E gui=NONE cterm=NONE
 
   " Fix link colors to make them more visible
   hi link Hyperlink NONE
@@ -360,27 +360,27 @@ endif
 
 " UI elements that are the same in both themes with transparent backgrounds
 hi NormalFloat guibg=NONE guifg=NONE gui=NONE cterm=NONE
-hi FloatBorder guifg=#7D764B guibg=NONE gui=NONE cterm=NONE
+hi FloatBorder guifg=#5E7D4B guibg=NONE gui=NONE cterm=NONE
 hi SignColumn guifg=NONE guibg=NONE gui=NONE cterm=NONE
-hi DiffAdd guifg=#FFFFFF guibg=#C27A82 gui=NONE cterm=NONE
-hi DiffChange guifg=#FFFFFF guibg=#A39A65 gui=NONE cterm=NONE
-hi DiffDelete guifg=#FFFFFF guibg=#A37F65 gui=NONE cterm=NONE
+hi DiffAdd guifg=#FFFFFF guibg=#7AC28D gui=NONE cterm=NONE
+hi DiffChange guifg=#FFFFFF guibg=#7DA365 gui=NONE cterm=NONE
+hi DiffDelete guifg=#FFFFFF guibg=#65A38D gui=NONE cterm=NONE
 hi TabLineFill guifg=NONE guibg=NONE gui=NONE cterm=NONE
 
 " Fix selection highlighting with proper color derivatives
-hi TelescopeSelection guibg=#FFF8CC guifg=#483638 gui=bold cterm=bold
-hi TelescopeSelectionCaret guifg=#FFFFFF guibg=#FFF8CC gui=bold cterm=bold
-hi TelescopeMultiSelection guibg=#E6DA9A guifg=#483638 gui=bold cterm=bold
-hi TelescopeMatching guifg=#C2987A guibg=NONE gui=bold cterm=bold
+hi TelescopeSelection guibg=#DFFFCC guifg=#1C3A24 gui=bold cterm=bold
+hi TelescopeSelectionCaret guifg=#FFFFFF guibg=#DFFFCC gui=bold cterm=bold
+hi TelescopeMultiSelection guibg=#B7E69A guifg=#1C3A24 gui=bold cterm=bold
+hi TelescopeMatching guifg=#7AC2A8 guibg=NONE gui=bold cterm=bold
 
 " Minimal fix for explorer selection highlighting
-hi NeoTreeCursorLine guibg=#FFF8CC guifg=#483638 gui=bold
+hi NeoTreeCursorLine guibg=#DFFFCC guifg=#1C3A24 gui=bold
 
 " Fix for LazyVim menu selection highlighting
-hi Visual guibg=#FFE1CC guifg=#483638 gui=bold
+hi Visual guibg=#CCFFEC guifg=#1C3A24 gui=bold
 hi CursorLine guibg=NONE ctermbg=NONE gui=underline cterm=underline
-hi PmenuSel guibg=#FFE1CC guifg=#483638 gui=bold
-hi WildMenu guibg=#FFE1CC guifg=#483638 gui=bold
+hi PmenuSel guibg=#CCFFEC guifg=#1C3A24 gui=bold
+hi WildMenu guibg=#CCFFEC guifg=#1C3A24 gui=bold
 
 " Create improved autocommands to ensure highlighting persists with NeoTree focus fixes
 augroup WallbashSelectionFix
@@ -435,21 +435,21 @@ augroup FixNeoTreeBackground
   autocmd!
   " Force NONE background for NeoTree at various points to override tokyonight fallback
   autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NeoTreeNormal guibg=NONE guifg=#FFFFFF ctermbg=NONE
-  autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NeoTreeNormalNC guibg=NONE guifg=#E8E8E8 ctermbg=NONE
+  autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NeoTreeNormalNC guibg=NONE guifg=#100F0E ctermbg=NONE
   autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NeoTreeEndOfBuffer guibg=NONE guifg=#FFFFFF ctermbg=NONE
 
   " Also fix NvimTree for NvChad
   autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NvimTreeNormal guibg=NONE guifg=#FFFFFF ctermbg=NONE
-  autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NvimTreeNormalNC guibg=NONE guifg=#E8E8E8 ctermbg=NONE
+  autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NvimTreeNormalNC guibg=NONE guifg=#100F0E ctermbg=NONE
   autocmd ColorScheme,VimEnter,WinEnter,BufEnter * hi NvimTreeEndOfBuffer guibg=NONE guifg=#FFFFFF ctermbg=NONE
 
   " Apply highlight based on current theme
   autocmd ColorScheme,VimEnter * if &background == 'dark' |
-    \ hi NeoTreeCursorLine guibg=#FFF8CC guifg=#483638 gui=bold cterm=bold |
-    \ hi NvimTreeCursorLine guibg=#FFF8CC guifg=#483638 gui=bold cterm=bold |
+    \ hi NeoTreeCursorLine guibg=#DFFFCC guifg=#1C3A24 gui=bold cterm=bold |
+    \ hi NvimTreeCursorLine guibg=#DFFFCC guifg=#1C3A24 gui=bold cterm=bold |
     \ else |
-    \ hi NeoTreeCursorLine guibg=#292952 guifg=#FFFFFF gui=bold cterm=bold |
-    \ hi NvimTreeCursorLine guibg=#292952 guifg=#FFFFFF gui=bold cterm=bold |
+    \ hi NeoTreeCursorLine guibg=#294052 guifg=#FFFFFF gui=bold cterm=bold |
+    \ hi NvimTreeCursorLine guibg=#294052 guifg=#FFFFFF gui=bold cterm=bold |
     \ endif
 
   " Force execution after other plugins have loaded

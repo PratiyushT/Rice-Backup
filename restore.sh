@@ -11,6 +11,7 @@ SRC_SCRIPT="$BACKUP/script"
 SRC_LOCAL="$BACKUP/local"
 SRC_HYPR_SHARE="$SRC_LOCAL/hypr"
 SRC_HYDE_SHARE="$SRC_LOCAL/hyde"
+SRC_WAYBAR_SHARE="$SRC_LOCAL/waybar"
 
 DEST_CONFIG="$HOME/.config"
 DEST_SCRIPT="$HOME/.local/lib/hyde"
@@ -18,6 +19,7 @@ DEST_SCRIPT="$HOME/.local/lib/hyde"
 # new: local-share destinations
 DEST_HYPR_SHARE="$HOME/.local/share/hypr"
 DEST_HYDE_SHARE="$HOME/.local/share/hyde"
+DEST_WAYBAR_SHARE="$HOME/.local/share/waybar"
 
 LOG="$HOME/Rice/restore.log"
 
@@ -58,6 +60,17 @@ if [ -d "$SRC_HYDE_SHARE" ]; then
   rsync -a "$SRC_HYDE_SHARE/" "$DEST_HYDE_SHARE/"
 else
   echo "!!! Skipped: $SRC_HYDE_SHARE not found" | tee -a "$LOG"
+fi
+
+echo ">>> Restore finished at $(date)" | tee -a "$LOG"
+
+# ========= Restore .local/share/waybar =========
+if [ -d "$SRC_WAYBAR_SHARE" ]; then
+  echo ">>> Restoring local share from $SRC_WAYBAR_SHARE -> $DEST_WAYBAR_SHARE" | tee -a "$LOG"
+  mkdir -p "$DEST_WAYBAR_SHARE"
+  rsync -a "$SRC_WAYBAR_SHARE/" "$DEST_WAYBAR_SHARE/"
+else
+  echo "!!! Skipped: $SRC_WAYBAR_SHARE not found" | tee -a "$LOG"
 fi
 
 echo ">>> Restore finished at $(date)" | tee -a "$LOG"

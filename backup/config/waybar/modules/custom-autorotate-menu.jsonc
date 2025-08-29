@@ -1,6 +1,6 @@
 {
   "custom/autorotate-menu": {
-    "format": " ",
+    "format": "",
     "tooltip": "Autorotate controls",
     "menu": "on-click",
     "menu-file": "/home/PrT15/.local/share/waybar/menus/autorotate.xml",

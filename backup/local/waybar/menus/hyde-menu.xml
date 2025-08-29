@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+    <object class="GtkMenu" id="menu">
+
+        <child>
+            <object class="GtkMenuItem" id="wallpaper_menu">
+                <property name="label">󰸉  Wallpaper</property>
+                <child type="submenu">
+                    <object class="GtkMenu">
+
+                        <child>
+                            <object class="GtkMenuItem" id="wallpaper-select">
+                                <property name="label">  Select Wallpaper</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkMenuItem" id="wallpaper-random">
+                                <property name="label">  Random Wallpaper</property>
+                            </object>
+                        </child>
+
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkMenuItem" id="waybar-menu">
+                <property name="label">  Waybar</property>
+                <child type="submenu">
+                    <object class="GtkMenu">
+
+                        <child>
+                            <object class="GtkMenuItem" id="waybar-layout-select">
+                                <property name="label">  Select Layout</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="waybar-style-select">
+                                <property name="label">  Select Style</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSeparatorMenuItem" id="delimiter-2" />
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="waybar-restart">
+                                <property name="label">󰜉  Restart</property>
+                            </object>
+                        </child>
+
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkMenuItem" id="workflows_menu">
+                <property name="label">  Workflows</property>
+                <child type="submenu">
+                    <object class="GtkMenu">
+
+                        <child>
+                            <object class="GtkMenuItem" id="workflows-select">
+                                <property name="label">  Select workflows</property>
+                            </object>
+                        </child>
+
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkSeparatorMenuItem" id="delimiter-1" />
+        </child>
+
+        <!-- Power submenu embedded here -->
+        <child>
+            <object class="GtkMenuItem" id="power-menu">
+                <property name="label">  Power</property>
+                <child type="submenu">
+                    <object class="GtkMenu">
+
+                        <child>
+                            <object class="GtkMenuItem" id="lock">
+                                <property name="label">󰍁  Lock</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="logout">
+                                <property name="label">󰍃  Logout</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="suspend">
+                                <property name="label">󰏦  Suspend</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="hibernate">
+                                <property name="label">󰒲  Hibernate</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSeparatorMenuItem" id="delimiter1" />
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="shutdown_sub">
+                                <property name="label">󰚦  Shutdown</property>
+                                <child type="submenu">
+                                    <object class="GtkMenu">
+                                        <child>
+                                            <object class="GtkMenuItem" id="shutdown-now">
+                                                <property name="label">󰚦  Shutdown Now</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkMenuItem" id="shutdown-wait">
+                                                <property name="label">󰚦  Shutdown (wait)</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuItem" id="reboot_sub">
+                                <property name="label">󰜉  Reboot</property>
+                                <child type="submenu">
+                                    <object class="GtkMenu">
+                                        <child>
+                                            <object class="GtkMenuItem" id="reboot-now">
+                                                <property name="label">󰜉  Reboot</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkMenuItem" id="reboot-firmware">
+                                                <property name="label">󰮫  Reboot to UEFI</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                    </object>
+                </child>
+            </object>
+        </child>
+
+    </object>
+</interface>
