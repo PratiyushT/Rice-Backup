@@ -152,7 +152,7 @@ update_waybar_config() {
       "orientation": "inherit",
       "modules": [
         "custom/updates",
-        "custom/dunst"
+        "custom/dunst",
       ]
     },
     "modules-center": [
