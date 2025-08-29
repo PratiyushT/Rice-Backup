@@ -116,7 +116,7 @@ style = "bg:#394260"
 [time]
 disabled = false
 format = '[[  $time ](fg:#a0a9cb )]($style)'
-time_format = "%R"                            # Hour:Minute Format
+time_format = "%I:%M %p  󰸘 %Y-%m-%d"
 
 [deno]
 format = " [deno](italic) [ ](green bold)"

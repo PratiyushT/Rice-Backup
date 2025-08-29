@@ -1,4 +1,4 @@
->>> Backup started at Wed Aug 27 21:22:06 CDT 2025
+>>> Backup started at Thu Aug 28 14:08:06 CDT 2025
 >>> Syncing folder: /home/PrT15/.config/Code - OSS/User -> /home/PrT15/Rice/backup/config/Code - OSS/User
 >>> Syncing folder: /home/PrT15/.config/Code/User -> /home/PrT15/Rice/backup/config/Code/User
 >>> Syncing folder: /home/PrT15/.config/Kvantum -> /home/PrT15/Rice/backup/config/Kvantum
@@ -37,124 +37,102 @@
 !!! Skipped file: /home/PrT15/.config/spotify-flags.conf (not found)
 >>> Copying file: /home/PrT15/.config/xdg-terminals.list -> /home/PrT15/Rice/backup/config/xdg-terminals.list
 >>> Syncing scripts (dereferencing symlinks): /home/PrT15/.local/lib/hyde -> /home/PrT15/Rice/backup/script
-.d..t...... ./
->f+++++++++ amdgpu.py
->f+++++++++ animations.sh
->f+++++++++ app2unit.sh
->f+++++++++ battery.sh
->f+++++++++ batterynotify.sh
->f+++++++++ bookmarks.py
->f+++++++++ brightnesscontrol.sh
->f+++++++++ calculator.sh
->f+++++++++ cava.py
->f+++++++++ cliphist.sh
->f+++++++++ color.set.sh
->f+++++++++ configuration.py
->f+++++++++ cpuinfo.sh
->f+++++++++ dconf.set.sh
->f+++++++++ dontkillsteam.sh
->f+++++++++ emoji-picker.sh
->f+++++++++ fastfetch.sh
->f+++++++++ font.sh
->f+++++++++ fzf_preview.sh
->f+++++++++ fzf_wrapper.py
->f+++++++++ gamelauncher.sh
->f+++++++++ gamemode.sh
->f+++++++++ globalcontrol.sh
->f+++++++++ glyph-picker.sh
->f+++++++++ gpuinfo.sh
->f+++++++++ grimblast
->f+++++++++ hyde-config
->f+++++++++ hyde-launch.sh
->f+++++++++ hypr.unbind.sh
->f+++++++++ hyprlock.sh
->f+++++++++ hyprsunset.sh
->f+++++++++ hyq
->f+++++++++ idle-inhibitor.py
->f+++++++++ keybinds.hint.py
->f+++++++++ keybinds_hint.sh
->f+++++++++ keyboardswitch.sh
->f+++++++++ lockscreen.sh
->f+++++++++ logoutlaunch.sh
->f+++++++++ mediaplayer.py
->f+++++++++ notifications.py
->f+++++++++ parse.config.py
->f+++++++++ parse.json.py
->f+++++++++ pm.sh
->f+++++++++ polkitkdeauth.sh
->f+++++++++ quickapps.sh
->f+++++++++ resetxdgportal.sh
->f+++++++++ restore.config.sh
->f+++++++++ rofi.bookmarks.sh
->f+++++++++ rofi.websearch.sh
->f+++++++++ rofilaunch.sh
->f+++++++++ rofiselect.sh
->f+++++++++ screenrecord.sh
->f+++++++++ screenshot.sh
->f+++++++++ sensorsinfo.py
->f+++++++++ shaders.sh
->f+++++++++ swwwallbash.sh
->f+++++++++ swwwallcache.sh
->f+++++++++ swwwallkon.sh
->f+++++++++ swwwallpaper.sh
->f+++++++++ swwwallselect.sh
->f+++++++++ sysmonlaunch.sh
->f+++++++++ systemupdate.sh
->f+++++++++ testrunner.sh
->f+++++++++ theme.import.py
->f+++++++++ theme.patch.sh
->f+++++++++ theme.select.sh
->f+++++++++ theme.switch.sh
->f+++++++++ themeselect.sh
->f+++++++++ themeswitch.sh
->f+++++++++ volumecontrol.sh
->f+++++++++ wallbash.hypr.sh
->f+++++++++ wallbash.print.colors.sh
->f+++++++++ wallbash.qt.sh
->f+++++++++ wallbash.sh
->f+++++++++ wallbashtoggle.sh
->f+++++++++ wallpaper.hyprpaper.sh
->f+++++++++ wallpaper.mpvpaper.sh
->f+++++++++ wallpaper.sh
->f+++++++++ wallpaper.swww.sh
->f+++++++++ wbarconfgen.sh
->f+++++++++ wbarstylegen.sh
->f+++++++++ weather.py
->f+++++++++ windowpin.sh
->f+++++++++ workflows.sh
->f+++++++++ xdg-terminal-exec
-cd+++++++++ pygui/
->f+++++++++ pygui/color.shuffle.py
-cd+++++++++ pyutils/
->f+++++++++ pyutils/compositor.py
->f+++++++++ pyutils/configuration.py
->f+++++++++ pyutils/logger.py
->f+++++++++ pyutils/pip_env.py
->f+++++++++ pyutils/requirements.txt
->f+++++++++ pyutils/xdg_base_dirs.py
-cd+++++++++ pyutils/__pycache__/
->f+++++++++ pyutils/__pycache__/compositor.cpython-313.pyc
->f+++++++++ pyutils/__pycache__/logger.cpython-313.pyc
->f+++++++++ pyutils/__pycache__/pip_env.cpython-313.pyc
->f+++++++++ pyutils/__pycache__/xdg_base_dirs.cpython-313.pyc
-cd+++++++++ pyutils/wrapper/
->f+++++++++ pyutils/wrapper/fzf.py
->f+++++++++ pyutils/wrapper/libnotify.py
->f+++++++++ pyutils/wrapper/rofi.py
-cd+++++++++ pyutils/wrapper/__pycache__/
->f+++++++++ pyutils/wrapper/__pycache__/libnotify.cpython-313.pyc
->f+++++++++ pyutils/wrapper/__pycache__/rofi.cpython-313.pyc
-cd+++++++++ user/
->f+++++++++ user/battery-conservation-toggle.sh
->f+++++++++ user/battery-idle-toggle.sh
->f+++++++++ user/fix-hid-dongles.sh
->f+++++++++ user/kbd-backlight-status.sh
->f+++++++++ user/linuxflip_ctrl.sh
->f+++++++++ user/monitors-orientation-watch.sh
->f+++++++++ user/power-action.sh
 >>> Syncing local share: /home/PrT15/.local/share/hypr -> /home/PrT15/Rice/backup/local/hypr
 >>> Syncing local share: /home/PrT15/.local/share/hyde -> /home/PrT15/Rice/backup/local/hyde
 >>> Removing any git-related files from /home/PrT15/Rice/backup/config, /home/PrT15/Rice/backup/script and /home/PrT15/Rice/backup/local
 >>> Git files stripped
 >>> Pruning Code backup, keeping only settings.json and keybindings.json
->>> Backup finished at Wed Aug 27 21:22:08 CDT 2025
+>>> Backup finished at Thu Aug 28 14:08:08 CDT 2025
+
+
+
+>>> Backup started at Thu Aug 28 14:13:27 CDT 2025
+>>> Syncing folder: /home/PrT15/.config/Code - OSS/User -> /home/PrT15/Rice/backup/config/Code - OSS/User
+>>> Syncing folder: /home/PrT15/.config/Code/User -> /home/PrT15/Rice/backup/config/Code/User
+>>> Syncing folder: /home/PrT15/.config/Kvantum -> /home/PrT15/Rice/backup/config/Kvantum
+!!! Skipped folder: /home/PrT15/.config/MangoHud (not found)
+!!! Skipped folder: /home/PrT15/.config/VSCodium/User (not found)
+>>> Syncing folder: /home/PrT15/.config/dunst -> /home/PrT15/Rice/backup/config/dunst
+>>> Syncing folder: /home/PrT15/.config/fastfetch -> /home/PrT15/Rice/backup/config/fastfetch
+!!! Skipped folder: /home/PrT15/.config/fish (not found)
+>>> Syncing folder: /home/PrT15/.config/gtk-3.0 -> /home/PrT15/Rice/backup/config/gtk-3.0
+>>> Syncing folder: /home/PrT15/.config/hyde -> /home/PrT15/Rice/backup/config/hyde
+>>> Syncing folder: /home/PrT15/.config/hypr -> /home/PrT15/Rice/backup/config/hypr
+>>> Syncing folder: /home/PrT15/.config/kitty -> /home/PrT15/Rice/backup/config/kitty
+!!! Skipped folder: /home/PrT15/.config/lsd (not found)
+>>> Syncing folder: /home/PrT15/.config/menus -> /home/PrT15/Rice/backup/config/menus
+>>> Syncing folder: /home/PrT15/.config/nwg-look -> /home/PrT15/Rice/backup/config/nwg-look
+>>> Syncing folder: /home/PrT15/.config/qt5ct -> /home/PrT15/Rice/backup/config/qt5ct
+>>> Syncing folder: /home/PrT15/.config/qt6ct -> /home/PrT15/Rice/backup/config/qt6ct
+>>> Syncing folder: /home/PrT15/.config/rofi -> /home/PrT15/Rice/backup/config/rofi
+!!! Skipped folder: /home/PrT15/.config/satty (not found)
+>>> Syncing folder: /home/PrT15/.config/starship -> /home/PrT15/Rice/backup/config/starship
+!!! Skipped folder: /home/PrT15/.config/swaylock (not found)
+>>> Syncing folder: /home/PrT15/.config/systemd/user -> /home/PrT15/Rice/backup/config/systemd/user
+>>> Syncing folder: /home/PrT15/.config/uwsm -> /home/PrT15/Rice/backup/config/uwsm
+>>> Syncing folder: /home/PrT15/.config/vim -> /home/PrT15/Rice/backup/config/vim
+>>> Syncing folder: /home/PrT15/.config/waybar -> /home/PrT15/Rice/backup/config/waybar
+>>> Syncing folder: /home/PrT15/.config/wlogout -> /home/PrT15/Rice/backup/config/wlogout
+>>> Syncing folder: /home/PrT15/.config/xsettingsd -> /home/PrT15/Rice/backup/config/xsettingsd
+>>> Syncing folder: /home/PrT15/.config/zsh -> /home/PrT15/Rice/backup/config/zsh
+!!! Skipped file: /home/PrT15/.config/baloorc (not found)
+>>> Copying file: /home/PrT15/.config/code-flags.conf -> /home/PrT15/Rice/backup/config/code-flags.conf
+!!! Skipped file: /home/PrT15/.config/codium-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/dolphinrc -> /home/PrT15/Rice/backup/config/dolphinrc
+!!! Skipped file: /home/PrT15/.config/electron-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/kdeglobals -> /home/PrT15/Rice/backup/config/kdeglobals
+!!! Skipped file: /home/PrT15/.config/libinput-gestures.conf (not found)
+!!! Skipped file: /home/PrT15/.config/spotify-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/xdg-terminals.list -> /home/PrT15/Rice/backup/config/xdg-terminals.list
+>>> Syncing scripts (dereferencing symlinks): /home/PrT15/.local/lib/hyde -> /home/PrT15/Rice/backup/script
+>>> Syncing local share: /home/PrT15/.local/share/hypr -> /home/PrT15/Rice/backup/local/hypr
+>>> Syncing local share: /home/PrT15/.local/share/hyde -> /home/PrT15/Rice/backup/local/hyde
+>>> Removing any git-related files from /home/PrT15/Rice/backup/config, /home/PrT15/Rice/backup/script and /home/PrT15/Rice/backup/local
+>>> Git files stripped
+>>> Pruning Code backup, keeping only settings.json and keybindings.json
+>>> Backup finished at Thu Aug 28 14:13:29 CDT 2025
+>>> Backup started at Thu Aug 28 19:13:23 CDT 2025
+>>> Syncing folder: /home/PrT15/.config/Code - OSS/User -> /home/PrT15/Rice/backup/config/Code - OSS/User
+>>> Syncing folder: /home/PrT15/.config/Code/User -> /home/PrT15/Rice/backup/config/Code/User
+>>> Syncing folder: /home/PrT15/.config/Kvantum -> /home/PrT15/Rice/backup/config/Kvantum
+!!! Skipped folder: /home/PrT15/.config/MangoHud (not found)
+!!! Skipped folder: /home/PrT15/.config/VSCodium/User (not found)
+>>> Syncing folder: /home/PrT15/.config/dunst -> /home/PrT15/Rice/backup/config/dunst
+>>> Syncing folder: /home/PrT15/.config/fastfetch -> /home/PrT15/Rice/backup/config/fastfetch
+!!! Skipped folder: /home/PrT15/.config/fish (not found)
+>>> Syncing folder: /home/PrT15/.config/gtk-3.0 -> /home/PrT15/Rice/backup/config/gtk-3.0
+>>> Syncing folder: /home/PrT15/.config/hyde -> /home/PrT15/Rice/backup/config/hyde
+>>> Syncing folder: /home/PrT15/.config/hypr -> /home/PrT15/Rice/backup/config/hypr
+>>> Syncing folder: /home/PrT15/.config/kitty -> /home/PrT15/Rice/backup/config/kitty
+!!! Skipped folder: /home/PrT15/.config/lsd (not found)
+>>> Syncing folder: /home/PrT15/.config/menus -> /home/PrT15/Rice/backup/config/menus
+>>> Syncing folder: /home/PrT15/.config/nwg-look -> /home/PrT15/Rice/backup/config/nwg-look
+>>> Syncing folder: /home/PrT15/.config/qt5ct -> /home/PrT15/Rice/backup/config/qt5ct
+>>> Syncing folder: /home/PrT15/.config/qt6ct -> /home/PrT15/Rice/backup/config/qt6ct
+>>> Syncing folder: /home/PrT15/.config/rofi -> /home/PrT15/Rice/backup/config/rofi
+!!! Skipped folder: /home/PrT15/.config/satty (not found)
+>>> Syncing folder: /home/PrT15/.config/starship -> /home/PrT15/Rice/backup/config/starship
+!!! Skipped folder: /home/PrT15/.config/swaylock (not found)
+>>> Syncing folder: /home/PrT15/.config/systemd/user -> /home/PrT15/Rice/backup/config/systemd/user
+>>> Syncing folder: /home/PrT15/.config/uwsm -> /home/PrT15/Rice/backup/config/uwsm
+>>> Syncing folder: /home/PrT15/.config/vim -> /home/PrT15/Rice/backup/config/vim
+>>> Syncing folder: /home/PrT15/.config/waybar -> /home/PrT15/Rice/backup/config/waybar
+>>> Syncing folder: /home/PrT15/.config/wlogout -> /home/PrT15/Rice/backup/config/wlogout
+>>> Syncing folder: /home/PrT15/.config/xsettingsd -> /home/PrT15/Rice/backup/config/xsettingsd
+>>> Syncing folder: /home/PrT15/.config/zsh -> /home/PrT15/Rice/backup/config/zsh
+!!! Skipped file: /home/PrT15/.config/baloorc (not found)
+>>> Copying file: /home/PrT15/.config/code-flags.conf -> /home/PrT15/Rice/backup/config/code-flags.conf
+!!! Skipped file: /home/PrT15/.config/codium-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/dolphinrc -> /home/PrT15/Rice/backup/config/dolphinrc
+!!! Skipped file: /home/PrT15/.config/electron-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/kdeglobals -> /home/PrT15/Rice/backup/config/kdeglobals
+!!! Skipped file: /home/PrT15/.config/libinput-gestures.conf (not found)
+!!! Skipped file: /home/PrT15/.config/spotify-flags.conf (not found)
+>>> Copying file: /home/PrT15/.config/xdg-terminals.list -> /home/PrT15/Rice/backup/config/xdg-terminals.list
+>>> Syncing scripts (dereferencing symlinks): /home/PrT15/.local/lib/hyde -> /home/PrT15/Rice/backup/script
+>>> Syncing local share: /home/PrT15/.local/share/hypr -> /home/PrT15/Rice/backup/local/hypr
+>>> Syncing local share: /home/PrT15/.local/share/hyde -> /home/PrT15/Rice/backup/local/hyde
+>>> Removing any git-related files from /home/PrT15/Rice/backup/config, /home/PrT15/Rice/backup/script and /home/PrT15/Rice/backup/local
+>>> Git files stripped
+>>> Pruning Code backup, keeping only settings.json and keybindings.json
+>>> Backup finished at Thu Aug 28 19:13:25 CDT 2025

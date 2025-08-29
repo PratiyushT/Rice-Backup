@@ -1,47 +1,49 @@
 #!/bin/bash
+set -euo pipefail
 
-# Path to the Hyprland configuration file
 config_file="$HOME/.config/hypr/hyprlock.conf"
 
-# Read the bt-mode value from the configuration file
-bt_mode=$(grep -oP '^\$bt-mode\s*=\s*\K\S+' ~/.config/hypr/hyprlock.conf)
+# Read $bt-mode safely; default to false if missing or unreadable
+bt_mode="$(sed -n 's/^[[:space:]]*\$bt-mode[[:space:]]*=[[:space:]]*\(true\|false\).*/\1/p' "$config_file" 2>/dev/null | head -n1)"
+bt_mode="${bt_mode:-false}"
 
-# Get Bluetooth power status
-bluetooth_status=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
-
-# Check if Bluetooth is powered on
-if [ "$bluetooth_status" != "yes" ]; then
-    echo "󰂯 Bluetooth Off"
-    exit 0
+# Bluetooth power
+bluetooth_status="$(bluetoothctl show 2>/dev/null | awk -F': ' '/Powered:/ {print $2; exit}')"
+if [[ "${bluetooth_status:-no}" != "yes" ]]; then
+  echo "󰂲  BT Off ..."
+  exit 0
 fi
 
-# Initialize connected devices
-connected_devices=$(echo "$connected_devices" | sed 's/[[:space:]]*$//')
+# Collect connected device names
+# Lines look like: "Device AA:BB:CC:DD:EE:FF Name With Spaces"
+mapfile -t connected_names < <(bluetoothctl devices Connected 2>/dev/null | sed -n 's/^Device [^ ]\+ //p')
 
-# Process Bluetooth devices
-while read -r line; do
-    echo "Processing line: $line" >&2
-    device_mac=$(echo "$line" | awk '{print $2}')
-    device_name=$(echo "$line" | cut -d' ' -f3-)
-    echo "Device MAC: $device_mac" >&2
-    echo "Device Name: $device_name" >&2
-    if bluetoothctl info "$device_mac" | grep -q "Connected: yes"; then
-        connected_devices+="$device_name "
-    fi
-    echo "Finished processing $device_mac" >&2
-    echo "---" >&2
-done < <(bluetoothctl devices)
-
-# If no connected devices, show "No Devices"
-if [ -z "$connected_devices" ]; then
-    echo "󰂲 No Devices"
-    exit 0
+count=${#connected_names[@]}
+if (( count == 0 )); then
+  echo "󰂲  No Devices"
+  exit 0
 fi
 
-# Display output based on bt-mode
-if [ "$bt_mode" = "true" ]; then
-    echo "󰂯 $connected_devices"
+# Truncate helper: 8 chars + "..."
+truncate_name() {
+  local n="$1"
+  if (( ${#n} > 8 )); then
+    printf '%s...\n' "${n:0:8}"
+  else
+    printf '%s\n' "$n"
+  fi
+}
+
+if [[ "$bt_mode" != "true" ]]; then
+  # bt-mode=false → always generic when any device is connected
+  echo "󰂯  Connected"
+  exit 0
+fi
+
+# bt-mode=true
+if (( count == 1 )); then
+  one_name="$(truncate_name "${connected_names[0]}")"
+  echo "󰂯  $one_name"
 else
-    echo "󰂯 Connected"
+  echo "󰂯  Connected (${count})"
 fi
-

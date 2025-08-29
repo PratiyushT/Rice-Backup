@@ -2,6 +2,11 @@
 set -euo pipefail
 
 NMCLI="/usr/bin/nmcli"
+config_file="$HOME/.config/hypr/hyprlock.conf"
+
+# Read $wifi-mode safely; default to false if missing/unreadable
+wifi_mode="$(sed -n 's/^[[:space:]]*\$wifi-mode[[:space:]]*=[[:space:]]*\(true\|false\).*/\1/p' "$config_file" 2>/dev/null | head -n1)"
+wifi_mode="${wifi_mode:-false}"
 
 # 1) Ethernet check
 if $NMCLI -t -f TYPE,STATE connection show --active 2>/dev/null | grep -q '^ethernet:activated$'; then
@@ -28,9 +33,23 @@ current="$($NMCLI -t -f IN-USE,SSID,SIGNAL device wifi list --rescan no 2>/dev/n
 ssid="${current%%:*}"
 signal="${current##*:}"
 
-# fallback if SSID missing
-[[ -z "${ssid:-}" ]] && ssid="Connected"
+# Fallbacks
 [[ -z "${signal:-}" ]] && signal=0
+
+# If wifi-mode=false, always show generic "Connected"
+# If wifi-mode=true, show SSID (with truncation). If SSID missing, fall back to "Connected".
+if [[ "$wifi_mode" == "true" ]]; then
+  if [[ -z "${ssid:-}" ]]; then
+    ssid="Connected"
+  else
+    # truncate SSID to 8 chars with ellipsis
+    if (( ${#ssid} > 8 )); then
+      ssid="${ssid:0:8}..."
+    fi
+  fi
+else
+  ssid="Connected"
+fi
 
 # 5) Pick signal icon
 icons=( "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" )

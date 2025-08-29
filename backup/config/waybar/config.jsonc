@@ -3,8 +3,7 @@
     "name": "landscape",
     "layer": "top",
     "output": [
-      "eDP-1",
-      "DP-7"
+      "eDP-1"
     ],
     "position": "top",
     "mode": "dock",
@@ -92,7 +91,7 @@
     "name": "portrait",
     "layer": "top",
     "output": [
-      "DP-4"
+      ""
     ],
     "position": "top",
     "mode": "dock",

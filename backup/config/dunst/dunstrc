@@ -110,7 +110,7 @@ new_icon = skype
 # [notification]
 # font = "mononoki Nerd Font"
 # font_size = 10
-font = Mononoki Nerd Font Mono [2025-08-25 21:14:18.848] [warning] No matches found for path: /home/PrT15/.config/hyde/themes/Catppuccin Mocha/hypr.theme,JetBrainsMono Nerd Font [2025-08-25 21:14:18.848] [warning] No matches found for path: /home/PrT15/.config/hyde/themes/Catppuccin Mocha/hypr.theme
+font = Mononoki Nerd Font Mono [2025-08-28 19:12:40.849] [warning] No matches found for path: /home/PrT15/.config/hyde/themes/Catppuccin Mocha/hypr.theme,JetBrainsMono Nerd Font [2025-08-28 19:12:40.849] [warning] No matches found for path: /home/PrT15/.config/hyde/themes/Catppuccin Mocha/hypr.theme
 
 dmenu = /usr/bin/rofi -config notification -dmenu -p dunst:
 
@@ -120,15 +120,15 @@ dmenu = /usr/bin/rofi -config notification -dmenu -p dunst:
 
 
 [urgency_low]
-    background = "#8B65A380"
-    foreground = "#ECCCFFE6"
-    frame_color = "#8B65A303"
+    background = "#A39A6580"
+    foreground = "#FFF8CCE6"
+    frame_color = "#A39A6503"
     icon = "/home/PrT15/.local/share/icons/Wallbash-Icon/hyprdots.svg"
     timeout = 5
 
 [urgency_normal]
-    background = "#3A4B6B80"
-    foreground = "#CCDDFFE6"
-    frame_color = "#3A4B6B03"
+    background = "#3A3A6B80"
+    foreground = "#CCCCFFE6"
+    frame_color = "#3A3A6B03"
     icon = "/home/PrT15/.local/share/icons/Wallbash-Icon/hyprdots.svg"
     timeout = 5
