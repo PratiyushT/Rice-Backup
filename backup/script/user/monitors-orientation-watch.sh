@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
-set -euo pipefail
-
 # monitors-orientation-watch.sh
-# Maintains PORTRAIT=() and LANDSCAPE=() arrays for Hyprland monitors.
-# Uses hyprctl -w for events, auto-reconnects if the stream ends.
+# Keeps Waybar outputs bound to current monitor orientations and hot-reloads safely.
+
+set -uo pipefail
 
 LOG_PREFIX="${LOG_PREFIX:-[mon-watch]}"
 DEBOUNCE_MS="${DEBOUNCE_MS:-120}"
-RETRY_SEC="${RETRY_SEC:-1}" # wait before reconnecting the event stream
+RETRY_SEC="${RETRY_SEC:-1}"       # wait before reconnecting the event stream
+WAYBAR_CONFIG_OUT="${WAYBAR_CONFIG_OUT:-/home/PrT15/.config/waybar/config.jsonc}"
 
-need() { command -v "$1" >/dev/null 2>&1 || {
-  echo "$LOG_PREFIX Missing dependency: $1" >&2
-  exit 1
-}; }
+need() { command -v "$1" >/dev/null 2>&1 || { echo "$LOG_PREFIX Missing dependency: $1" >&2; exit 1; }; }
 need hyprctl
 need jq
 command -v stdbuf >/dev/null 2>&1 || true
@@ -20,6 +17,20 @@ command -v stdbuf >/dev/null 2>&1 || true
 declare -a PORTRAIT=()
 declare -a LANDSCAPE=()
 _prev_state="{}"
+
+notify_err() {
+  local msg="${1:-Unknown error}"
+  command -v notify-send >/dev/null 2>&1 && notify-send -u low "Waybar orientation watcher" "$msg" || true
+  printf '%s %s\n' "$LOG_PREFIX" "$msg" >&2
+}
+
+arr_to_json() {
+  if ((${#@})); then
+    printf '%s\n' "$@" | jq -R . | jq -s .
+  else
+    jq -n '[]'
+  fi
+}
 
 snapshot_state() {
   hyprctl monitors -j 2>/dev/null | jq -rc '
@@ -39,7 +50,7 @@ snapshot_state() {
 
 set_arrays_from_state() {
   local state_json="$1"
-  readarray -t PORTRAIT < <(jq -r 'to_entries | map(select(.value.orientation=="portrait")  | .key)[]?' <<<"$state_json")
+  readarray -t PORTRAIT  < <(jq -r 'to_entries | map(select(.value.orientation=="portrait")  | .key)[]?' <<<"$state_json")
   readarray -t LANDSCAPE < <(jq -r 'to_entries | map(select(.value.orientation=="landscape") | .key)[]?' <<<"$state_json")
   _prev_state="$state_json"
 }
@@ -52,36 +63,27 @@ print_arrays() {
   printf ')\n'
 }
 
-# ===== Waybar config updater =====
-# Generates a Waybar config with two bars:
-#   [0] "landscape" bar -> bound to LANDSCAPE outputs
-#   [1] "portrait"  bar -> bound to PORTRAIT outputs
-# Writes to $WAYBAR_CONFIG_OUT or ~/.config/waybar/config.orient.json
-# Sends SIGUSR2 to Waybar to live-reload.
 update_waybar_config() {
-  local target="${WAYBAR_CONFIG_OUT:-/home/PrT15/.config/waybar/config.jsonc}"
+  local target="$WAYBAR_CONFIG_OUT"
+  local tmp
+  tmp="$(mktemp)" || { notify_err "mktemp failed"; return 0; }
 
-  # Convert Bash arrays -> JSON arrays safely
   local p_json l_json
-  p_json="$(printf '%s\n' "${PORTRAIT[@]}" | jq -R . | jq -s .)"
-  l_json="$(printf '%s\n' "${LANDSCAPE[@]}" | jq -R . | jq -s .)"
+  p_json="$(arr_to_json "${PORTRAIT[@]}")"  || { notify_err "Failed to build PORTRAIT json"; rm -f "$tmp"; return 0; }
+  l_json="$(arr_to_json "${LANDSCAPE[@]}")" || { notify_err "Failed to build LANDSCAPE json"; rm -f "$tmp"; return 0; }
 
-  # Base template from your message. Only the "output" arrays are updated here.
-  # If you want to tweak modules later, edit the JSON below.
-  jq --argjson p "$p_json" --argjson l "$l_json" '
-    .[0].output = $l
-    | .[1].output = $p
-  ' >"$target" <<'JSON'
+  if ! jq --argjson p "$p_json" --argjson l "$l_json" '
+      .[0].output = $l
+      | .[1].output = $p
+    ' >"$tmp" <<'JSON'
 [
   {
     "name": "landscape",
     "layer": "top",
-    "output": [
-      "*"
-    ],
+    "output": ["*"],
     "position": "top",
     "mode": "dock",
-    "height": 10,
+    "height": 38,
     "exclusive": true,
     "passthrough": false,
     "reload_style_on_change": true,
@@ -95,85 +97,26 @@ update_waybar_config() {
       "group/pill#clock",
       "group/pill#workspaces"
     ],
-    "group/pill#hyde-menu": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/hyde-menu"
-      ]
-    },
-    "group/pill#system-info": {
-      "orientation": "inherit",
-      "modules": [
-        "cpu",
-        "memory",
-        "custom/sensorsinfo"
-      ]
-    },
-    "group/pill#clock": {
-      "orientation": "inherit",
-      "modules": [
-        "clock"
-      ]
-    },
-    "group/pill#workspaces": {
-      "orientation": "inherit",
-      "modules": [
-        "hyprland/workspaces"
-      ]
-    },
-    "modules-right": [
-      "group/pill#tray",
-      "group/pill#utils",
-      "group/pill#power"
-    ],
-    "group/pill#tray": {
-      "orientation": "inherit",
-      "modules": [
-        "tray",
-        "battery",
-        "backlight",
-        "pulseaudio",
-        "pulseaudio#microphone"
-      ]
-    },
-    "group/pill#utils": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/cliphist",
-        "idle_inhibitor",
-        "custom/osk",
-        "custom/autorotate-menu",
-        "custom/display",
-        "custom/battery-conservation"
+    "group/pill#hyde-menu": { "orientation": "inherit", "modules": ["custom/hyde-menu"] },
+    "group/pill#system-info": { "orientation": "inherit", "modules": ["cpu", "memory", "custom/sensorsinfo"] },
+    "group/pill#clock": { "orientation": "inherit", "modules": ["clock"] },
+    "group/pill#workspaces": { "orientation": "inherit", "modules": ["hyprland/workspaces"] },
 
-      ]
-    },
-       "group/pill#power": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/updates",
-        "custom/dunst",
-      ]
-    },
-    "modules-center": [
-      "group/pill#center"
-    ],
-    "group/pill#center": {
-      "orientation": "inherit",
-      "modules": [
-        "wlr/taskbar"
-      ]
-    }
+    "modules-right": ["group/pill#tray", "group/pill#utils", "group/pill#power"],
+    "group/pill#tray": { "orientation": "inherit", "modules": ["tray", "battery", "backlight", "pulseaudio", "pulseaudio#microphone"] },
+    "group/pill#utils": { "orientation": "inherit", "modules": ["custom/cliphist", "idle_inhibitor", "custom/osk", "custom/autorotate-menu", "custom/display", "custom/battery-conservation"] },
+    "group/pill#power": { "orientation": "inherit", "modules": ["custom/updates", "custom/dunst"] },
+
+    "modules-center": ["group/pill#center"],
+    "group/pill#center": { "orientation": "inherit", "modules": ["wlr/taskbar"] }
   },
   {
     "name": "portrait",
     "layer": "top",
-    "output": [
-      "*"
-    ],
+    "output": ["*"],
     "position": "top",
     "mode": "dock",
-    "height": 10,
+    "height": 38,
     "exclusive": true,
     "passthrough": false,
     "reload_style_on_change": true,
@@ -181,84 +124,43 @@ update_waybar_config() {
       "$XDG_CONFIG_HOME/waybar/modules/*json*",
       "$XDG_CONFIG_HOME/waybar/includes/includes.json"
     ],
-    "modules-left": [
-      "group/pill#hyde-menu",
-      "group/pill#system-info",
-      "group/pill#clock"
-    ],
-    "group/pill#hyde-menu": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/hyde-menu"
-      ]
-    },
-    "group/pill#system-info": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/sensorsinfo"
-      ]
-    },
-    "group/pill#clock": {
-      "orientation": "inherit",
-      "modules": [
-        "clock"
-      ]
-    },
-    "modules-right": [
-      "group/pill#tray",
-      "group/pill#utils",
-      "group/pill#power"
-    ],
-    "group/pill#tray": {
-      "orientation": "inherit",
-      "modules": [
-        "tray",
-        "battery",
-        "backlight",
-        "pulseaudio",
-        "pulseaudio#microphone"
-      ]
-    },
-    "group/pill#utils": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/cliphist",
-        "idle_inhibitor",
-        "custom/osk",
-        "custom/autorotate-menu",
-        "custom/display",
-        "custom/battery-conservation"
+    "modules-left": ["group/pill#hyde-menu", "group/pill#system-info", "group/pill#clock"],
+    "group/pill#hyde-menu": { "orientation": "inherit", "modules": ["custom/hyde-menu"] },
+    "group/pill#system-info": { "orientation": "inherit", "modules": ["custom/sensorsinfo"] },
+    "group/pill#clock": { "orientation": "inherit", "modules": ["clock"] },
 
-      ]
-    },
-       "group/pill#power": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/updates",
-        "custom/dunst"
-      ]
-    },
-    "modules-center": [
-      "group/pill#center"
-    ],
-    "group/pill#center": {
-      "orientation": "inherit",
-      "modules": [
-        "wlr/taskbar"
-      ]
-    }
+    "modules-right": ["group/pill#tray", "group/pill#utils", "group/pill#power"],
+    "group/pill#tray": { "orientation": "inherit", "modules": ["tray", "battery", "backlight", "pulseaudio", "pulseaudio#microphone"] },
+    "group/pill#utils": { "orientation": "inherit", "modules": ["custom/cliphist", "idle_inhibitor", "custom/osk", "custom/autorotate-menu", "custom/display", "custom/battery-conservation"] },
+    "group/pill#power": { "orientation": "inherit", "modules": ["custom/updates", "custom/dunst"] },
+
+    "modules-center": ["group/pill#center"],
+    "group/pill#center": { "orientation": "inherit", "modules": ["wlr/taskbar"] }
   }
 ]
-
 JSON
-  # Reload Waybar to pick up the new assignments
-  pkill -SIGUSR2 waybar 2>/dev/null || true
+  then
+    notify_err "jq failed to render Waybar config. Original file left intact."
+    rm -f "$tmp"
+    return 0
+  fi
+
+  if ! jq -e 'type=="array" and length==2 and (.[0]|type=="object") and (.[1]|type=="object")' "$tmp" >/dev/null; then
+    notify_err "Rendered config failed validation. Skipping write."
+    rm -f "$tmp"
+    return 0
+  fi
+
+  mv -f "$tmp" "$target"
+
+  if ! pkill -SIGUSR2 waybar 2>/dev/null; then
+    nohup waybar >/dev/null 2>&1 &
+  fi
+
   printf '%s waybar config updated -> %s\n' "$LOG_PREFIX" "$target"
-  pkill -SIGUSR2 waybar   
 }
 
 sleep_ms() {
-  # portable millisecond sleep
   local ms="${1:-0}"
   python - <<PY 2>/dev/null || awk "BEGIN { system(\"sleep \" $ms/1000) }" >/dev/null 2>&1
 import time
@@ -268,7 +170,7 @@ PY
 
 init_monitors() {
   local s
-  s="$(snapshot_state)"
+  s="$(snapshot_state)" || { notify_err "Failed to read monitors"; return 0; }
   printf '%s started. Initial state:\n' "$LOG_PREFIX"
   echo "$s" | jq .
   set_arrays_from_state "$s"
@@ -277,7 +179,6 @@ init_monitors() {
 }
 
 stream_events() {
-  # Yields Hyprland events line-by-line, line buffered if stdbuf exists
   if command -v stdbuf >/dev/null 2>&1; then
     stdbuf -oL hyprctl -w
   else
@@ -286,34 +187,30 @@ stream_events() {
 }
 
 watch_loop() {
-  # Disable pipefail semantics around the event stream to avoid quitting on reader exit
   set +o pipefail
   trap '' PIPE
 
   while :; do
     echo "$LOG_PREFIX using hyprctl -w for events"
-    # Use process substitution so the while loop runs in the current shell
     while IFS= read -r _line; do
       ((DEBOUNCE_MS > 0)) && sleep_ms "$DEBOUNCE_MS"
       local curr
-      curr="$(snapshot_state)"
+      curr="$(snapshot_state)" || { notify_err "hyprctl monitors failed"; continue; }
       if [[ "$curr" != "$_prev_state" ]]; then
         set_arrays_from_state "$curr"
         print_arrays
         update_waybar_config
       fi
-    done < <(stream_events)
+    done < <(stream_events) || true
 
-    echo "$LOG_PREFIX event stream ended. Reconnecting in ${RETRY_SEC}s..."
     sleep "$RETRY_SEC"
   done
 }
 
 main() {
-  pkill -x waybar || true
-  waybar &
-  disown
-
+  if ! pgrep -x waybar >/dev/null; then
+    nohup waybar >/dev/null 2>&1 &
+  fi
   init_monitors
   watch_loop
 }

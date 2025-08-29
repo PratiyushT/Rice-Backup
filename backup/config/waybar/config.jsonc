@@ -7,7 +7,7 @@
     ],
     "position": "top",
     "mode": "dock",
-    "height": 10,
+    "height": 38,
     "exclusive": true,
     "passthrough": false,
     "reload_style_on_change": true,
@@ -69,8 +69,8 @@
         "idle_inhibitor",
         "custom/osk",
         "custom/autorotate-menu",
-        "custom/battery-conservation",
-        "custom/display"
+        "custom/display",
+        "custom/battery-conservation"
       ]
     },
     "group/pill#power": {
@@ -93,12 +93,10 @@
   {
     "name": "portrait",
     "layer": "top",
-    "output": [
-      ""
-    ],
+    "output": [],
     "position": "top",
     "mode": "dock",
-    "height": 10,
+    "height": 38,
     "exclusive": true,
     "passthrough": false,
     "reload_style_on_change": true,
@@ -151,8 +149,8 @@
         "idle_inhibitor",
         "custom/osk",
         "custom/autorotate-menu",
-        "custom/battery-conservation",
-        "custom/display"
+        "custom/display",
+        "custom/battery-conservation"
       ]
     },
     "group/pill#power": {
