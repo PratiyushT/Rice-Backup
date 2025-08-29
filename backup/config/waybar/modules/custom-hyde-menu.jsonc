@@ -24,7 +24,7 @@
       // Shutdown & Reboot — prefer loginctl for user-invoked actions
       "shutdown-now": "loginctl poweroff",
       "shutdown-wait": "systemctl poweroff",
-      "reboot-now": "loginctl reboot",
+      "reboot-now": "systemctl reboot --now",
       "reboot-firmware": "systemctl reboot --firmware-setup"
     }
   }

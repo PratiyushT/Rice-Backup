@@ -1,10 +1,9 @@
 {
   "custom/weather": {
-    "exec": "hyde-shell user/weather.rs",
+    "exec": "hyde-shell user/weather-bin",
     "tooltip": true,
     "format": "{0}",
-    "interval": 0,
-    "signal": 8,
+    "interval": 30,
     "return-type": "json"
   }
 }
